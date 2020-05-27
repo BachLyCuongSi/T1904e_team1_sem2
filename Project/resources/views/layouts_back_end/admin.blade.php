@@ -87,7 +87,7 @@
     <!-- Master Page -->
 
 
-     @yield('content')
+    @yield('content')
 
 
 </body>

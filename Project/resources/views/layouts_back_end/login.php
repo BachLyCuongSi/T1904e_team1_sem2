@@ -1,57 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vietpro Mobile Shop - Administrator</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Vietpro Mobile Shop - Administrator</title>
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/datepicker3.css" rel="stylesheet">
-<link href="css/bootstrap-table.css" rel="stylesheet">
-<link href="css/styles.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/datepicker3.css" rel="stylesheet">
+	<link href="css/bootstrap-table.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
 
-<!--[if lt IE 9]>
+	<!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
 
 </head>
-<?php 
-	
-	
+<?php
 
 
 
-if(isset($_POST['sbm'])){
-	$email =$_POST['mail'];
-	$pass =$_POST['pass'];
 
-	$sql = "SELECT * FROM user WHERE user_mail=$email AND user_pass=$pass";
-	$query = mysqli_query($conn,$sql);
-	$row= mysqli_num_rows($query);
 
-	if($rows > 0){
-			//  chuyen huong sang trang khac
-			$_SESSION["mail"] =$mail;
-			$_SESSION["pass"] =$pass;
-			header("location:index.php");
-		
-	}else{
-			//  bao loi khong hop le			
-			$error = "	<div  class=\"alert alert-danger \">Tài khoản không hợp lệ !</div>";
-	}	
+if (isset($_POST['sbm'])) {
+	// $email =$_POST['mail'];
+	// $pass =$_POST['pass'];
+
+	// $sql = "SELECT * FROM user WHERE user_mail=$email AND user_pass=$pass";
+	// $query = mysqli_query($conn,$sql);
+	// $row= mysqli_num_rows($query);
+
+	// if($rows > 0){
+	// 		//  chuyen huong sang trang khac
+	// 		$_SESSION["mail"] =$mail;
+	// 		$_SESSION["pass"] =$pass;
+	// 		header("location:index.php");
+
+	// }else{
+	// 		//  bao loi khong hop le			
+	// 		$error = "	<div  class=\"alert alert-danger \">Tài khoản không hợp lệ !</div>";
+	// }	
+
+	header("location:admin.blade.php");
 }
 
 ?>
 
 <body>
-	
+
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 			<div class="login-panel panel panel-default">
 				<div class="panel-heading">Vietpro Mobile Shop - Administrator</div>
 				<div class="panel-body">
-					<?php if(isset($erorr)){echo $erorr ;} ?>
+					<?php if (isset($erorr)) {
+						echo $erorr;
+					} ?>
 					<form role="form" method="post">
 						<fieldset>
 							<div class="form-group">
@@ -71,7 +76,7 @@ if(isset($_POST['sbm'])){
 				</div>
 			</div>
 		</div><!-- /.col-->
-	</div><!-- /.row -->	
+	</div><!-- /.row -->
 </body>
 
 </html>
