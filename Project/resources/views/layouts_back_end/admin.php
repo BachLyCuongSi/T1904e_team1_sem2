@@ -85,35 +85,9 @@
     </div>
     <!--/.sidebar-->
     <!-- Master Page -->
-    <?php
-    if(isset($_GET["page_layout"])){
-         switch ($_GET["page_layout"])
-         {
-            case 'user':
-                include_once('user.php');
-                break;
-            case 'category':
-                include_once('category.php');
-                break;
-            case 'product':
-                include_once('product.php');
-                break;
-            case 'comment':
-                include_once('admin.php');
-                break;
-            case 'dashboard':
-                include_once('comment.php');
-                break;
-            case 'ads':
-                include_once('ads.php');
-                break;
-           
-        }
-    }else{
-        include_once("dashboard.php");
-    }
 
-    ?>
+    
+     @yield('content')
 
 
 </body>
