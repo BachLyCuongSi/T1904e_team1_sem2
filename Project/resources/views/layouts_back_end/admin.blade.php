@@ -65,7 +65,7 @@
             <li><a href="index.php?page_layout=user"><svg class="glyph stroked male user ">
                         <use xlink:href="#stroked-male-user" /></svg>Quản lý thành viên</a></li>
 
-            <li><a href="index.php?page_layout=category"><svg class="glyph stroked open folder">
+            <li><a href="cate_manage"><svg class="glyph stroked open folder">
                         <use xlink:href="#stroked-open-folder" /></svg>Quản lý danh mục</a></li>
 
             <li><a href="index.php?page_layout=product"><svg class="glyph stroked bag">
