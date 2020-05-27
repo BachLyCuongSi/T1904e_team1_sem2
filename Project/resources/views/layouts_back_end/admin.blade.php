@@ -86,7 +86,7 @@
     <!--/.sidebar-->
     <!-- Master Page -->
 
-    
+
      @yield('content')
 
 

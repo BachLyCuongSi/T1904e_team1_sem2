@@ -1,6 +1,8 @@
+@extends('layouts_back_end.admin');
 
-		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+@section('content')
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
                 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
@@ -8,7 +10,7 @@
 				<li class="active">Thêm sản phẩm</li>
 			</ol>
 		</div><!--/.row-->
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Thêm sản phẩm</h1>
@@ -24,7 +26,7 @@
                                     <label>Tên sản phẩm</label>
                                     <input required name="prd_name" class="form-control" placeholder="">
                                 </div>
-                                                                
+
                                 <div class="form-group">
                                     <label>Giá sản phẩm</label>
                                     <input required name="prd_price" type="number" min="0" class="form-control">
@@ -32,25 +34,25 @@
                                 <div class="form-group">
                                     <label>Bảo hành</label>
                                     <input required name="prd_warranty" type="text" class="form-control">
-                                </div>    
+                                </div>
                                 <div class="form-group">
                                     <label>Phụ kiện</label>
                                     <input required name="prd_accessories" type="text" class="form-control">
-                                </div>                  
+                                </div>
                                 <div class="form-group">
                                     <label>Khuyến mãi</label>
                                     <input required name="prd_promotion" type="text" class="form-control">
-                                </div>  
+                                </div>
                                 <div class="form-group">
                                     <label>Tình trạng</label>
                                     <input required name="prd_new" type="text" class="form-control">
-                                </div>  
-                                
+                                </div>
+
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Ảnh sản phẩm</label>
-                                    
+
                                     <input required name="prd_image" type="file">
                                     <br>
                                     <div>
@@ -66,7 +68,7 @@
                                         <option value=4>LG</option>
                                     </select>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Trạng thái</label>
                                     <select name="prd_status" class="form-control">
@@ -74,7 +76,7 @@
                                         <option value=0>Hết hàng</option>
                                     </select>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Sản phẩm nổi bật</label>
                                     <div class="checkbox">
@@ -95,5 +97,6 @@
                     </div>
                 </div><!-- /.col-->
             </div><!-- /.row -->
-		
-	</div>	<!--/.main-->	
+
+	</div>	<!--/.main-->
+@endsection

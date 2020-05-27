@@ -1,4 +1,6 @@
+@extends('layouts_back_end.admin');
 
+@section('content')
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -79,3 +81,4 @@
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-table.js"></script>
 
+@endsection
