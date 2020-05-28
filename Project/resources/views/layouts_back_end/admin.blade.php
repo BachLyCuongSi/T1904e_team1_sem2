@@ -10,9 +10,16 @@
     <link href="{{ asset('css/datepicker3.css')}}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-table.css')}}" rel="stylesheet">
     <link href="{{ asset('css/styles.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/front-awesome.min.css')}}" rel="stylesheet">
 
     <!--Icons-->
     <script src="{{ asset('js/lumino.glyphs.js')}}"></script>
+    <script src="{{ asset('js/sweetalert.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
+
+
 
     <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
@@ -65,10 +72,10 @@
             <li><a href="#"><svg class="glyph stroked male user ">
                         <use xlink:href="#stroked-male-user" /></svg>Quản lý thành viên</a></li>
 
-            <li><a href="{{route('cate_manage.index')}}"><svg class="glyph stroked open folder">
+            <li><a href="{{route('cate_manage.list')}}"><svg class="glyph stroked open folder">
                         <use xlink:href="#stroked-open-folder" /></svg>Quản lý danh mục</a></li>
 
-            <li><a href="#"><svg class="glyph stroked bag">
+            <li><a href="{{route('product_manage.list')}}"><svg class="glyph stroked bag">
                         <use xlink:href="#stroked-bag"></use>
                     </svg>Quản lý sản phẩm</a></li>
 

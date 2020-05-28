@@ -31,9 +31,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 // chuc nang cua nhan vien
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::resource('cate_manage', 'CategoryController');
-        Route::resource('customer_manage', 'CustomerController');
-        Route::resource('product_manage', 'ProductController');
+        Route::resource('/cate_manage', 'CategoryController');
+        Route::resource('/customer_manage', 'CustomerController');
+        Route::resource('/product_manage', 'ProductController');
         Route::resource('user_manage', 'UerController');
     });
 });
