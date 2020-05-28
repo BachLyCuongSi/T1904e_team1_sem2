@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vietpro Mobile Shop - Administrator</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/datepicker3.css" rel="stylesheet">
-    <link href="css/bootstrap-table.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/datepicker3.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-table.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css')}}" rel="stylesheet">
 
     <!--Icons-->
-    <script src="js/lumino.glyphs.js"></script>
+    <script src="{{ asset('js/lumino.glyphs.js')}}"></script>
 
     <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
@@ -62,23 +62,23 @@
             <li class="active"><a href="index.php?page_layout=dashboard"><svg class="glyph stroked dashboard-dial">
                         <use xlink:href="#stroked-dashboard-dial"></use>
                     </svg> Dashboard</a></li>
-            <li><a href="index.php?page_layout=user"><svg class="glyph stroked male user ">
+            <li><a href="#"><svg class="glyph stroked male user ">
                         <use xlink:href="#stroked-male-user" /></svg>Quản lý thành viên</a></li>
 
-            <li><a href="cate_manage"><svg class="glyph stroked open folder">
+            <li><a href="{{route('cate_manage.index')}}"><svg class="glyph stroked open folder">
                         <use xlink:href="#stroked-open-folder" /></svg>Quản lý danh mục</a></li>
 
-            <li><a href="index.php?page_layout=product"><svg class="glyph stroked bag">
+            <li><a href="#"><svg class="glyph stroked bag">
                         <use xlink:href="#stroked-bag"></use>
                     </svg>Quản lý sản phẩm</a></li>
 
-            <li><a href="index.php?page_layout=comment"><svg class="glyph stroked two messages">
+            <li><a href="#"><svg class="glyph stroked two messages">
                         <use xlink:href="#stroked-two-messages" /></svg> Quản lý bình luận</a></li>
 
-            <li><a href="index.php?page_layout=ads"><svg class="glyph stroked chain">
+            <li><a href="#"><svg class="glyph stroked chain">
                         <use xlink:href="#stroked-chain" /></svg> Quản lý quảng cáo</a></li>
 
-            <li><a href="index.php?page_layout=setting"><svg class="glyph stroked gear">
+            <li><a href="#"><svg class="glyph stroked gear">
                         <use xlink:href="#stroked-gear" /></svg> Cấu hình</a></li>
         </ul>
 
