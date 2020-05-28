@@ -75,8 +75,8 @@
             <li><a href="#"><svg class="glyph stroked two messages">
                         <use xlink:href="#stroked-two-messages" /></svg> Quản lý bình luận</a></li>
 
-            <li><a href="#"><svg class="glyph stroked chain">
-                        <use xlink:href="#stroked-chain" /></svg> Quản lý quảng cáo</a></li>
+            <li><a href="{{route('customer_manage.index')}}"><svg class="glyph stroked chain">
+                        <use xlink:href="#stroked-chain" /></svg> Quản lý khách hàng</a></li>
 
             <li><a href="#"><svg class="glyph stroked gear">
                         <use xlink:href="#stroked-gear" /></svg> Cấu hình</a></li>
