@@ -13,7 +13,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        return view('layouts_back_end.customer.list');
     }
 
     /**
