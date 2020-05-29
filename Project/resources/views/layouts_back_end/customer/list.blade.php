@@ -15,11 +15,6 @@
 				<h1 class="page-header">Quản lý khách hàng</h1>
 			</div>
 		</div><!--/.row-->
-		<div id="toolbar" class="btn-group">
-            <a href="category-add.html" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i> Thêm danh mục
-            </a>
-        </div>
 		<div class="row">
 			<div class="col-md-12">
 					<div class="panel panel-default">
@@ -30,28 +25,33 @@
 
 									<thead>
 									<tr>
-										<th data-field="id" data-sortable="true">ID</th>
-										<th>Tên danh mục</th>
-										<th>Hành động</th>
+										<th>STT</th>
+										<th>Họ và Tên</th>
+										<th>Email</th>
+										<th>Số Điện Thoại</th>
+										<th>Địa Chỉ</th>
+										<th>Hành Động</th>
 									</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td style="">1</td>
-											<td style="">Danh mục 1</td>
+										@foreach($lsCustomer as $customer)
+								    <tr>
+								      <td>{{$customer->id}}</td>
+								      <td>{{$customer->name}}</td>
+											<td>{{$customer->email}}</td>
+								      <td>{{$customer->phone}}</td>
+											<td>{{$customer->addres}}</td>
 											<td class="form-group">
-												<a href="/" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-												<a href="/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+												<a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-list-alt"></i></a>
+												<form class="" action="#"
+								          method="POST" onsubmit="confirm('Sure ?')">
+								          @csrf
+								          <input type="hidden" name="_method" value="DELETE">
+								          <input type="submit" name=""  value="Delete">
+								        </form>
 											</td>
 										</tr>
-										<tr>
-											<td style="">2</td>
-											<td style="">Danh mục 2</td>
-											<td class="form-group">
-												<a href="/" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-												<a href="/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-											</td>
-										</tr>
+										@endforeach
 									</tbody>
 								</table>
 							</div>

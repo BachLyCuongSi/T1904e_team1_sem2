@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Customer;
+
 class CustomerController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('layouts_back_end.customer.list');
+        $lsCustomer = Customer::all();
+        return view('layouts_back_end.customer.list')->with(['lsCustomer'=>$lsCustomer]);
     }
 
     /**
@@ -77,8 +80,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+      $customer = Category::find($id);
+      $customer->delete();
+      $request->session()->flash('success', 'Customer was deleted!');
+      return redirect()->route("customer_manage.index");
     }
 }
