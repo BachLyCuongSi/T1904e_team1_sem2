@@ -10,7 +10,8 @@
     <link href="{{ asset('css/datepicker3.css')}}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-table.css')}}" rel="stylesheet">
     <link href="{{ asset('css/styles.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/front-awesome.min.css')}}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/front-awesome.min.css')}}" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--Icons-->
     <script src="{{ asset('js/lumino.glyphs.js')}}"></script>
@@ -18,6 +19,7 @@
     <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
     <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script>
     <script src="{{ asset('js/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/ready.js')}}"></script>
 
 
 
@@ -95,6 +97,25 @@
 
 
     @yield('content')
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            GetSessionLogin();
+
+            FocusTabMenu();
+
+            $('.date').datepicker({
+                dateFormat: "dd/mm/yy"
+            });
+
+            $(document).on("wheel", "input[type=number]", function(e) {
+                $(this).blur();
+            });
+
+
+        });
+    </script>
 
 
 </body>
