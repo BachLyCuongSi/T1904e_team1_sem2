@@ -34,6 +34,10 @@
             </optgroup>
         </select>
     </div>
-
+</div>
+<div class="row mt-3">
+    <div class="col-md-12 text-right">
+        <button class="btn btn-success" id="btnSearchItem" onclick="searchItem()" style="margin-top: 10px;"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
+    </div>
 </div>
 @endsection
