@@ -12,13 +12,6 @@
     <link href="{{ asset('css/styles.css')}}" rel="stylesheet">
     <link href="{{ asset('css/front-awesome.min.css')}}" rel="stylesheet">
     <!--Icons-->
-    <script src="{{ asset('js/lumino.glyphs.js')}}"></script>
-    <script src="{{ asset('js/jquery-ui.min.js')}}"></script>
-    <script src="{{ asset('js/sweetalert.js')}}"></script>
-    <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
-    <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.min.js')}}"></script>
-    <script src="{{ asset('js/ready.js')}}"></script>
 
 
 
@@ -95,6 +88,14 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/lumino.glyphs.js')}}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js')}}"></script>
+    <script src="{{ asset('js/sweetalert.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script>
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/ready.js')}}"></script>
+
 </body>
 
 </html>
