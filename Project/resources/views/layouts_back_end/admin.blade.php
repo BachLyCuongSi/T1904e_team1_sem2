@@ -10,11 +10,10 @@
     <link href="{{ asset('css/datepicker3.css')}}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-table.css')}}" rel="stylesheet">
     <link href="{{ asset('css/styles.css')}}" rel="stylesheet">
-    <!-- <link href="{{ asset('css/front-awesome.min.css')}}" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href="{{ asset('css/front-awesome.min.css')}}" rel="stylesheet">
     <!--Icons-->
     <script src="{{ asset('js/lumino.glyphs.js')}}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js')}}"></script>
     <script src="{{ asset('js/sweetalert.js')}}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
     <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script>
@@ -60,64 +59,42 @@
 
         </div><!-- /.container-fluid -->
     </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="sidebar-collapse" class="col-md-2 sidebar">
+                <ul class="nav menu">
+                    <li class="active"><a href="#"><svg class="glyph stroked dashboard-dial">
+                                <use xlink:href="#stroked-dashboard-dial"></use>
+                            </svg> Dashboard</a></li>
+                    <li><a href="#"><svg class="glyph stroked male user ">
+                                <use xlink:href="#stroked-male-user" /></svg>Quản lý thành viên</a></li>
 
-    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-        <form role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                    <li><a href="{{route('cate_manage.index')}}"><svg class="glyph stroked open folder">
+                                <use xlink:href="#stroked-open-folder" /></svg>Quản lý danh mục</a></li>
+
+                    <li><a href="{{route('product_manage.index')}}"><svg class="glyph stroked bag">
+                                <use xlink:href="#stroked-bag"></use>
+                            </svg>Quản lý sản phẩm</a></li>
+
+                    <li><a href="#"><svg class="glyph stroked two messages">
+                                <use xlink:href="#stroked-two-messages" /></svg> Quản lý bình luận</a></li>
+
+                    <li><a href="{{route('customer_manage.index')}}"><svg class="glyph stroked chain">
+                                <use xlink:href="#stroked-chain" /></svg> Quản lý khách hàng</a></li>
+
+                    <li><a href="#"><svg class="glyph stroked gear">
+                                <use xlink:href="#stroked-gear" /></svg> Cấu hình</a></li>
+                </ul>
+
             </div>
-        </form>
-        <ul class="nav menu">
-            <li class="active"><a href="#"><svg class="glyph stroked dashboard-dial">
-                        <use xlink:href="#stroked-dashboard-dial"></use>
-                    </svg> Dashboard</a></li>
-            <li><a href="#"><svg class="glyph stroked male user ">
-                        <use xlink:href="#stroked-male-user" /></svg>Quản lý thành viên</a></li>
+            <!--/.sidebar-->
+            <!-- Master Page -->
 
-            <li><a href="{{route('cate_manage.index')}}"><svg class="glyph stroked open folder">
-                        <use xlink:href="#stroked-open-folder" /></svg>Quản lý danh mục</a></li>
-
-            <li><a href="{{route('product_manage.index')}}"><svg class="glyph stroked bag">
-                        <use xlink:href="#stroked-bag"></use>
-                    </svg>Quản lý sản phẩm</a></li>
-
-            <li><a href="#"><svg class="glyph stroked two messages">
-                        <use xlink:href="#stroked-two-messages" /></svg> Quản lý bình luận</a></li>
-
-            <li><a href="{{route('customer_manage.index')}}"><svg class="glyph stroked chain">
-                        <use xlink:href="#stroked-chain" /></svg> Quản lý khách hàng</a></li>
-
-            <li><a href="#"><svg class="glyph stroked gear">
-                        <use xlink:href="#stroked-gear" /></svg> Cấu hình</a></li>
-        </ul>
-
+            <div class="col-md-10">
+                @yield('content')
+            </div>
+        </div>
     </div>
-    <!--/.sidebar-->
-    <!-- Master Page -->
-
-
-    @yield('content')
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            GetSessionLogin();
-
-            FocusTabMenu();
-
-            $('.date').datepicker({
-                dateFormat: "dd/mm/yy"
-            });
-
-            $(document).on("wheel", "input[type=number]", function(e) {
-                $(this).blur();
-            });
-
-
-        });
-    </script>
-
-
 </body>
 
 </html>

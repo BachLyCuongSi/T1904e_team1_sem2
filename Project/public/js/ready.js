@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-    GetSessionLogin();
-
-    FocusTabMenu();
-
     $('.date').datepicker({
         dateFormat: "dd/mm/yy"
     });
