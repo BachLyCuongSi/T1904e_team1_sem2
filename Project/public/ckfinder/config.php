@@ -67,7 +67,7 @@ $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
     //Tìm đến thư mục chứa ảnh để làm việc
-    'baseUrl'      => '/project/public/image/',
+    'baseUrl'      => '/Project/public/img/',
 //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,

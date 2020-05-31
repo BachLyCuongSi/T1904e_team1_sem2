@@ -40,12 +40,14 @@
         <button class="btn btn-success" id="btnSearchItem" onclick="searchItem()" style="margin-top: 10px;"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
     </div>
 </div>
+
+<input id="valUrl" />
 <div class="row pb-3 mt-2">
     <div class="col-md-2 col-sm-12 col-12">
-        <label class="mt-3">Ảnh đại diện</label>
+        <label class="mt-3">Ảnh sản phẩm</label>
     </div>
     <div class="col-md-9 col-sm-12 col-12">
-        <a href="javascript:void(0)" class="text-bold mb-3" style="width:100%;height:100%; color: #5A5A5A;" id="add_logo_place">
+        <a href="javascript:void(0)" class="text-bold mb-3" style="width:100%;height:100%; color: #5A5A5A;" id="addImg">
             <div class="news">
                 <div class="article" id="AddLogoPlace">
                     <i id="AddImgLogoPlace" class="fa fa-upload col-md-12 px-0 contentImg" alt="your image"></i>
@@ -54,21 +56,4 @@
         </a>
     </div>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#add_logo_place").off('click').on('click', function(e) {
-            e.preventDefault();
-            var fider = new CKFinder();
-
-            fider.selectActionFunction = function(fileUrl) {
-                $("#AddImgLogoPlace ").remove();
-                $("#AddLogoPlace").append('<img id="AddImgLogoPlace" src="' + fileUrl + '" class="col-md-12 px-0 border-dekko contentImg" alt="your image" />');
-                var url = window.location.origin + fileUrl;
-                $('#txtAddLogoPlace').val(url);
-            }
-            fider.popup();
-        });
-    });
-</script>
 @endsection

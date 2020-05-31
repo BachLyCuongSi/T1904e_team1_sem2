@@ -93,18 +93,15 @@
     </div>
     <!-- <script src="{{ asset('js/lumino.glyphs.js')}}"></script> -->
     <!-- <script src="{{ asset('js/jquery-ui.min.js')}}"></script> -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{ asset('js/sweetalert.js')}}"></script>
-    <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
-    <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script>
+    <!-- <script src="{{ asset('js/sweetalert.js')}}"></script> -->
+    <!-- <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script> -->
     <script src="{{ asset('js/jquery.min.js')}}"></script>
-    <script src="{{ asset('js/ready.js')}}"></script>
-    <script src="{{ asset('ckfinder.js')}}"></script>
-    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.min.js')}}"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="{{ asset('js/ready.js')}}"></script>
+    <script src="{{ asset('ckfinder/ckfinder.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 
 </body>
