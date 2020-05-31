@@ -83,35 +83,8 @@
                 </ul>
 
             </div>
-<<<<<<< HEAD
-        </form>
-        <ul class="nav menu">
-            <li class="active"><a href="#"><svg class="glyph stroked dashboard-dial">
-                        <use xlink:href="#stroked-dashboard-dial"></use>
-                    </svg> Dashboard</a></li>
-            <li><a href="#"><svg class="glyph stroked male user ">
-                        <use xlink:href="#stroked-male-user" /></svg>Quản lý thành viên</a></li>
-
-            <li><a href="cate_manage"><svg class="glyph stroked open folder">
-                        <use xlink:href="#stroked-open-folder" /></svg>Quản lý danh mục</a></li>
-
-            <li><a href="#"><svg class="glyph stroked bag">
-                        <use xlink:href="#stroked-bag"></use>
-                    </svg>Quản lý sản phẩm</a></li>
-
-            <li><a href="#"><svg class="glyph stroked two messages">
-                        <use xlink:href="#stroked-two-messages" /></svg> Quản lý bình luận</a></li>
-
-            <li><a href="#"><svg class="glyph stroked chain">
-                        <use xlink:href="#stroked-chain" /></svg> Quản lý quảng cáo</a></li>
-
-            <li><a href="#"><svg class="glyph stroked gear">
-                        <use xlink:href="#stroked-gear" /></svg> Cấu hình</a></li>
-        </ul>
-=======
             <!--/.sidebar-->
             <!-- Master Page -->
->>>>>>> 699ebcf4f8fa2f23c4b3ae3a301d38aabde1e876
 
             <div class="col-md-10">
                 @yield('content')
@@ -121,12 +94,12 @@
     <!-- <script src="{{ asset('js/lumino.glyphs.js')}}"></script> -->
     <!-- <script src="{{ asset('js/jquery-ui.min.js')}}"></script> -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{ asset('js/sweetalert.js')}}"></script>
-    <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
-    <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script>
+    <!-- <script src="{{ asset('js/sweetalert.js')}}"></script> -->
+    <!-- <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script> -->
     <script src="{{ asset('js/jquery.min.js')}}"></script>
     <script src="{{ asset('js/ready.js')}}"></script>
-    <script src="{{ asset('ckfinder.js')}}"></script>
+    <script src="{{ asset('ckfinder/ckfinder.js')}}"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     <script src="{{ asset('js/jquery.min.js')}}"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
