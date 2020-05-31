@@ -1,4 +1,4 @@
-@extends('layouts_back_end.admin');
+@extends('layouts_back_end.admin')
 
 @section('content')
 
@@ -33,6 +33,7 @@
 						        <th data-field="id" data-sortable="true">ID</th>
 						        <th data-field="name"  data-sortable="true">Họ & Tên</th>
                                 <th data-field="price" data-sortable="true">Email</th>
+                            
                                 <th>Quyền</th>
                                 <th>Hành động</th>
 						    </tr>

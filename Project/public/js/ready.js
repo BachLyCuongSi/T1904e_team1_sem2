@@ -7,7 +7,6 @@ $(document).ready(function() {
     $(document).on("wheel", "input[type=number]", function(e) {
         $(this).blur();
     });
-
 });
 
 $('#addImg').click(function() {

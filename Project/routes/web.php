@@ -21,6 +21,15 @@ Auth::routes();
 date_default_timezone_set(DateTimeZone::listIdentifiers(DateTimeZone::ASIA)[27]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/cate_manage', 'CategoryController@index');
+
+// Route::resource('/cate_manage', function () {
+
+//     return view('category.list');
+
+// });
+
 //Route::get('/cate_manage', 'CategoryController@index');
 /*Route::middleware(['team'])->group(function () {
     Route::prefix('api')->group(function () {
@@ -45,3 +54,4 @@ Route::middleware(['auth', 'team'])->group(function () {
         Route::resource('employee_manage', 'EmployeeController');
     });
 });
+

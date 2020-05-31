@@ -93,6 +93,7 @@
     </div>
     <!-- <script src="{{ asset('js/lumino.glyphs.js')}}"></script> -->
     <!-- <script src="{{ asset('js/jquery-ui.min.js')}}"></script> -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- <script src="{{ asset('js/sweetalert.js')}}"></script> -->
     <!-- <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
     <script src="{{ asset('js/jquery.ajaxy.min.js')}}"></script> -->

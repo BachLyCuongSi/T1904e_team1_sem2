@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Customer;
+use Carbon\Carbon;
 
 class CustomerController extends Controller
 {
@@ -82,8 +83,9 @@ class CustomerController extends Controller
      */
     public function destroy($id, Request $request)
     {
-      $customer = Category::find($id);
-      $customer->delete();
+      $customer = Customer::find($id);
+      $customer->deleted_at = Carbon::now();
+      $customer->save();
       $request->session()->flash('success', 'Customer was deleted!');
       return redirect()->route("customer_manage.index");
     }
