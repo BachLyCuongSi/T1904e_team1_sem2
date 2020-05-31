@@ -18,8 +18,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+date_default_timezone_set(DateTimeZone::listIdentifiers(DateTimeZone::ASIA)[27]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+<<<<<<< HEAD
 Route::resource('/cate_manage', 'CategoryController@index');
 
 // Route::resource('/cate_manage', function () {
@@ -27,3 +29,29 @@ Route::resource('/cate_manage', 'CategoryController@index');
 //     return view('category.list');
 
 // });
+=======
+//Route::get('/cate_manage', 'CategoryController@index');
+/*Route::middleware(['team'])->group(function () {
+    Route::prefix('api')->group(function () {
+        Route::get('/cate_manage', 'CategoryController@index');
+    });
+});*/
+
+// chuc nang cua nhan vien
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::resource('cate_manage', 'CategoryController');
+        Route::resource('product_manage', 'ProductController');
+        Route::resource('user_manage', 'UserController');
+        Route::resource('customer_manage', 'CustomerController');
+    });
+});
+
+// CHuc nang cua admin
+Route::middleware(['auth', 'team'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::resource('order_manage', 'OrderController');
+        Route::resource('employee_manage', 'EmployeeController');
+    });
+});
+>>>>>>> 699ebcf4f8fa2f23c4b3ae3a301d38aabde1e876
