@@ -23,6 +23,7 @@ function selectFileWithCKFinder(elementId) {
                 var file = evt.data.files.first();
                 var output = document.getElementById(elementId);
                 output.value = file.getUrl();
+                $('#DivImgAdd').append('<img src="' + output.value + '" />');
             });
 
             finder.on('file:choose:resizedImage', function(evt) {

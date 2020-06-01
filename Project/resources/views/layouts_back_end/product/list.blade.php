@@ -41,7 +41,9 @@
     </div>
 </div>
 
-<input id="valUrl" />
+<div id="DivImgAdd">
+    <input id="valUrl" />
+</div>
 <div class="row pb-3 mt-2">
     <div class="col-md-2 col-sm-12 col-12">
         <label class="mt-3">Ảnh sản phẩm</label>
