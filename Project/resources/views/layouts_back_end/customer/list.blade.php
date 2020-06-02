@@ -45,13 +45,13 @@
                 @foreach($lsCustomer as $customer)
                 <tr>
                   <td>{{$customer->cus_id}}</td>
-                  <td>{{$customer->cus_name}}</td>
-                  <td>{{$customer->cus_email}}</td>
-                  <td>{{$customer->cus_phone}}</td>
-                  <td>{{$customer->cus_addres}}</td>
+                  <td class="cus_name">{{$customer->cus_name}}</td>
+                  <td class="cus_email">{{$customer->cus_email}}</td>
+                  <td class="cus_phone">{{$customer->cus_phone}}</td>
+                  <td class="cus_addres">{{$customer->cus_addres}}</td>
                   <td class="text-center">
-                    <a><i class="fa fa-edit text-success"></i></a>
-                  <a><i class="fa fa-trash text-danger" onclick="delCus({{$customer->cus_id}})"></i></a>
+                    <a id="{{$customer->cus_id}}" onclick="loadCusDetail($(this))"><i class="fa fa-edit text-success"></i></a>
+                  <a onclick="delCus($(this))"><i class="fa fa-trash text-danger"></i></a>
                 </td>
                   <!-- <td class="form-group">
                     <a href="{{route('customer_manage.edit', $customer->cus_id)}}" class="button">Edit</a></i></a>
@@ -71,10 +71,69 @@
 
 {{$lsCustomer->links()}}
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Thông tin khách hàng</h4>
+</div>
+<div class="modal-body">
+<div class="row" style="margin-top:10px;">
+  <div class="col-md-5">
+    <label class="text-dark">Tên khách hàng:</label>
+  </div>
+  <div class="col-md-7">
+<input type="text" id="txtName" class="form-control" placeholder="Nhập tên khách hàng"/>
+  </div>
+</div>
+<div class="row" style="margin-top:10px;">
+  <div class="col-md-5">
+<label class="text-dark">Số điện thoại:</label>
+  </div>
+  <div class="col-md-7">
+<input id="txtPhone" class="form-control" placeholder="Nhập số điện thoại khách hàng">
+  </div>
+</div>
+<div class="row" style="margin-top:10px;">
+  <div class="col-md-5">
+<label class="text-dark">Email:</label>
+  </div>
+  <div class="col-md-7">
+<input id="txtEmail" class="form-control" placeholder="Nhập email khách hàng">
+  </div>
+</div>
+<div class="row" style="margin-top:10px;">
+  <div class="col-md-5">
+<label class="text-dark">Địa chỉ:</label>
+  </div>
+  <div class="col-md-7">
+<input id="txtAddress" class="form-control" placeholder="Nhập địa chỉ khách hàng">
+  </div>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-success"><i class="fa fa-save mr-1"></i>Lưu</button>
+</div>
+</div>
+
+</div>
+</div>
+
 <script type="text/javascript">
-    // function ConfirmDelete() {
-    //     return confirm("Are you sure you want to delete?");
-    // }
+
+// load thông tin khách hàng
+
+function loadCusDetail(data){
+var thiss = data.parent('tr');
+var id = data.attr('id');
+var name = thiss.children('.cus_name').text();
+alert(id);
+alert(name);
+}
 
     //Xóa khách hàng
     function delCus(id) {

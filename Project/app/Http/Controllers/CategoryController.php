@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('layouts_back_end.category.list');
+        $lsCategory = Category::paginate(10);
+        return view('layouts_back_end.category.list')->with(['lsCategory'=>$lsCategory]);
     }
 
     /**
