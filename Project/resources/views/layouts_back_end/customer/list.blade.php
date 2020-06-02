@@ -135,11 +135,6 @@ alert(id);
 alert(name);
 }
 
-
-    // function ConfirmDelete() {
-    //     return confirm("Are you sure you want to delete?");
-    // }
-
     //Xóa khách hàng
     function delCus(id) {
       swal({
