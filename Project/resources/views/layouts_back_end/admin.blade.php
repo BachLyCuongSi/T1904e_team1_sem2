@@ -96,7 +96,6 @@
     <script src="{{ asset('js/ready.js')}}"></script>
     <script src="{{ asset('ckfinder/ckfinder.js')}}"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 </body>
 
 </html>
