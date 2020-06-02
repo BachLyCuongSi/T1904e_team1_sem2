@@ -1,3 +1,9 @@
+@extends('layouts_back_end.admin')
+
+@section('content')
+
+<div class="col md 10">
+
 <div id="wrapper">
 
     <!-- Navigation -->
@@ -493,3 +499,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../js/startmin.js"></script>
+
+</div>
+</div>
