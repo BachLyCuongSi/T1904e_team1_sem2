@@ -84,8 +84,10 @@ class CustomerController extends Controller
     public function destroy($cus_id, Request $request)
     {
       $customer = Customer::find($cus_id);
-      $customer->deleted_at = Carbon::now();
-      $customer->save();
+      $customer->delete();
+      // $customer = Customer::find($cus_id);
+      // $customer->deleted_at = Carbon::now();
+      // $customer->save();
       $request->session()->flash('success', 'Customer was deleted!');
       return redirect()->route("customer_manage.index");
     }
