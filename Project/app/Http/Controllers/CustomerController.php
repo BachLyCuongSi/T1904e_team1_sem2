@@ -81,9 +81,9 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request)
+    public function destroy($cus_id, Request $request)
     {
-      $customer = Customer::find($id);
+      $customer = Customer::find($cus_id);
       $customer->deleted_at = Carbon::now();
       $customer->save();
       $request->session()->flash('success', 'Customer was deleted!');

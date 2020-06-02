@@ -61,7 +61,7 @@
 											<td class="form-group">
 												<a href="{{route('customer_manage.edit', $customer->cus_id)}}" class="button">Edit</a></i></a>
 												<form class="" action="{{route('customer_manage.destroy', $customer->cus_id)}}"
-								          method="POST" onsubmit="confirm('Sure ?')">
+								          method="POST" onsubmit="return ConfirmDelete()">
 								          @csrf
 								          <input type="hidden" name="_method" value="DELETE">
 								          <input type="submit" name=""  value="Delete">
@@ -72,6 +72,12 @@
 									</tbody>
 								</table>
 {{$lsCustomer->links()}}
+
+<script type="text/javascript">
+    function ConfirmDelete() {
+        return confirm("Are you sure you want to delete?");
+    }
+</script>
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
