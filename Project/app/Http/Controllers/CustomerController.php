@@ -16,7 +16,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $lsCustomer = Customer::all();
+        $lsCustomer = Customer::paginate(5);
         return view('layouts_back_end.customer.list')->with(['lsCustomer'=>$lsCustomer]);
     }
 
