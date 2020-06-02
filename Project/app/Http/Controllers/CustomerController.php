@@ -83,12 +83,16 @@ class CustomerController extends Controller
      */
     public function destroy($cus_id, Request $request)
     {
-      $customer = Customer::find($cus_id);
-      $customer->delete();
-      // $customer = Customer::find($cus_id);
-      // $customer->deleted_at = Carbon::now();
-      // $customer->save();
-      $request->session()->flash('success', 'Customer was deleted!');
-      return redirect()->route("customer_manage.index");
+      try {
+        $customer = Customer::find($request -> id)->delete();
+
+        return response()->json(['status' => 1, 'message' => 'Xóa thành công']);
+        // $request->session()->flash('success', 'Customer was deleted!');
+        // return redirect()->route("customer_manage.index");
+
+      } catch (\Exception $e) {
+        $e ->getMessage();
+          return response()->json(['status' => 0, 'message' => 'Có lỗi']);
+      }
     }
 }

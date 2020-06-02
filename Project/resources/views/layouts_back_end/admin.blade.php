@@ -58,7 +58,7 @@
         <div class="row">
             <div id="sidebar-collapse" class="col-md-2 sidebar">
                 <ul class="nav menu">
-                    <li class="active"><a href="#"><svg class="glyph stroked dashboard-dial">
+                    <li class="active"><a href="{{route('dashboard_manage.index')}}"><svg class="glyph stroked dashboard-dial">
                                 <use xlink:href="#stroked-dashboard-dial"></use>
                             </svg> Dashboard</a></li>
                     <li><a href="#"><svg class="glyph stroked male user ">
@@ -90,15 +90,13 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{ asset('js/sweetalert.js')}}"></script>
     <script src="{{ asset('js/jquery.min.js')}}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="{{ asset('js/ready.js')}}"></script>
     <script src="{{ asset('ckfinder/ckfinder.js')}}"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
-
 </body>
 
 </html>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+// use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+// use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class DashboardController extends Controller
 {
@@ -13,7 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //
+        return view('layouts_back_end.dashboard');
+
     }
 
     /**

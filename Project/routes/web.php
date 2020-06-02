@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('product_manage', 'ProductController');
         Route::resource('user_manage', 'UserController');
         Route::resource('customer_manage', 'CustomerController');
+        Route::resource('dashboard_manage', 'DashboardController');
     });
 });
 
@@ -54,4 +55,3 @@ Route::middleware(['auth', 'team'])->group(function () {
         Route::resource('employee_manage', 'EmployeeController');
     });
 });
-
