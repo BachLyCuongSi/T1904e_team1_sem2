@@ -95,7 +95,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="{{ asset('js/ready.js')}}"></script>
     <script src="{{ asset('ckfinder/ckfinder.js')}}"></script>
-    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+
+
 </body>
 
 </html>
