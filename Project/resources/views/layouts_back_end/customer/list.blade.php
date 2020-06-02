@@ -49,7 +49,11 @@
                   <td>{{$customer->cus_email}}</td>
                   <td>{{$customer->cus_phone}}</td>
                   <td>{{$customer->cus_addres}}</td>
-                  <td class="form-group">
+                  <td class="text-center">
+                    <a><i class="fa fa-edit text-success"></i></a>
+                  <a><i class="fa fa-trash text-danger" onclick="delCus({{$customer->cus_id}})"></i></a>
+                </td>
+                  <!-- <td class="form-group">
                     <a href="{{route('customer_manage.edit', $customer->cus_id)}}" class="button">Edit</a></i></a>
                     <form class="" action="{{route('customer_manage.destroy', $customer->cus_id)}}"
                       method="POST" onsubmit="return ConfirmDelete()">
@@ -57,7 +61,7 @@
                       <input type="hidden" name="_method" value="DELETE">
                       <input type="submit" name=""  value="Delete">
                     </form>
-                  </td>
+                  </td> -->
                 </tr>
                 @endforeach
               </tbody>
@@ -68,8 +72,49 @@
 {{$lsCustomer->links()}}
 
 <script type="text/javascript">
-    function ConfirmDelete() {
-        return confirm("Are you sure you want to delete?");
+    // function ConfirmDelete() {
+    //     return confirm("Are you sure you want to delete?");
+    // }
+
+    //Xóa khách hàng
+    function delCus(id) {
+      swal({
+        title:"Bạn chắc chắn muốn xóa chứ?",
+        text:"",
+        icon:"warning",
+        buttons:['Cancel','OK']
+      }).then((sure)=>{
+        if(sure){
+          $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url:"customer_manage/destroy",
+            data:{id},
+            type:"delete",
+            success:function(res){
+              if(res.status == 1){
+                swal({
+                  title:res.message,
+                  text:"",
+                  icon:"success"
+                }).then((success) =>{
+                  if(success){
+                    location.reload();
+                  }
+                })
+              }
+              else {
+                swal({
+                  title:res.message,
+                  text:"",
+                  icon:"error",
+                })
+              }
+            }
+          })
+        }
+      })
     }
 </script>
 
