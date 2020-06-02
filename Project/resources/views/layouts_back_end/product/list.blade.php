@@ -41,8 +41,8 @@
     </div>
 </div>
 
-<div id="DivImgAdd">
-    <input id="valUrl" />
+<!-- <div id="DivImgAdd">
+    <input id="valUrl" type="hidden" />
 </div>
 <div class="row pb-3 mt-2">
     <div class="col-md-2 col-sm-12 col-12">
@@ -57,5 +57,5 @@
             </div>
         </a>
     </div>
-</div>
+</div> -->
 @endsection
