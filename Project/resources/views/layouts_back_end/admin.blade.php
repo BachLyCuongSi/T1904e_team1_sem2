@@ -74,7 +74,7 @@
                     <li class="active"><a href="{{route('dashboard_manage.index')}}"><svg class="glyph stroked dashboard-dial">
                                 <use xlink:href="#stroked-dashboard-dial"></use>
                             </svg> Dashboard</a></li>
-                    <li><a href="#"><svg class="glyph stroked male user ">
+                    <li><a href="{{route('user_manage.index')}}"><svg class="glyph stroked male user ">
                                 <use xlink:href="#stroked-male-user" /></svg>Quản lý thành viên</a></li>
 
                     <li><a href="{{route('cate_manage.index')}}"><svg class="glyph stroked open folder">

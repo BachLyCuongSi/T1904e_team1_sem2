@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\user;
+
 class UserController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('layouts_back_end.login');
+        $lsUsers = user::paginate(1);
+        return view('layouts_back_end.User.list')->with(['lsUsers' => $lsUsers]);
+
     }
 
     /**
