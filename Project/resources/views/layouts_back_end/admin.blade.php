@@ -89,9 +89,6 @@
 
                     <li><a href="{{route('customer_manage.index')}}"><svg class="glyph stroked chain">
                                 <use xlink:href="#stroked-chain" /></svg> Quản lý khách hàng</a></li>
-
-                    <li><a href="#"><svg class="glyph stroked gear">
-                                <use xlink:href="#stroked-gear" /></svg> Cấu hình</a></li>
                 </ul>
 
             </div>

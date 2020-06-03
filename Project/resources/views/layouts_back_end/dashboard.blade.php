@@ -1,16 +1,17 @@
 @extends('layouts_back_end.admin');
 
 @section('content')
-<div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
+{{-- \container-fluid --}}
+<div class="col-sm-10 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+     <div class="container-fluid">
+         <div class="row">
                     <div class="col-lg-10">
                         <h1 class="page-header">Dashboard</h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-                <div class="row">
+         </div>
+         <!-- /.row -->
+         <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
@@ -103,9 +104,9 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <!-- /.row -->
-                <div class="row">
+         </div>
+         <!-- /.row -->
+         <div class="row">
                     <div class="col-lg-8">
 
                         <!-- /.panel -->
@@ -260,12 +261,13 @@
                     <!-- /.col-lg-4 -->
                     </>
                     <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /#page-wrapper -->
-
+         </div>
+         <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
 </div>
+
+
 <!-- /#wrapper -->
 <!-- jQuery -->
 <script src="../js/jquery.min.js"></script>
