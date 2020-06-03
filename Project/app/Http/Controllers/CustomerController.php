@@ -17,7 +17,7 @@ class CustomerController extends Controller
     public function index()
     {
         $lsCustomer = Customer::paginate(5);
-        return view('layouts_back_end.customer.list')->with(['lsCustomer'=>$lsCustomer]);
+        return view('layouts_back_end.customer.list')->with(['lsCustomer' => $lsCustomer]);
     }
 
     /**
@@ -83,16 +83,20 @@ class CustomerController extends Controller
      */
     public function destroy($cus_id, Request $request)
     {
-      try {
-        $customer = Customer::find($request -> id)->delete();
+        try {
+            $customer = Customer::find($request->id);
 
-        return response()->json(['status' => 1, 'message' => 'Xóa thành công']);
-        // $request->session()->flash('success', 'Customer was deleted!');
-        // return redirect()->route("customer_manage.index");
-
-      } catch (\Exception $e) {
-        $e ->getMessage();
-          return response()->json(['status' => 0, 'message' => 'Có lỗi']);
-      }
+            if ($customer != null) {
+                $customer->delete();
+                return response()->json(['status' => 1, 'message' => 'Xóa thành công']);
+                // $request->session()->flash('success', 'Customer was deleted!');
+                // return redirect()->route("customer_manage.index");
+            } else {
+                return response()->json(['status' => 0, 'message' => 'Không tồn tại.']);
+            }
+        } catch (\Exception $e) {
+            $e->getMessage();
+            return response()->json(['status' => 0, 'message' => 'Có lỗi']);
+        }
     }
 }

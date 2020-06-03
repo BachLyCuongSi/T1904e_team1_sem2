@@ -51,7 +51,7 @@
           <td class="cus_addres">{{$customer->cus_addres}}</td>
           <td class="text-center">
             <a id="{{$customer->cus_id}}" onclick="loadCusDetail($(this))"><i class="fa fa-edit text-success"></i></a>
-            <a onclick="delCus($(this))"><i class="fa fa-trash text-danger"></i></a>
+            <a onclick="delCus('{{$customer->cus_id}}')"><i class="fa fa-trash text-danger"></i></a>
           </td>
           <!-- <td class="form-group">
                     <a href="{{route('customer_manage.edit', $customer->cus_id)}}" class="button">Edit</a></i></a>
