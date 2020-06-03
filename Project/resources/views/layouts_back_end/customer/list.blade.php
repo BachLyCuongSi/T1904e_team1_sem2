@@ -72,7 +72,7 @@
 {{$lsCustomer->links()}}
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="cusDetail" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -88,6 +88,7 @@
           </div>
           <div class="col-md-7">
             <input type="text" id="txtName" class="form-control" placeholder="Nhập tên khách hàng" />
+            <input type="hidden" id="valIdCus" />
           </div>
         </div>
         <div class="row" style="margin-top:10px;">
@@ -130,8 +131,17 @@
     var thiss = data.closest('tr');
     var id = data.attr('id');
     var name = thiss.children('.cus_name').text();
-    alert(id);
-    alert(name);
+    var phone = thiss.children('.cus_phone').text();
+    var email = thiss.children('.cus_email').text();
+    var addres = thiss.children('.cus_addres').text();
+
+    $('#txtName').val(name);
+    $('#txtEmail').val(email);
+    $('#txtAddress').val(addres);
+    $('#txtPhone').val(phone);
+    $('#valIdCus').val(id);
+    $('#cusDetail').modal('show');
+
   }
 
   //Xóa khách hàng
