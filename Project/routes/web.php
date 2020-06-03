@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('user_manage', 'UserController');
         Route::resource('customer_manage', 'CustomerController');
         Route::resource('dashboard_manage', 'DashboardController');
+        Route::resource('comment_manage', 'CommentController');
     });
 });
 
