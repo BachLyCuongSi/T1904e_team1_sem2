@@ -5,6 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vietpro Mobile Shop - Administrator</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    {{-- an lam --}}
+    <!-- MetisMenu CSS -->
+    <link href="{{ asset('css/metisMenu.min.css')}}" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="{{ asset('css/timeline.css')}}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/startmin.css')}}" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="{{ asset('css/morris.css')}}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    {{-- end an lamf --}}
 
     <link href="{{ asset('css/bootstrap-theme.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -71,14 +84,11 @@
                                 <use xlink:href="#stroked-bag"></use>
                             </svg>Quản lý sản phẩm</a></li>
 
-                    <li><a href="#"><svg class="glyph stroked two messages">
+                    <li><a href="{{route('comment_manage.index')}}"><svg class="glyph stroked two messages">
                                 <use xlink:href="#stroked-two-messages" /></svg> Quản lý bình luận</a></li>
 
                     <li><a href="{{route('customer_manage.index')}}"><svg class="glyph stroked chain">
                                 <use xlink:href="#stroked-chain" /></svg> Quản lý khách hàng</a></li>
-
-                    <li><a href="#"><svg class="glyph stroked gear">
-                                <use xlink:href="#stroked-gear" /></svg> Cấu hình</a></li>
                 </ul>
 
             </div>
@@ -96,6 +106,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="{{ asset('js/ready.js')}}"></script>
     <script src="{{ asset('ckfinder/ckfinder.js')}}"></script>
+
+    <!-- jQuery -->
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="{{ asset('js/metisMenu.min.js')}}"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="{{ asset('js/raphael.min.js')}}"></script>
+        <script src="{{ asset('js/morris.min.js')}}"></script>
+        <script src="{{ asset('js/morris-data.js')}}"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="{{ asset('js/startmin.js')}}"></script>
 
 
 </body>
