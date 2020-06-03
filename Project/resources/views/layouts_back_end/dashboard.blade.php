@@ -22,7 +22,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">26</div>
-                                <div>New Comment!</div>
+                                <div>Category</div>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">12</div>
-                                <div>New Tasks!</div>
+                                <div>Product</div>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">124</div>
-                                <div>New Orders!</div>
+                                <div>Custommer</div>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">13</div>
-                                <div>Support Tickets!</div>
+                                <div>Order</div>
                             </div>
                         </div>
                     </div>
@@ -84,48 +84,32 @@
                         <!-- /.panel -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Đơn hàng mới nhất
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered table-hover table-striped">
-                                                <thead>
+                                            <table  class="table table-bordered table-hover table-striped">
+                                                <thead >
                                                     <tr>
                                                         <th>Đơn hàng</th>
-                                                        <th>Ngày</th>
-                                                        <th>Giờ</th>
+                                                        <th>Thời gian</th>
                                                         <th>Tổng tiền</th>
+                                                        <th>Tình trạng</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    {{-- @foreach ($lsOrder as $lsOrd)
+                                                        <tr>
+                                                        <td>{{ $lsOrd ->od_id }}</td>
+                                                        <td>{{ $lsOrd ->od_ }}</td>
+                                                        <td>{{ $lsOrd ->od_id }} PM</td>
+                                                        <td>{{ $lsOrd ->od_id }} VND</td>
+                                                    </tr>
 
-                                                    <tr>
-                                                        <td>3322</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>2:49 PM</td>
-                                                        <td>$8345.23</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3321</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>2:23 PM</td>
-                                                        <td>$245.12</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3320</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>2:15 PM</td>
-                                                        <td>$5663.54</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3319</td>
-                                                        <td>10/21/2013</td>
-                                                        <td>2:13 PM</td>
-                                                        <td>$943.45</td>
-                                                    </tr>
+                                                    @endforeach --}}
                                                 </tbody>
                                             </table>
                                         </div>

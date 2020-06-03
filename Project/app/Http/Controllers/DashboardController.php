@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 // use Illuminate\Contracts\View\View;
+
+use App\comment;
+use App\customer;
+use App\order;
+use App\product;
 use Illuminate\Http\Request;
 // use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -15,6 +20,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
         return view('layouts_back_end.dashboard');
 
     }
@@ -84,4 +90,40 @@ class DashboardController extends Controller
     {
         //
     }
+
+    public function countComm(){
+        $count_comm = DB::table('comment')->count();
+        return $count_comm;
+    }
+
+    public function countCat()
+    {
+        $count_cat = DB::table('category')->count();
+        return $count_cat;
+    }
+
+    public function countPrd()
+    {
+        $count_prd = DB::table('product')->count();
+        return $count_prd;
+    }
+
+    public function countOrd()
+    {
+        $count_ord = DB::table('order')->count();
+        return $count_ord;
+    }
+
+    public function countCus()
+    {
+        $count_cus = DB::table('customer')->count();
+        return $count_cus;
+    }
+
+    // list don hang trong ngay
+    public function orderDay(){
+        $lsOrder = DB::select('select * from order order by od_id DESC Limit 5');
+        return $lsOrder;
+    }
+
 }
