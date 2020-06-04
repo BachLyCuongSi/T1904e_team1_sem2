@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vietpro Mobile Shop - Administrator</title>
+    <title>Team1 Shop - Administrator</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     {{-- an lam --}}
     <!-- MetisMenu CSS -->
@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><span>Vietpro</span>Shop</a>
+                <a class="navbar-brand" href="#"><span>Team1 </span>Shop</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user">
