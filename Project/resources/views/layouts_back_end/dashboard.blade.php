@@ -3,7 +3,7 @@
 @section('content')
 {{-- \container-fluid --}}
 <div class="">
-     <div class="container-fluid">
+     <div class="   ">
          <div class="row">
             <div class="col-lg-10">
                 <h1 class="page-header">Dashboard</h1>
@@ -162,7 +162,7 @@
                                     </a>
                                 </div>
                                 <!-- /.list-group -->
-                                
+
                             </div>
                             <!-- /.panel-body -->
                         </div>
