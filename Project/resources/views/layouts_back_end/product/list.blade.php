@@ -36,10 +36,13 @@
     </div>
 </div>
 <div class="row mt-3">
+<div class=""></div> 
     <div class="col-md-12 text-right">
-        <button class="btn btn-success" id="btnSearchItem" onclick="searchItem()" style="margin-top: 10px;"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
+        <button class="btn btn-primary" id="btnSearchItem" onclick="searchItem()" style="margin-top: 10px;"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
+        <button class="btn btn-success" style="margin-top: 10px;"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
     </div>
 </div>
+
 
 <!-- <div id="DivImgAdd">
     <input id="valUrl" type="hidden" />

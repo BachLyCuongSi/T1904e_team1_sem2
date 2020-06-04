@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('layouts_back_end.product.list');
+       $lstCategory = DB::table('categories') ->where('deleted_at',null)->get();
+       $lstProduct = DB::table('products') ->where('deleted_at',null)->paginate(10);
+
+        return view('layouts_back_end.product.list')->with(['lstCategory'=> $lstCategory,'lstProduct'=> $lstProduct]);
     }
 
     /**
