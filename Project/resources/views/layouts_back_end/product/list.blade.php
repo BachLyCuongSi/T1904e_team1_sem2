@@ -35,11 +35,21 @@
         </select>
     </div>
 </div>
-<div class="row mt-3">
-    <div class=""></div>
-    <div class="col-md-12 text-right">
-        <button class="btn btn-primary" id="btnSearchItem" onclick="searchItem()" style="margin-top: 10px;"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
-        <button class="btn btn-success" style="margin-top: 10px;" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
+<div class="row mt-3" style="margin-top: 10px;">
+    <div class="col-md-3 ">
+        <select class="form-control" id="cate-id">
+            <option value="" selected disabled hidden>--Danh mục--</option>
+            @if (count($lstCategory) > 0 && $lstCategory != null)
+            @foreach($lstCategory as $ct)
+            <option value="{{ $ct->id }}">{{ $ct->name }}</option>
+            @endforeach
+            @else
+            @endif
+        </select>
+    </div>
+    <div class="col-md-4 offset-md-9 text-right">
+        <button class="btn btn-primary" id="btnSearchItem" onclick="searchItem()"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
     </div>
 </div>
 
