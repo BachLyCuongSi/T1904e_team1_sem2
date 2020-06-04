@@ -36,10 +36,10 @@
     </div>
 </div>
 <div class="row mt-3">
-<div class=""></div> 
+    <div class=""></div>
     <div class="col-md-12 text-right">
         <button class="btn btn-primary" id="btnSearchItem" onclick="searchItem()" style="margin-top: 10px;"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
-        <button class="btn btn-success" style="margin-top: 10px;"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
+        <button class="btn btn-success" style="margin-top: 10px;" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
     </div>
 </div>
 
@@ -61,4 +61,24 @@
         </a>
     </div>
 </div> -->
+@endsection
+
+@section('modal')
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>This is a large modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
