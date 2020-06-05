@@ -101,10 +101,11 @@
                                 <label class="mt-3">Ảnh sản phẩm</label>
                             </div>
                             <div class="col-md-9 col-sm-12 col-12">
-                                <a href="javascript:void(0);" class="text-bold mb-3" style="width:100%;height:100%; color: #5A5A5A;" id="addImg">
+                                <a href="javascript:void(0);" id="addImg" class="text-bold mb-3" style="width:100%;height:100%; color: #5A5A5A;">
                                     <div class="row">
                                         <i class="fa fa-upload col-md-12 px-0" alt="your image"></i>
-                                        <div class="col-sm-12 col-md-12 col-lg-12" id="DivImgAdd">
+                                        <input type="hidden" id="valUrl" />
+                                        <div class="row" id="DivImgAdd">
                                         </div>
                                     </div>
                                 </a>

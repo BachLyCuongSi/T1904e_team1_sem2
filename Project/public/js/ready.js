@@ -7,12 +7,11 @@ $(document).ready(function() {
     $(document).on("wheel", "input[type=number]", function(e) {
         $(this).blur();
     });
-});
 
-$('#addImg').click(function() {
-    alert("ok");
-    $('#DivImgAdd').empty();
-    selectFileWithCKFinder('valUrl');
+    $('#addImg').click(function() {
+        $('#DivImgAdd').empty();
+        selectFileWithCKFinder('valUrl');
+    });
 });
 
 function selectFileWithCKFinder(elementId) {
@@ -25,7 +24,7 @@ function selectFileWithCKFinder(elementId) {
                 var file = evt.data.files.first();
                 var output = document.getElementById(elementId);
                 output.value = file.getUrl();
-                $('#DivImgAdd').append('<img src="' + output.value + '" id="image" />');
+                $('#DivImgAdd').append('<div class="col-sm-12 col-md-12 col-lg-12"><img src="' + output.value + '" id="image" style="height:160px;" /></div>');
             });
 
             finder.on('file:choose:resizedImage', function(evt) {
