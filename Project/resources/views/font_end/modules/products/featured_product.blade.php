@@ -1,3 +1,7 @@
+@extends('font_end.index')
+
+@section('featured_product')
+
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
@@ -241,3 +245,4 @@
         </div>
     </div>
 </section>
+@endsection

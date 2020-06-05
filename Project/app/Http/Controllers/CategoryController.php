@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $lsCategory = Category::paginate(10);
+        $lsCategory = Category::paginate(3);
         return view('layouts_back_end.category.list')->with(['lsCategory'=>$lsCategory]);
     }
 
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +36,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->cate_name);
+        $ca = new Category();
+        $ca->cat_name = $request->name;
+        $ca->created_at = Carbon::now();
+        $ca->save();
+        return response()->json(['status' => 1, 'message' => 'Thêm thành công']);
+        
     }
 
     /**
@@ -78,8 +85,21 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cat_id, Request $request)
     {
-        //
+        try {
+            $category = Category::find($request->id);
+            if ($category != null) {
+                $category->delete();
+            return response()->json(['status' => 1, 'message' => 'Xóa thành công']);
+        }
+           else{
+            return response()->json(['status' => 0, 'message' => 'Không tồn tại.']);
+        }
+    
+          } catch (\Exception $e) {
+            $e ->getMessage();
+              return response()->json(['status' => 0, 'message' => 'Có lỗi']);
+          }
     }
 }

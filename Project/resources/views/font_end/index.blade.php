@@ -83,6 +83,7 @@
 
     <!-- Featured products -->
     <?php include_once('modules/products/featured_product.php'); ?>
+    @yield('featured_product')
     <!-- end featured product -->
 
     <!-- Promotion -->
@@ -119,12 +120,11 @@
     <!-- End -->
 
     <!-- Dăng ký nhận thông tin qua gmail -->
-        <?php include_once('modules/subcribe/sub_mail.php'); ?>
+        @yield('subcribe')
     <!-- end mail -->
 
     <!--Footer  -->
-        <?php include_once('modules/footer/footer.php'); ?>
-
+        @yield('footer')
     <!-- End footer -->
 
 
