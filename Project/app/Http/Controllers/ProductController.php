@@ -17,7 +17,7 @@ class ProductController extends Controller
        $lstCategory = DB::table('categories') ->where('deleted_at',null)->get();
        $lstProduct = DB::table('products') ->where('deleted_at',null)->paginate(10);
 
-        return view('layouts_back_end.product.list')->with(['lstCategory'=> $lstCategory,'lstProduct'=> $lstProduct]);
+        return view('layouts_back_end.product.list',compact('lstCategory', 'lstProduct'));
     }
 
     /**

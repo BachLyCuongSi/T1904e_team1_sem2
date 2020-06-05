@@ -41,36 +41,17 @@
             <option value="" selected disabled hidden>--Danh mục--</option>
             @if (count($lstCategory) > 0 && $lstCategory != null)
             @foreach($lstCategory as $ct)
-            <option value="{{ $ct->id }}">{{ $ct->name }}</option>
+            <option value="{{ $ct->cat_id }}">{{ $ct->cat_name }}</option>
             @endforeach
             @else
             @endif
         </select>
     </div>
-    <div class="col-md-4 offset-md-9 text-right">
+    <div class="col-md-4 col-md-offset-5 text-right">
         <button class="btn btn-primary" id="btnSearchItem" onclick="searchItem()"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
         <button class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
     </div>
 </div>
-
-
-<!-- <div id="DivImgAdd">
-    <input id="valUrl" type="hidden" />
-</div>
-<div class="row pb-3 mt-2">
-    <div class="col-md-2 col-sm-12 col-12">
-        <label class="mt-3">Ảnh sản phẩm</label>
-    </div>
-    <div class="col-md-9 col-sm-12 col-12">
-        <a href="javascript:void(0)" class="text-bold mb-3" style="width:100%;height:100%; color: #5A5A5A;" id="addImg">
-            <div class="news">
-                <div class="article" id="AddLogoPlace">
-                    <i id="AddImgLogoPlace" class="fa fa-upload col-md-12 px-0 contentImg" alt="your image"></i>
-                </div>
-            </div>
-        </a>
-    </div>
-</div> -->
 @endsection
 
 @section('modal')
@@ -80,15 +61,69 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title">Thêm sản phẩm</h4>
             </div>
             <div class="modal-body">
-                <p>This is a large modal.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="row">
+                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tiêu đề sản phẩm;</label></div>
+                            <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txt-title" placeholder="Nhập tiêu đề sản phẩm" /></div>
+                        </div>
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tên sản phẩm:</label></div>
+                            <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txt-name" placeholder="Nhập tên sản phẩm" /></div>
+                        </div>
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Danh mục:</label></div>
+                            <div class="col-sm-7 col-md-7 col-lg-7">
+                                <select class="form-control" id="valcate-id">
+                                    <option value="" selected disabled hidden>--Danh mục--</option>
+                                    @if (count($lstCategory) > 0 && $lstCategory != null)
+                                    @foreach($lstCategory as $ct)
+                                    <option value="{{ $ct->cat_id }}">{{ $ct->cat_name }}</option>
+                                    @endforeach
+                                    @else
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Mô tả:</label></div>
+                            <div class="col-sm-7 col-md-7 col-lg-7">
+                                <textarea class="form-control" id="txt-description" placeholder="Nội dung mô tả"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-12 col-12">
+                                <label class="mt-3">Ảnh sản phẩm</label>
+                            </div>
+                            <div class="col-md-9 col-sm-12 col-12">
+                                <a href="javascript:void(0);" class="text-bold mb-3" style="width:100%;height:100%; color: #5A5A5A;" id="addImg">
+                                    <div class="row">
+                                        <i class="fa fa-upload col-md-12 px-0" alt="your image"></i>
+                                        <div class="col-sm-12 col-md-12 col-lg-12" id="DivImgAdd">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Số lượng</label></div>
+                            <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="amount" placeholder="Nhập số lượng" type="number" onkeydown="javascript:return event.keyCode == 69 || event.keyCode == 198 || event.keyCode == 190 ? false:true" /></div>
+                        </div>
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Giá sản phẩm:</label></div>
+                            <div class="col-sm-7 col-md-7 col-lg-7"><input type="text" class="form-control number" id="price" placeholder="Nhập giá sản phẩm" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

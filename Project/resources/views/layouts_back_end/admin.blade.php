@@ -104,20 +104,20 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script src="{{ asset('js/ready.js')}}"></script>
     <script src="{{ asset('ckfinder/ckfinder.js')}}"></script>
+    <script src="{{ asset('js/ready.js')}}"></script>
+
 
     <!-- jQuery -->
     <!-- Bootstrap Core JavaScript -->
-    <!-- <script src="{{ asset('js/bootstrap.min.js')}}"></script> -->
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{ asset('js/metisMenu.min.js')}}"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="{{ asset('js/raphael.min.js')}}"></script>
+    <!-- <script src="{{ asset('js/raphael.min.js')}}"></script>
     <script src="{{ asset('js/morris.min.js')}}"></script>
-    <script src="{{ asset('js/morris-data.js')}}"></script>
+    <script src="{{ asset('js/morris-data.js')}}"></script> -->
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('js/startmin.js')}}"></script>
