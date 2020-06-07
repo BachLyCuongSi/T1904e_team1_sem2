@@ -1,99 +1,269 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('font_end.frontend')
 
-        <title>Laravel</title>
+@section ('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+<section class="ftco-section ftco-category ftco-no-pt">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6 order-md-last align-items-stretch d-flex">
+            <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(images/category.jpg);">
+              <div class="text text-center">
+                <h2>Vegetables</h2>
+                <p>Protect the health of every home</p>
+                <p><a href="#" class="btn btn-primary">Shop now</a></p>
+              </div>
             </div>
+          </div>
+          <div class="col-md-6">
+            <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/category-1.jpg);">
+              <div class="text px-3 py-1">
+                <h2 class="mb-0"><a href="#">Fruits</a></h2>
+              </div>
+            </div>
+          </div>
         </div>
-    </body>
-</html>
+      </div>
+
+      <div class="col-md-4">
+        <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/category-3.jpg);">
+          <div class="text px-3 py-1">
+            <h2 class="mb-0"><a href="#">Juices</a></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center mb-3 pb-3">
+      <div class="col-md-12 heading-section text-center ftco-animate">
+        <span class="subheading">Featured Products</span>
+        <h2 class="mb-4">Our Products</h2>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 ftco-animate">
+        <div class="product">
+          <a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
+            <span class="status">30%</span>
+            <div class="overlay"></div>
+          </a>
+          <div class="text py-3 pb-4 px-3 text-center">
+            <h3><a href="#">Bell Pepper</a></h3>
+            <div class="d-flex">
+              <div class="pricing">
+                <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
+              </div>
+            </div>
+            <div class="bottom-area d-flex px-3">
+              <div class="m-auto d-flex">
+                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                  <span><i class="ion-ios-menu"></i></span>
+                </a>
+                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                  <span><i class="ion-ios-cart"></i></span>
+                </a>
+                <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                  <span><i class="ion-ios-heart"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 ftco-animate">
+        <div class="product">
+          <a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template">
+            <div class="overlay"></div>
+          </a>
+          <div class="text py-3 pb-4 px-3 text-center">
+            <h3><a href="#">Strawberry</a></h3>
+            <div class="d-flex">
+              <div class="pricing">
+                <p class="price"><span>$120.00</span></p>
+              </div>
+            </div>
+            <div class="bottom-area d-flex px-3">
+              <div class="m-auto d-flex">
+                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                  <span><i class="ion-ios-menu"></i></span>
+                </a>
+                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                  <span><i class="ion-ios-cart"></i></span>
+                </a>
+                <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                  <span><i class="ion-ios-heart"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 ftco-animate">
+        <div class="product">
+          <a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg" alt="Colorlib Template">
+            <div class="overlay"></div>
+          </a>
+          <div class="text py-3 pb-4 px-3 text-center">
+            <h3><a href="#">Green Beans</a></h3>
+            <div class="d-flex">
+              <div class="pricing">
+                <p class="price"><span>$120.00</span></p>
+              </div>
+            </div>
+            <div class="bottom-area d-flex px-3">
+              <div class="m-auto d-flex">
+                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                  <span><i class="ion-ios-menu"></i></span>
+                </a>
+                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                  <span><i class="ion-ios-cart"></i></span>
+                </a>
+                <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                  <span><i class="ion-ios-heart"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 ftco-animate">
+        <div class="product">
+          <a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg" alt="Colorlib Template">
+            <div class="overlay"></div>
+          </a>
+          <div class="text py-3 pb-4 px-3 text-center">
+            <h3><a href="#">Purple Cabbage</a></h3>
+            <div class="d-flex">
+              <div class="pricing">
+                <p class="price"><span>$120.00</span></p>
+              </div>
+            </div>
+            <div class="bottom-area d-flex px-3">
+              <div class="m-auto d-flex">
+                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                  <span><i class="ion-ios-menu"></i></span>
+                </a>
+                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                  <span><i class="ion-ios-cart"></i></span>
+                </a>
+                <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                  <span><i class="ion-ios-heart"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section img" style="background-image: url(images/bg_3.jpg);">
+  <div class="container">
+    <div class="row justify-content-end">
+      <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
+        <span class="subheading">Best Price For You</span>
+        <h2 class="mb-4">Deal of the day</h2>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+        <h3><a href="#">Spinach</a></h3>
+        <span class="price">$10 <a href="#">now $5 only</a></span>
+        <div id="timer" class="d-flex mt-5">
+          <div class="time" id="days"></div>
+          <div class="time pl-3" id="hours"></div>
+          <div class="time pl-3" id="minutes"></div>
+          <div class="time pl-3" id="seconds"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section testimony-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5 pb-3">
+      <div class="col-md-7 heading-section ftco-animate text-center">
+        <span class="subheading">Testimony</span>
+        <h2 class="mb-4">Our satisfied customer says</h2>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+      </div>
+    </div>
+    <div class="row ftco-animate">
+      <div class="col-md-12">
+        <div class="carousel-testimony owl-carousel">
+          <div class="item">
+            <div class="testimony-wrap p-4 pb-5">
+              <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                <span class="quote d-flex align-items-center justify-content-center">
+                  <i class="icon-quote-left"></i>
+                </span>
+              </div>
+              <div class="text text-center">
+                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="name">Garreth Smith</p>
+                <span class="position">Marketing Manager</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section class="ftco-section ftco-partner">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm ftco-animate">
+        <a href="#" class="partner"><img src="images/partner-1.png" class="img-fluid" alt="Colorlib Template"></a>
+      </div>
+      <div class="col-sm ftco-animate">
+        <a href="#" class="partner"><img src="images/partner-2.png" class="img-fluid" alt="Colorlib Template"></a>
+      </div>
+      <div class="col-sm ftco-animate">
+        <a href="#" class="partner"><img src="images/partner-3.png" class="img-fluid" alt="Colorlib Template"></a>
+      </div>
+      <div class="col-sm ftco-animate">
+        <a href="#" class="partner"><img src="images/partner-4.png" class="img-fluid" alt="Colorlib Template"></a>
+      </div>
+      <div class="col-sm ftco-animate">
+        <a href="#" class="partner"><img src="images/partner-5.png" class="img-fluid" alt="Colorlib Template"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+  <div class="container py-4">
+    <div class="row d-flex justify-content-center py-5">
+      <div class="col-md-6">
+        <h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
+        <span>Get e-mail updates about our latest shops and special offers</span>
+      </div>
+      <div class="col-md-6 d-flex align-items-center">
+        <form action="#" class="subscribe-form">
+          <div class="form-group d-flex">
+            <input type="text" class="form-control" placeholder="Enter email address">
+            <input type="submit" value="Subscribe" class="submit px-3">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+@endsection

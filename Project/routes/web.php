@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'FrontendController@welcome');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/','IndexController@index')->name('home');
 //
 // Route::get('/shop', 'ShopController')->name('shop');
 // Route::get('/', 'IndexController@index');
