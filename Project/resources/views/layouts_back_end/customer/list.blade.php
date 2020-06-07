@@ -14,19 +14,19 @@
 </div>
 <div class="row mb-2">
   <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
-    <input type="text" id="itemName" class="form-control" placeholder="Nhập tên hoặc số điện thoại khách hàng" />
+    <input type="text" id="cus-name" class="form-control" placeholder="Nhập tên hoặc số điện thoại khách hàng" />
   </div>
 
   <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
-    <input type="text" id="fromDateItem" class="form-control relative-icon-calendar date" placeholder="Từ ngày" />
+    <input type="text" id="fromDateCus" class="form-control relative-icon-calendar date" placeholder="Từ ngày" />
     <i class="fa fa-calendar absolute-icon-calendar"></i>
   </div>
   <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
-    <input type="text" id="toDateItem" class="form-control relative-icon-calendar date" placeholder="Đến ngày" />
+    <input type="text" id="toDateCus" class="form-control relative-icon-calendar date" placeholder="Đến ngày" />
     <i class="fa fa-calendar absolute-icon-calendar"></i>
   </div>
   <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 text-right">
-    <button class="btn btn-success" id="btnSearchItem" onclick="searchItem()"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
+    <button class="btn btn-success" id="btnSearchCus" onclick="searchCus()"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
   </div>
 </div>
 
@@ -89,7 +89,7 @@
             <label class="text-dark">Tên khách hàng:</label>
           </div>
           <div class="col-md-7">
-            <input type="text" id="txtName" class="form-control" placeholder="Nhập tên khách hàng" />
+            <input type="text" id="txtName" class="form-control" />
             <input type="hidden" id="valIdCus" />
           </div>
         </div>
@@ -98,7 +98,7 @@
             <label class="text-dark">Số điện thoại:</label>
           </div>
           <div class="col-md-7">
-            <input id="txtPhone" class="form-control" placeholder="Nhập số điện thoại khách hàng">
+            <input id="txtPhone" class="form-control" >
           </div>
         </div>
         <div class="row" style="margin-top:10px;">
@@ -106,7 +106,7 @@
             <label class="text-dark">Email:</label>
           </div>
           <div class="col-md-7">
-            <input id="txtEmail" class="form-control" placeholder="Nhập email khách hàng">
+            <input id="txtEmail" class="form-control" >
           </div>
         </div>
         <div class="row" style="margin-top:10px;">
@@ -114,7 +114,7 @@
             <label class="text-dark">Địa chỉ:</label>
           </div>
           <div class="col-md-7">
-            <input id="txtAddress" class="form-control" placeholder="Nhập địa chỉ khách hàng">
+            <input id="txtAddress" class="form-control" >
           </div>
         </div>
       </div>
@@ -184,8 +184,11 @@
   }
 
 //tim kiem khach hang
-  function findCus(id){
-
+  function searchCus(){
+    var name =$.trim($('#cus-name').val());
+    var fromDateCus =$.trim($('#fromDateCus').val());
+    var toDateCus =$.trim($('#toDateCus').val());
+    
   }
 </script>
 
