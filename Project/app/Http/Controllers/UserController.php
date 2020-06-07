@@ -106,19 +106,19 @@ class UserController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        //
-        try {
-            $id = user::find($request->id);
+    //     //
+    //     try {
+    //         $id = user::find($request->id);
 
-            if ($id != null) {
-                $id->delete();
-                return response()->json(['status' => 1, 'message' => 'Xóa thành công']);
-            } else {
-                return response()->json(['status' => 0, 'message' => 'Không tồn tại.']);
-            }
-        } catch (\Exception $e) {
-            $e->getMessage();
-            return response()->json(['status' => 0, 'message' => 'Có lỗi']);
-        }
-    }
+    //         if ($id != null) {
+    //             $id->delete();
+    //             return response()->json(['status' => 1, 'message' => 'Xóa thành công']);
+    //         } else {
+    //             return response()->json(['status' => 0, 'message' => 'Không tồn tại.']);
+    //         }
+    //     } catch (\Exception $e) {
+    //         $e->getMessage();
+    //         return response()->json(['status' => 0, 'message' => 'Có lỗi']);
+    //     }
+    // }
 }
