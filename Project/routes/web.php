@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('comment_manage', 'CommentController');
         Route::group(['prefix' => 'admin'], function () {
         });
-        Route::get('dashboard', 'Dashboard1Controller');
+        //  Route::get('dashboard', 'Dashboard1Controller');
         // Route::group(['prefix' => 'admin'], function () {
         // });
     });
