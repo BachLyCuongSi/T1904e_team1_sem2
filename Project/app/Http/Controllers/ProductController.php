@@ -44,7 +44,7 @@ class ProductController extends Controller
             $it = new product();
             $it->cat_id = $request->category;
             $it->pr_name = $request->name;
-            $it->pr_image = $request->image;
+            $it->pr_image = $request->imgUrl;
             $it->pr_price = $request->price;
             $it->pr_description = $request->description;
             $it->pr_quantity = $request->amount;

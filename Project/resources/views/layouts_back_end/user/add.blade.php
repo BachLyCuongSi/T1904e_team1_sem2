@@ -21,29 +21,33 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="col-md-8">
-                            	<div class="alert alert-danger">Email đã tồn tại !</div>
-                                <form role="form" method="post">
+                            	@if(count($errors) > 0)
+                                    <div class='alert alert-danger'>
+                                @foreach($errors->all() as $er)
+                                        <p>{{$er}}</p>
+                                        @endforeach
+                                    </div>
+                                    @endif
+                                <form method="post" action="{{route('user_manage.store')}}">
+                                @csrf
                                 <div class="form-group">
-                                    <label>Họ & Tên</label>
-                                    <input name="user_full" required class="form-control" placeholder="">
+                                    <label for="name">Ho va Ten</label>
+                                     <input type="text" class="form-control" id="name" name="name" placeholder="Nhap Ten">
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input name="user_mail" required type="text" class="form-control">
+                                    <label for="name">email</label>
+                                     <input type="text" class="form-control" id="email" name="email" placeholder="Nhap email">
                                 </div>
                                 <div class="form-group">
-                                    <label>Mật khẩu</label>
-                                    <input name="user_pass" required type="password"  class="form-control">
+                                    <label for="name">Mật Khẩu</label>
+                                     <input type="text" class="form-control" id="password" name="password" placeholder="">
                                 </div>
-                                <div class="form-group">
-                                    <label>Nhập lại mật khẩu</label>
-                                    <input name="user_re_pass" required type="password"  class="form-control">
-                                </div>
+                            
                                 <div class="form-group">
                                     <label>Quyền</label>
-                                    <select name="user_level" class="form-control">
-                                        <option value=1>Admin</option>
-                                        <option value=2>Member</option>
+                                    <select name="roles" class="form-control">
+                                        <option value=0>Admin</option>
+                                        <option value=1>Member</option>
                                     </select>
                                 </div>
                                 <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>

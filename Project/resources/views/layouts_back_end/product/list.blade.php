@@ -143,7 +143,7 @@
                 category,
                 amount,
                 price,
-                image
+                imgUrl
             }
 
             if (title.length == 0 || name.length == 0) {
@@ -197,7 +197,7 @@
                 },
                 url: "product_manage/store",
                 data: data,
-                type: "POST",
+                type: "GET",
                 success: function(res) {
                     if (res.status == 1) {
                         swal({
