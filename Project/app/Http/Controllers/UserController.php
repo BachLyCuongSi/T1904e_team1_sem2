@@ -95,7 +95,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $ep = user::find($request->id);
+
+            $ep-> name = $request->name;
+            $ep-> email = $request->email;
+            $ep-> roles = $request->role;
+    
+            $ep->save();
+
+            return response()->json(['status' => 1, 'message' => "Sửa thông tin thành công"]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
+        }
     }
 
     /**
@@ -106,19 +119,18 @@ class UserController extends Controller
      */
     public function destroy($id, Request $request)
     {
-    //     //
-    //     try {
-    //         $id = user::find($request->id);
+        try {
+            $id = user::find($request->id);
 
-    //         if ($id != null) {
-    //             $id->delete();
-    //             return response()->json(['status' => 1, 'message' => 'Xóa thành công']);
-    //         } else {
-    //             return response()->json(['status' => 0, 'message' => 'Không tồn tại.']);
-    //         }
-    //     } catch (\Exception $e) {
-    //         $e->getMessage();
-    //         return response()->json(['status' => 0, 'message' => 'Có lỗi']);
-    //     }
-    // }
+            if ($id != null) {
+                $id->delete();
+                return response()->json(['status' => 1, 'message' => 'Xóa thành công']);
+            } else {
+                return response()->json(['status' => 0, 'message' => 'Không tồn tại.']);
+            }
+        } catch (\Exception $e) {
+            $e->getMessage();
+            return response()->json(['status' => 0, 'message' => 'Có lỗi']);
+        }
+    }
 }

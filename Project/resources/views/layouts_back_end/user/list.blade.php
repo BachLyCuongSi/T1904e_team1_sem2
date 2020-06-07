@@ -47,24 +47,17 @@
 						@foreach($lsUsers as $Users)
 						<tr>
 							<td>{{$Users->id}}</td>
-							<td>{{$Users->name}}</td>
-							<td>{{$Users->email}}</td>
-								@if($Users->roles == 1)
-									<td><span class="label label-danger">Adm</span></td> 	
+							<td class="name-ep">{{$Users->name}}</td>
+							<td class="email-ep">{{$Users->email}}</td>
+								@if($Users->roles == 0)
+						<td class="role-ep" data-id="{{$Users->roles}}"><span class="label label-danger">Adm</span></td> 	
 								@else:
-									<td><span class="label label-danger">Mem</span></td>
+									<td class="role-ep" data-id="{{$Users->roles}}"><span class="label label-danger">Mem</span></td>
 								@endif
-							<td style="text-align:center">
-								<button type="button" class="btn btn-success"
-										onclick="editCategory(28);" data-toggle="modal"
-										data-target="#myModal" title="Sửa Danh Mục">
-									<i class="fa fa-pencil"></i>
-								</button>
-{{-- 								
-									<a id="{{$Users->id}}}" onclick="loadCusDetail($(this))"><i class="fa fa-edit text-success"></i></a>
-									<a onclick="delId('{{$Users->id}}}')"><i class="fa fa-trash text-danger"></i></a> --}}
-								
-							</td>
+								<td class="text-center">
+									<a id="{{$Users->id}}" onclick="loadEmployeeDetail($(this))"><i class="fa fa-edit text-success"></i></a>
+									<a onclick="delId('{{$Users->id}}')"><i class="fa fa-trash text-danger"></i></a>
+								  </td>
 						</tr>
 						@endforeach
 				    </tbody>
@@ -73,7 +66,7 @@
 				
 
 	</div>	<!--/.main-->
- {{-- <script type="text/javascript">  
+ <script type="text/javascript">  
 	  function delId(id) {
     swal({
       title: "Bạn chắc chắn muốn xóa chứ?",
@@ -97,8 +90,8 @@
                 title: res.message,
                 text: "",
                 icon: "success"
-              }).then( => {
-                if  {
+              }).then((success) => {
+                if(success)  {
                   location.reload();
                 }
               })
@@ -114,7 +107,134 @@
       }
     })
   }
-</script> --}}
 
 
+
+  //Load thông tin nhân viên
+
+  function loadEmployeeDetail(data){
+var thiss = data.closest('tr');
+var id = data.attr('id');
+var name = thiss.children('.name-ep').text();
+var email = thiss.children('.email-ep').text();
+var role = thiss.children('.role-ep').attr('data-id');
+
+$('#txt-name-ep').val(name);
+$('#txt-email-ep').val(email);
+$('#roles').val(role);
+$('#val-id-ep').val(id);
+$('#employeeDetail').modal('show');
+
+  }
+
+
+  //SửA thông tin nhân viên
+
+  function saveDetailEP(id){
+	  var name = $.trim($('#txt-name-ep').val());
+	  var email = $.trim($('#txt-email-ep').val());
+	  var role = $.trim($('#roles').val());
+
+	  if(name.length == 0 || email.length == 0){
+		  swal({
+			  title:"Vui lòng nhập đầy đủ thông tin!",
+			  text:"",
+			  icon:"warning",
+		  })
+
+		  return;
+	  }
+
+	  if(role == ""){
+		swal({
+			  title:"Vui lòng chọn quyền cho nhân viên!",
+			  text:"",
+			  icon:"warning",
+		  })
+
+		  return;
+	  }
+
+	  $.ajax({
+		headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+		  url:"user_manage/update",
+		  data:{name,email,role},
+		  type:"GET",
+		  success:function(res){
+			  if(res.status == 1){
+				swal({
+					title:res.message,
+				  text:"",
+				  icon:"success"
+				}).then((succes)=>{
+					if(success){
+						$('#employeeDetail').modal('hide');
+					}
+					
+				})
+			  }
+			  else{
+				  swal({
+					  title:res.message,
+					  text:"",
+					  icon:"error"
+				  })
+			  }
+		  }
+
+	  })
+  }
+
+</script>
+
+
+@endsection
+
+@section('modal')
+ <!-- Modal -->
+ <div class="modal fade" id="employeeDetail" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Thông tin nhân viên</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+			  <label class="text-dark">Tên nhân viên:</label>
+			  <div class="col-sm-12 coil-md-12 col-lg-12">
+				  <input type="hidden" id="val-id-ep"/>
+				  <input class="form-control" placeholder="Nhập tên nhân viên" id="txt-name-ep"/>
+			  </div>
+		</div>
+
+		<div class="row"style="margin-top:10px;"> 
+			<label class="text-dark">Email:</label>
+			<div class="col-sm-12 coil-md-12 col-lg-12">
+				<input class="form-control" placeholder="Nhập tên nhân viên" id="txt-email-ep"/>
+			</div>
+		</div>
+
+		<div class="row"style="margin-top:10px;"> 
+			<label class="text-dark">Quyền:</label>
+			<div class="col-sm-12 coil-md-12 col-lg-12">
+				<select class="form-control" id="roles">
+					<option value="" selected disabled hidden>--Quyền nhân viên--</option>
+					<option value="0">Admin</option>
+					<option value="1">Member</option>
+				</select>
+			</div>
+		</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="saveDetailEP($('#val-id-ep'))"><i class="fa fa-save" style="margin-right:2px;">lưu</i></button>
+        </div>
+      </div>
+      
+	</div>
+ </div>
 @endsection
