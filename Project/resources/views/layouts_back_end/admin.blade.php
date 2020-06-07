@@ -15,8 +15,6 @@
     <link href="{{ asset('css/startmin.css')}}" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="{{ asset('css/morris.css')}}" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     {{-- end an lamf --}}
 
     <link href="{{ asset('css/bootstrap-theme.min.css')}}" rel="stylesheet">
@@ -104,7 +102,7 @@
     </div>
     {{-- <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script> --}}
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script type="text/javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>

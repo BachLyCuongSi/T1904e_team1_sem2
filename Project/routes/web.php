@@ -68,3 +68,8 @@ Route::middleware(['auth', 'team'])->group(function () {
         Route::resource('employee_manage', 'EmployeeController');
     });
 });
+
+
+Route:: group(function(){
+
+});
