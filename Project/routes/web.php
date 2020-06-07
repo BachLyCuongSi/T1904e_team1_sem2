@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
         // Route::group(['prefix' => 'admin'], function () {
         // });
        // Route::get('dashboard', 'Dashboard1Controller');
+        // Route::get('dashboard', 'Dashboard1Controller');
         Route::group(['prefix' => 'admin'], function () {
         });
         Route::get('/article/{slug}', 'Front@slug');
