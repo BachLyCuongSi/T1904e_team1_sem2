@@ -97,15 +97,18 @@
 
             <div class="col-md-10">
                 @yield('content')
+
+
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/jquery.min.js')}}"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script src="{{ asset('ckfinder/ckfinder.js')}}"></script>
-    <script src="{{ asset('js/ready.js')}}"></script>
+    {{-- <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script> --}}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script type="text/javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/ready.js')}}"></script>
 
 
     <!-- jQuery -->
@@ -121,7 +124,10 @@
 
     <!-- Custom Theme JavaScript -->
     <!-- <script src="{{ asset('js/startmin.js')}}"></script> -->
+
+    @yield('script')
 </body>
 @yield('modal')
+
 
 </html>
