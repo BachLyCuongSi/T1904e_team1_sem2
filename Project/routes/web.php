@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/','IndexController@index')->name('home');
-
-Route::get('/shop', 'ShopController')->name('shop');
-Route::get('/', 'IndexController@index');
+//
+// Route::get('/shop', 'ShopController')->name('shop');
+// Route::get('/', 'IndexController@index');
 // Route::group('/', function(){
 //     Route::get('users/{id}', function ($id) {
 

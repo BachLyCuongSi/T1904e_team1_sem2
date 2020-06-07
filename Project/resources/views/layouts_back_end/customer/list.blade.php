@@ -118,10 +118,6 @@
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success"><i class="fa fa-save mr-1"></i>Lưu</button>
-      </div>
-    </div>
 
   </div>
 </div>
