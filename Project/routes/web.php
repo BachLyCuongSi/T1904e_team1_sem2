@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
         Route::group(['prefix' => 'admin'], function () {
             Route::get('dashboard', 'DashboardController');
         });
+        Route::get('/article/{slug}', 'Front@slug');
     });
 
 });
