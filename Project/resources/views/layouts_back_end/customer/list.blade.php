@@ -6,7 +6,7 @@
 <div class="col-md-12" >
   <div class="breadcrumb-holder">
     <div class="row mb-3 mt-3">
-      <div class="col-md-10 col-sm-10 col-9 text-dark px-0">
+      <div class="col-md-10 col-sm-10 col-9 text-dark px-0" style="margin-top: 50px">
         <h1><i class="fa fa-fw fa-circle"></i> Quản lý khách hàng</h1>
       </div>
     </div>
@@ -136,7 +136,6 @@
     var phone = thiss.children('.cus_phone').text();
     var email = thiss.children('.cus_email').text();
     var addres = thiss.children('.cus_addres').text();
-
     $('#txtName').val(name);
     $('#txtEmail').val(email);
     $('#txtAddress').val(addres);
@@ -186,6 +185,10 @@
         })
       }
     })
+  }
+
+  function findCus(id){
+    
   }
 </script>
 
