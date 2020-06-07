@@ -160,7 +160,7 @@ $('#employeeDetail').modal('show');
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
 		  url:"user_manage/update",
-		  data:{name,email,role},
+		  data:{id,name,email,role},
 		  type:"GET",
 		  success:function(res){
 			  if(res.status == 1){

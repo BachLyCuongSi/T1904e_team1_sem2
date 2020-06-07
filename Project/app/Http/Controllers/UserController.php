@@ -98,9 +98,9 @@ class UserController extends Controller
         try{
             $ep = user::find($request->id);
 
-            $ep-> name = $request->name;
-            $ep-> email = $request->email;
-            $ep-> roles = $request->role;
+            $ep->name = $request->name;
+            $ep->email = $request->email;
+            $ep->roles = $request->role;
     
             $ep->save();
 
