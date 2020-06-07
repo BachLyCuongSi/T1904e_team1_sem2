@@ -66,53 +66,60 @@
 				
 
 	</div>	<!--/.main-->
- <script type="text/javascript">  
-	  function delId(id) {
-    swal({
-      title: "Bạn chắc chắn muốn xóa chứ?",
-      text: "",
-      icon: "warning",
-      buttons: ['Cancel', 'OK']
-    }).then((sure) => {
-      if (sure) {
-        $.ajax({
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          url: "user_manage/destroy",
-          data: {
-            id
-          },
-          type: "delete",
-          success: function(res) {
-            if (res.status == 1) {
-              swal({
-                title: res.message,
-                text: "",
-                icon: "success"
-              }).then((success) => {
-                if(success)  {
-                  location.reload();
-                }
-              })
-            } else {
-              swal({
-                title: res.message,
-                text: "",
-                icon: "error",
-              })
-            }
-          }
-        })
-      }
-    })
-  }
 
 
 
-  //Load thông tin nhân viên
 
-  function loadEmployeeDetail(data){
+@endsection
+
+@section('script')
+<script type="text/javascript">  
+	 function delId(id) {
+   swal({
+	 title: "Bạn chắc chắn muốn xóa chứ?",
+	 text: "",
+	 icon: "warning",
+	 buttons: ['Cancel', 'OK']
+   }).then((sure) => {
+	 if (sure) {
+	   $.ajax({
+		 headers: {
+		   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		 },
+		 url: "user_manage/destroy",
+		 data: {
+		   id
+		 },
+		 type: "delete",
+		 success: function(res) {
+		   if (res.status == 1) {
+			 swal({
+			   title: res.message,
+			   text: "",
+			   icon: "success"
+			 }).then((success) => {
+			   if(success)  {
+				 location.reload();
+			   }
+			 })
+		   } else {
+			 swal({
+			   title: res.message,
+			   text: "",
+			   icon: "error",
+			 })
+		   }
+		 }
+	   })
+	 }
+   })
+ }
+
+
+
+ //Load thông tin nhân viên
+
+ function loadEmployeeDetail(data){
 var thiss = data.closest('tr');
 var id = data.attr('id');
 var name = thiss.children('.name-ep').text();
@@ -125,73 +132,71 @@ $('#roles').val(role);
 $('#val-id-ep').val(id);
 $('#employeeDetail').modal('show');
 
-  }
+ }
 
 
-  //SửA thông tin nhân viên
+ //SửA thông tin nhân viên
 
-  function saveDetailEP(id){
-	  var name = $.trim($('#txt-name-ep').val());
-	  var email = $.trim($('#txt-email-ep').val());
-	  var role = $.trim($('#roles').val());
+ function saveDetailEP(id){
+	 var name = $.trim($('#txt-name-ep').val());
+	 var email = $.trim($('#txt-email-ep').val());
+	 var role = $.trim($('#roles').val());
 
-	  if(name.length == 0 || email.length == 0){
-		  swal({
-			  title:"Vui lòng nhập đầy đủ thông tin!",
-			  text:"",
-			  icon:"warning",
-		  })
+	 if(name.length == 0 || email.length == 0){
+		 swal({
+			 title:"Vui lòng nhập đầy đủ thông tin!",
+			 text:"",
+			 icon:"warning",
+		 })
 
-		  return;
-	  }
+		 return;
+	 }
 
-	  if(role == ""){
-		swal({
-			  title:"Vui lòng chọn quyền cho nhân viên!",
-			  text:"",
-			  icon:"warning",
-		  })
+	 if(role == ""){
+	   swal({
+			 title:"Vui lòng chọn quyền cho nhân viên!",
+			 text:"",
+			 icon:"warning",
+		 })
 
-		  return;
-	  }
+		 return;
+	 }
 
-	  $.ajax({
-		headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-		  url:"user_manage/update",
-		  data:{id,name,email,role},
-		  type:"GET",
-		  success:function(res){
-			  if(res.status == 1){
-				swal({
-					title:res.message,
-				  text:"",
-				  icon:"success"
-				}).then((succes)=>{
-					if(success){
-						$('#employeeDetail').modal('hide');
-					}
-					
-				})
-			  }
-			  else{
-				  swal({
-					  title:res.message,
-					  text:"",
-					  icon:"error"
-				  })
-			  }
-		  }
+	 $.ajax({
+	   headers: {
+		   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		 },
+		 url:"user_manage/update",
+		 data:{id,name,email,role},
+		 type:"GET",
+		 success:function(res){
+			 if(res.status == 1){
+			   swal({
+				   title:res.message,
+				 text:"",
+				 icon:"success"
+			   }).then((succes)=>{
+				   if(success){
+					   location.reload();
+					   $('#employeeDetail').modal('hide');
+				   }
+				   
+			   })
+			 }
+			 else{
+				 swal({
+					 title:res.message,
+					 text:"",
+					 icon:"error"
+				 })
+			 }
+		 }
 
-	  })
-  }
+	 })
+ }
 
 </script>
-
-
 @endsection
-
 @section('modal')
  <!-- Modal -->
  <div class="modal fade" id="employeeDetail" role="dialog">
