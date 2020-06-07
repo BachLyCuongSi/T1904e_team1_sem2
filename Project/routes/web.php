@@ -13,14 +13,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','IndexController@index')->name('home');
+//
+// Route::get('/shop', 'ShopController')->name('shop');
+// Route::get('/', 'IndexController@index');
+// Route::group('/', function(){
+//     Route::get('users/{id}', function ($id) {
+
+//     });
+// });
 
 Auth::routes();
 date_default_timezone_set(DateTimeZone::listIdentifiers(DateTimeZone::ASIA)[27]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/cate_manage', 'CategoryController@index');
 
@@ -47,8 +53,9 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('comment_manage', 'CommentController');
         // Route::group(['prefix' => 'admin'], function () {
         // });
+       // Route::get('dashboard', 'Dashboard1Controller');
+        // Route::get('dashboard', 'Dashboard1Controller');
         Route::group(['prefix' => 'admin'], function () {
-            // Route::get('dashboard', 'DashboardController');
         });
         Route::get('/article/{slug}', 'Front@slug');
     });

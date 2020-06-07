@@ -6,7 +6,7 @@
 <div class="col-md-12" >
   <div class="breadcrumb-holder">
     <div class="row mb-3 mt-3">
-      <div class="col-md-10 col-sm-10 col-9 text-dark px-0">
+      <div class="col-md-10 col-sm-10 col-9 text-dark px-0" style="margin-top: 50px">
         <h1><i class="fa fa-fw fa-circle"></i> Quản lý khách hàng</h1>
       </div>
     </div>
@@ -35,22 +35,22 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>STT</th>
-          <th>Họ và Tên</th>
-          <th>Email</th>
-          <th>Số Điện Thoại</th>
-          <th>Địa Chỉ</th>
-          <th>Hành Động</th>
+          <th class="text-center">STT</th>
+          <th class="text-center">Họ và Tên</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Số Điện Thoại</th>
+          <th class="text-center">Địa Chỉ</th>
+          <th class="text-center">Hành Động</th>
         </tr>
       </thead>
       <tbody>
         @foreach($lsCustomer as $customer)
         <tr>
-          <td>{{$customer->cus_id}}</td>
-          <td class="cus_name">{{$customer->cus_name}}</td>
-          <td class="cus_email">{{$customer->cus_email}}</td>
-          <td class="cus_phone">{{$customer->cus_phone}}</td>
-          <td class="cus_addres">{{$customer->cus_addres}}</td>
+          <td class="text-center">{{$customer->cus_id}}</td>
+          <td class="cus_name text-center">{{$customer->cus_name}}</td>
+          <td class="cus_email text-center">{{$customer->cus_email}}</td>
+          <td class="cus_phone text-center">{{$customer->cus_phone}}</td>
+          <td class="cus_addres text-center">{{$customer->cus_addres}}</td>
           <td class="text-center">
             <a id="{{$customer->cus_id}}" onclick="loadCusDetail($(this))"><i class="fa fa-edit text-success"></i></a>
             <a onclick="delCus('{{$customer->cus_id}}')"><i class="fa fa-trash text-danger"></i></a>
@@ -118,10 +118,6 @@
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success"><i class="fa fa-save mr-1"></i>Lưu</button>
-      </div>
-    </div>
 
   </div>
 </div>
@@ -136,7 +132,6 @@
     var phone = thiss.children('.cus_phone').text();
     var email = thiss.children('.cus_email').text();
     var addres = thiss.children('.cus_addres').text();
-
     $('#txtName').val(name);
     $('#txtEmail').val(email);
     $('#txtAddress').val(addres);
@@ -186,6 +181,11 @@
         })
       }
     })
+  }
+
+//tim kiem khach hang
+  function findCus(id){
+
   }
 </script>
 
