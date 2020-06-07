@@ -187,8 +187,9 @@
     })
   }
 
+//tim kiem khach hang
   function findCus(id){
-    
+
   }
 </script>
 
