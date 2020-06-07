@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController1 extends Controller
+class Dashboard1Controller extends Controller
 {
     public function FunctionName(Type $var = null)
     {

@@ -71,7 +71,7 @@
         <div class="row">
             <div id="sidebar-collapse" class="col-md-2 sidebar">
                 <ul class="nav menu">
-                    <li class="active"><a href="{{route('dashboard_manage.index')}}"><svg class="glyph stroked dashboard-dial">
+                    <li class="active"><a href=""><svg class="glyph stroked dashboard-dial">
                                 <use xlink:href="#stroked-dashboard-dial"></use>
                             </svg> Dashboard</a></li>
                     <li><a href="{{route('user_manage.index')}}"><svg class="glyph stroked male user ">
