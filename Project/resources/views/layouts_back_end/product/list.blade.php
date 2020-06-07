@@ -49,14 +49,14 @@
     </div>
     <div class="col-md-4 col-md-offset-5 text-right">
         <button class="btn btn-primary" id="btnSearchItem" onclick="searchItem()"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
-        <button class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#createIten"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
     </div>
 </div>
 @endsection
 
 @section('modal')
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="createIten" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-6 col-lg-6">
                         <div class="row">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tiêu đề sản phẩm;</label></div>
+                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tiêu đề sản phẩm:</label></div>
                             <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txt-title" placeholder="Nhập tiêu đề sản phẩm" /></div>
                         </div>
                         <div class="row" style="margin-top:10px;">
@@ -96,23 +96,19 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="row">
-                            <div class="col-md-2 col-sm-12 col-12">
-                                <label class="mt-3">Ảnh sản phẩm</label>
-                            </div>
-                            <div class="col-md-9 col-sm-12 col-12">
-                                <a href="javascript:void(0);" id="addImg" class="text-bold mb-3" style="width:100%;height:100%; color: #5A5A5A;">
-                                    <div class="row">
-                                        <i class="fa fa-upload col-md-12 px-0" alt="your image"></i>
-                                        <input type="hidden" id="valUrl" />
-                                        <div class="row" id="DivImgAdd">
-                                        </div>
+                        <div class="row" style="text-align:center">
+                            <label class="mt-3">Ảnh sản phẩm:</label>
+                            <a href="javascript:void(0);" id="addImg" class="text-bold mb-3" style="width:100%;height:100%; color: #5A5A5A;">
+                                <i class="fa fa-upload col-md-12 px-0" alt="your image" title="Chọn ảnh" style="margin-bottom:5px;"></i>
+                                <div class="row">
+                                    <input type="hidden" id="valUrl" />
+                                    <div class="row" id="DivImgAdd">
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Số lượng</label></div>
+                        <div class="row" style="margin-top:50px;">
+                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Số lượng:</label></div>
                             <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="amount" placeholder="Nhập số lượng" type="number" onkeydown="javascript:return event.keyCode == 69 || event.keyCode == 198 || event.keyCode == 190 ? false:true" /></div>
                         </div>
                         <div class="row" style="margin-top:10px;">
@@ -122,9 +118,108 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="createItem()"><i class="fa fa-save" style="margin-right: 5px"></i>Lưu</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        //Tạo mới một sản phẩm
+
+        function createItem() {
+            var name = $.trim($('#txt-name').val());
+            var title = $.trim($('#txt-title').val());
+            var description = $.trim($('#txt-description').val());
+            var category = $('#valcate-id').val();
+            var price = $.trim($('#price').val().replace(/,/g, ""));
+            var amount = $('#amount').val();
+            var imgUrl = $('#image').attr("src");
+
+            var data = {
+                name,
+                title,
+                description,
+                category,
+                amount,
+                price,
+                imgUrl
+            }
+
+            if (title.length == 0 || name.length == 0) {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Vui lòng nhập đầy đủ thông tin",
+                    icon: 'warning'
+                })
+                return;
+            }
+
+            if (category == "" || category == null) {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Vui lòng chọn danh mục cho sản phẩm",
+                    icon: 'warning'
+                })
+                return;
+            }
+
+            if (typeof image === "undefined") {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Vui lòng chọn ảnh cho sản phẩm",
+                    icon: 'warning'
+                })
+                return;
+            }
+
+            if (parseInt(price) == 0 || parseInt(price) == null) {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Giá phải lớn hơn 0",
+                    icon: 'warning'
+                })
+                return;
+            }
+
+            if (parseInt(amount) == 0 || parseInt(amount) == null) {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Số lượng phải lớn hơn 0",
+                    icon: 'warning'
+                })
+                return;
+            }
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "product_manage/store",
+                data: data,
+                type: "GET",
+                success: function(res) {
+                    if (res.status == 1) {
+                        swal({
+                            title: res.message,
+                            text: "",
+                            icon: "success"
+                        }).then((success) => {
+                            if (success) {
+                                $('#createIten').modal('hide');
+                                location.reload();
+                            }
+
+                        })
+                    } else {
+                        swal({
+                            title: res.message,
+                            text: "",
+                            icon: "error"
+                        })
+                    }
+                }
+            })
+        }
+    </script>
     @endsection

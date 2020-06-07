@@ -44,8 +44,13 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('product_manage', 'ProductController');
         Route::resource('user_manage', 'UserController');
         Route::resource('customer_manage', 'CustomerController');
-        Route::resource('dashboard_manage', 'DashboardController');
         Route::resource('comment_manage', 'CommentController');
+        // Route::group(['prefix' => 'admin'], function () {
+        // });
+        Route::group(['prefix' => 'admin'], function () {
+            // Route::get('dashboard', 'DashboardController');
+        });
+        Route::get('/article/{slug}', 'Front@slug');
     });
 });
 

@@ -71,7 +71,7 @@
         <div class="row">
             <div id="sidebar-collapse" class="col-md-2 sidebar">
                 <ul class="nav menu">
-                    <li class="active"><a href="{{route('dashboard_manage.index')}}"><svg class="glyph stroked dashboard-dial">
+                    <li class="active"><a href=""><svg class="glyph stroked dashboard-dial">
                                 <use xlink:href="#stroked-dashboard-dial"></use>
                             </svg> Dashboard</a></li>
                     <li><a href="{{route('user_manage.index')}}"><svg class="glyph stroked male user ">
@@ -112,7 +112,7 @@
     <!-- Bootstrap Core JavaScript -->
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ asset('js/metisMenu.min.js')}}"></script>
+    <!-- <script src="{{ asset('js/metisMenu.min.js')}}"></script> -->
 
     <!-- Morris Charts JavaScript -->
     <!-- <script src="{{ asset('js/raphael.min.js')}}"></script>
@@ -120,7 +120,7 @@
     <script src="{{ asset('js/morris-data.js')}}"></script> -->
 
     <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('js/startmin.js')}}"></script>
+    <!-- <script src="{{ asset('js/startmin.js')}}"></script> -->
 </body>
 @yield('modal')
 
