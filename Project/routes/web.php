@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', 'FrontendController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -52,13 +53,11 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('user_manage', 'UserController');
         Route::resource('customer_manage', 'CustomerController');
         Route::resource('comment_manage', 'CommentController');
-        // Route::group(['prefix' => 'admin'], function () {
-        // });
-       // Route::get('dashboard', 'Dashboard1Controller');
-        // Route::get('dashboard', 'Dashboard1Controller');
         Route::group(['prefix' => 'admin'], function () {
         });
-        Route::get('/article/{slug}', 'Front@slug');
+        Route::get('dashboard', 'Dashboard1Controller');
+        // Route::group(['prefix' => 'admin'], function () {
+        // });
     });
 });
 
@@ -68,9 +67,4 @@ Route::middleware(['auth', 'team'])->group(function () {
         Route::resource('order_manage', 'OrderController');
         Route::resource('employee_manage', 'EmployeeController');
     });
-});
-
-
-Route:: group(function(){
-
 });
