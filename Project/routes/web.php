@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/','IndexController@index');
+Route::get('/','IndexController@index')->name('home');
+
+Route::get('/shop', 'ShopController')->name('shop');
 // Route::group('/', function(){
 //     Route::get('users/{id}', function ($id) {
 
@@ -23,7 +25,7 @@ Route::get('/','IndexController@index');
 Auth::routes();
 date_default_timezone_set(DateTimeZone::listIdentifiers(DateTimeZone::ASIA)[27]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/cate_manage', 'CategoryController@index');
 
