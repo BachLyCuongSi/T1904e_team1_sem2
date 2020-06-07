@@ -136,6 +136,16 @@
             var amount = $('#amount').val();
             var imgUrl = $('#image').attr("src");
 
+            var data = {
+                name,
+                title,
+                description,
+                category,
+                amount,
+                price,
+                image
+            }
+
             if (title.length == 0 || name.length == 0) {
                 swal({
                     title: "Cảnh báo!",
@@ -154,7 +164,7 @@
                 return;
             }
 
-            if (image.length == 0 || image == "" || image == null) {
+            if (typeof image === "undefined") {
                 swal({
                     title: "Cảnh báo!",
                     text: "Vui lòng chọn ảnh cho sản phẩm",
@@ -186,15 +196,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 url: "product_manage/store",
-                data: {
-                    title,
-                    name,
-                    description,
-                    price,
-                    amount,
-                    image,
-                    category
-                },
+                data: data,
                 type: "POST",
                 success: function(res) {
                     if (res.status == 1) {
