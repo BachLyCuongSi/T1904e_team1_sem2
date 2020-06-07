@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('customer_manage', 'CustomerController');
         Route::resource('dashboard_manage', 'DashboardController');
         Route::resource('comment_manage', 'CommentController');
+        Route::get('/article/{slug}', 'Front@slug');
     });
 });
 
