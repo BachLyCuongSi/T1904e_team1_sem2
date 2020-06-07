@@ -37,12 +37,12 @@
 </div>
 <div class="row">
     <div class="col-md-12" id="TableCategory">
-<table style="text-align:center" class="table table-bordered table-hover mt-2 w-100">
+  <table style="text-align:center" class="table table-bordered table-hover mt-2 w-100">
     <thead >
         <tr >
             <th style="text-align:center">STT</th>
-            <th style="text-align:center">Tên sản phẩm</th>
-            <th style="text-align:center">Ngày tạo</th> 
+            <th style="text-align:center">Tên danh mục</th>
+            
             <th style="text-align:center" >Chức năng</th>
         </tr>
     </thead>
@@ -50,59 +50,170 @@
                   @foreach($lsCategory as $category)
                     <tr>
                         <td>{{$category->cat_id}}</td>
-                        <td>{{$category->cat_name}}</td>
-                        <td>{{$category->created_at}}</td>
+                        <td class="cat_name">{{$category->cat_name}}</td>
+                        
                         
                         <td style="text-align:center">
-                            <button type="button" class="btn btn-success" onclick="editCategory(28);" data-toggle="modal" data-target="#myModal" title="Sửa Danh Mục">
+                            <button id="{{$category->cat_id}}" type="button" class="btn btn-success" onclick="loadCatDetail($(this));" data-toggle="modal" data-target="#myModal" title="Sửa Danh Mục">
                                 <i class="fa fa-pencil"></i>
                             </button>
-                            <button type="button" class="btn btn-danger" title="Xóa Danh Mục" onclick="DeleteCategory(28)">
+                            <button type="button" class="btn btn-danger" title="Xóa Danh Mục" onclick="delCat({{$category->cat_id}})">
                                 <i class="fa fa-trash-o"></i>
                             </button>
                         </td>
                     </tr>       
                     @endforeach
     </tbody>
-</table>
+  </table>
+</div>
+</div>
+{{$lsCategory->links()}}
 
 
+<!-- thêm-->
+<div id="createCategory" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="text-align:center">Thêm danh mục</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row" style="margin-top:10px;">
+          <div class="col-md-5">
+            <label class="text-dark">Tên danh mục:</label>
+          </div>
+          <div class="col-md-7">
+            <input type="text" id="txtNamecreate" class="form-control" placeholder="Nhập tên danh mục" />
+            <input type="hidden" id="" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" onclick="createCategory()"><i class="fa fa-plus mr-1" ></i>Thêm</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-
+<!-- sửa-->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title" style="text-align:center">Sửa danh mục</h4>
       </div>
       <div class="modal-body">
-        <p>Sửa thành công.</p>
+        <div class="row" style="margin-top:10px;">
+          <div class="col-md-5">
+            <label class="text-dark">Tên danh mục:</label>
+          </div>
+          <div class="col-md-7">
+            <input type="text" id="txtName" class="form-control" placeholder="Nhập tên danh mục" />
+            <input type="hidden" id="valIdCat" />
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success"><i class="fa fa-save mr-1"></i>Lưu</button>
       </div>
     </div>
-
   </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#add_logo_place").off('click').on('click', function(e) {
-            e.preventDefault();
-            var fider = new CKFinder();
 
-            fider.selectActionFunction = function(fileUrl) {
-                $("#AddImgLogoPlace ").remove();
-                $("#AddLogoPlace").append('<img id="AddImgLogoPlace" src="' + fileUrl + '" class="col-md-12 px-0 border-dekko contentImg" alt="your image" />');
-                var url = window.location.origin + fileUrl;
-                $('#txtAddLogoPlace').val(url);
+<script type="text/javascript">
+    function loadCatDetail(data) {
+    var thiss = data.closest('tr');
+    var id = data.attr('id');   
+    var name = thiss.children('.cat_name').text();
+    
+    $('#txtName').val(name);
+    $('#valIdCat').val(id);
+  }
+
+        //xóa
+    function delCat(id) {
+    swal({
+      title: "Bạn chắc chắn muốn xóa chứ?",
+      text: "",
+      icon: "warning",
+      buttons: ['Cancel', 'OK']
+    }).then((sure) => {
+      if (sure) {
+        $.ajax({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          url: "cate_manage/destroy",
+          data: {
+            id
+          },
+          type: "delete",
+          success: function(res) {
+            if (res.status == 1) {
+              swal({
+                title: res.message,
+                text: "",
+                icon: "success"
+              }).then((success) => {
+                if (success) {
+                  location.reload();
+                }
+              })
+            } else {
+              swal({
+                title: res.message,
+                text: "",
+                icon: "error",
+              })
             }
-            fider.popup();
-        });
-    });
+          }
+        })
+      }
+    })
+  }
+
+
+  //thêm
+  function createCategory() {
+        var name = $.trim($('#txtNamecreate').val());
+
+        var token = $('meta[name="csrf-token"]').attr('content');
+
+        if (name.length == 0 ) {
+            swal({
+                title: 'Please input full data',
+                text: '',
+                icon: 'warning'
+            })
+            return;
+        }
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "cate_manage/store",
+            data: {
+                name
+            },
+            type: 'POST',
+            success: function(res) {
+                swal({
+                    title: res.message,
+                    text: "",
+                    icon: "success"
+                }).then((success) => {
+                    if (success) {
+                        location.reload();
+                    }
+                })
+            }
+        })
+    }
 </script>
 @endsection

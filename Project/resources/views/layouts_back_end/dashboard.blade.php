@@ -3,7 +3,7 @@
 @section('content')
 {{-- \container-fluid --}}
 <div class="">
-     <div class="container-fluid">
+     <div class="   ">
          <div class="row">
             <div class="col-lg-10">
                 <h1 class="page-header">Dashboard</h1>
@@ -139,11 +139,7 @@
                                         <span class="pull-right text-muted small"><em>4 minutes ago</em>
                                         </span>
                                     </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                        <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                        </span>
-                                    </a>
+
                                     <a href="#" class="list-group-item">
                                         <i class="fa fa-envelope fa-fw"></i> Message Sent
                                         <span class="pull-right text-muted small"><em>27 minutes ago</em>
@@ -166,7 +162,7 @@
                                     </a>
                                 </div>
                                 <!-- /.list-group -->
-                                <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+
                             </div>
                             <!-- /.panel-body -->
                         </div>

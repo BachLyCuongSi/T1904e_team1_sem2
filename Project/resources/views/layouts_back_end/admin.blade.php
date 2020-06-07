@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vietpro Mobile Shop - Administrator</title>
+    <title>Team1 Shop - Administrator</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     {{-- an lam --}}
     <!-- MetisMenu CSS -->
@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><span>Vietpro</span>Shop</a>
+                <a class="navbar-brand" href="#"><span>Team1 </span>Shop</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user">
@@ -104,25 +104,24 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script src="{{ asset('js/ready.js')}}"></script>
     <script src="{{ asset('ckfinder/ckfinder.js')}}"></script>
+    <script src="{{ asset('js/ready.js')}}"></script>
+
 
     <!-- jQuery -->
-        <!-- Bootstrap Core JavaScript -->
-        <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+    <!-- Bootstrap Core JavaScript -->
 
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="{{ asset('js/metisMenu.min.js')}}"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{{ asset('js/metisMenu.min.js')}}"></script>
 
-        <!-- Morris Charts JavaScript -->
-        <script src="{{ asset('js/raphael.min.js')}}"></script>
-        <script src="{{ asset('js/morris.min.js')}}"></script>
-        <script src="{{ asset('js/morris-data.js')}}"></script>
+    <!-- Morris Charts JavaScript -->
+    <!-- <script src="{{ asset('js/raphael.min.js')}}"></script>
+    <script src="{{ asset('js/morris.min.js')}}"></script>
+    <script src="{{ asset('js/morris-data.js')}}"></script> -->
 
-        <!-- Custom Theme JavaScript -->
-        <script src="{{ asset('js/startmin.js')}}"></script>
-
-
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('js/startmin.js')}}"></script>
 </body>
+@yield('modal')
 
 </html>
