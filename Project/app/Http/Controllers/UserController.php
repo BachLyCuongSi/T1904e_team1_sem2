@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $lsUsers = user::paginate(1);
+        $lsUsers = user::paginate(5);
         return view('layouts_back_end.User.list')->with(['lsUsers' => $lsUsers]);
 
     }
@@ -28,6 +28,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('layouts_back_end.User.add');
     }
 
     /**
@@ -39,6 +40,27 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate(
+            [
+              //truong name ko dc null (required), max 255 ki tu va min 3 ki tu
+              //name la duy nhat trong categories (unique)
+              'name' => 'required|max:255|min:3|unique:users',
+              'email' => 'required|max:255|min:3|unique:users',
+              'password' => 'required',
+              'roles' =>'required'
+            ]
+          );
+    
+          $users = new user();
+          
+          $users->name = $request->name;
+          $users->email = $request->email; //name 1 trung voi ten trong table con name 2 trung view
+          $users->password = $request->password;
+          $users->roles = $request->roles;
+          $users->save();
+    
+          $request->session()->flash('success', 'Users was successful!');
+          return redirect()->route("user_manage.index");
     }
 
     /**
@@ -60,7 +82,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = user::find($id);
+        return view('layouts_back_end.User.edit')-> with(['users_'=> $users]);
     }
 
     /**
@@ -81,8 +104,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
-    }
+    //     //
+    //     try {
+    //         $id = user::find($request->id);
+
+    //         if ($id != null) {
+    //             $id->delete();
+    //             return response()->json(['status' => 1, 'message' => 'Xóa thành công']);
+    //         } else {
+    //             return response()->json(['status' => 0, 'message' => 'Không tồn tại.']);
+    //         }
+    //     } catch (\Exception $e) {
+    //         $e->getMessage();
+    //         return response()->json(['status' => 0, 'message' => 'Có lỗi']);
+    //     }
+    // }
 }

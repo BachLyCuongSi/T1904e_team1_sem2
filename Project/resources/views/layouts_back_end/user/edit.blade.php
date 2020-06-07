@@ -7,13 +7,13 @@
 			<ol class="breadcrumb">
                 <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
                 <li><a href="">Quản lý thành viên</a></li>
-				<li class="active">Nguyễn Văn A</li>
+				<li class="active">Thêm thành viên</li>
 			</ol>
 		</div><!--/.row-->
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Thành viên: Nguyễn Văn A</h1>
+				<h1 class="page-header">Thêm thành viên</h1>
 			</div>
         </div><!--/.row-->
         <div class="row">
@@ -21,32 +21,40 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="col-md-8">
-                                <div class="alert alert-danger">Email đã tồn tại, Mật khẩu không khớp !</div>
-                            <form role="form" method="post">
+                            	@if(count($errors) > 0)
+                                    <div class='alert alert-danger'>
+                                @foreach($errors->all() as $er)
+                                        <p>{{$er}}</p>
+                                        @endforeach
+                                    </div>
+                                    @endif
+                                <form method="post" action="{{route('user_manage.update',$users_-> id )}}">
+                                @csrf
+                                <input type="hidden" name="_method" value="PUT">
                                 <div class="form-group">
-                                    <label>Họ & Tên</label>
-                                    <input type="text" name="user_full" required class="form-control" value="Nguyễn Văn A" placeholder="">
+                                    <label for="name">Họ và Tên</label>
+                                     <input type="text" class="form-control" id="name" name="name" 
+                                placeholder="Nhap Ten" value="{{$users_->name}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" name="user_mail" required value="nguyenvana@gmail.com" class="form-control">
+                                    <label for="name">email</label>
+                                     <input type="text" class="form-control" id="email" name="email" 
+                                     placeholder="Nhap email" value="{{$users_->email}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Mật khẩu</label>
-                                    <input type="password" name="user_pass" required  class="form-control">
+                                    <label for="name">Mật Khẩu</label>
+                                     <input type="text" class="form-control" id="password" name="password" placeholder=" "
+                                     value="{{$users_->password}}">
                                 </div>
-                                <div class="form-group">
-                                    <label>Nhập lại mật khẩu</label>
-                                    <input type="password" name="user_re_pass" required  class="form-control">
-                                </div>
+                            
                                 <div class="form-group">
                                     <label>Quyền</label>
-                                    <select name="user_level" class="form-control">
-                                        <option value=1>Admin</option>
-                                        <option value=2 selected>Member</option>
+                                    <select name="roles" class="form-control">
+                                        <option value=0>Admin</option>
+                                        <option value=1>Member</option>
                                     </select>
                                 </div>
-                                <button type="submit" name="sbm" class="btn btn-primary">Cập nhật</button>
+                                <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>
                                 <button type="reset" class="btn btn-default">Làm mới</button>
                             </div>
                         </form>
@@ -56,4 +64,5 @@
             </div><!-- /.row -->
 
 	</div>	<!--/.main-->
+
 @endsection
