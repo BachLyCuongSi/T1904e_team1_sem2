@@ -1,4 +1,4 @@
-@extends('font_end.frontend')
+@extends('layouts.frontend')
 
 @section ('content')
 
