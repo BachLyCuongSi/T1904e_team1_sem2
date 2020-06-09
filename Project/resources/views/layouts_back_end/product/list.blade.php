@@ -47,7 +47,7 @@
             @endif
         </select>
     </div>
-    <div class="col-md-4 col-md-offset-5 text-right">
+    <div class="col-md-4 offset-md-8 text-right">
         <button class="btn btn-primary" id="btnSearchItem" onclick="searchItem()"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
         <button class="btn btn-success" data-toggle="modal" data-target="#createIten"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
     </div>
