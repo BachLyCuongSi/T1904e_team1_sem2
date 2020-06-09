@@ -1058,3 +1058,8 @@ a.todo-list-item:focus {
     top: 30px;
     font-size: 20px;
 }
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: 10px;
+}
