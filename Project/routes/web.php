@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'FrontendController@welcome');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'frontend\IndexController');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 //
 // Route::get('/shop', 'ShopController')->name('shop');
