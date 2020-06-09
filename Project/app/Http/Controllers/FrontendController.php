@@ -22,7 +22,7 @@ class FrontendController extends Controller
     return view('cart');
   }
 
-  public function single($id) {
+  public function single() {
     return view('product-single');
     }
 }

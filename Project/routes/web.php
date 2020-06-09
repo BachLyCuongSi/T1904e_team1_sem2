@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'frontend\IndexController');
-// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/', 'frontend\IndexController');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/shop.html/{id?}', 'FrontendController@shop');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/cart.html', 'FrontendController@cart');
-Route::get('/product-single.html/{id}', 'FrontendController@single');
+Route::get('/product-single.html', 'FrontendController@single');
 Route::post('subscribe','FrontendController@subscribe');
 
 //
