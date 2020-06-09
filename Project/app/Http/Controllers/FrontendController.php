@@ -25,4 +25,12 @@ class FrontendController extends Controller
   public function single() {
     return view('product-single');
     }
+
+    public function about() {
+      return view('about');
+    }
+
+    public function contact() {
+      return view('contact');
+    }
 }
