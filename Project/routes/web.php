@@ -19,6 +19,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/shop.html/{id?}', 'FrontendController@shop');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/cart.html', 'FrontendController@cart');
+Route::get('/product-single.html/{id}', 'FrontendController@single');
+Route::post('subscribe','FrontendController@subscribe');
 
 //
 // Route::get('/shop', 'ShopController')->name('shop');
