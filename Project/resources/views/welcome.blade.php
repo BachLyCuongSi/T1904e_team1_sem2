@@ -2,8 +2,6 @@
 
 @section ('content')
 
-
-
 <section class="ftco-section ftco-category ftco-no-pt">
   <div class="container">
     <div class="row">
