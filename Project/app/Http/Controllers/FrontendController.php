@@ -21,4 +21,8 @@ class FrontendController extends Controller
   public function cart() {
     return view('cart');
   }
+
+  public function single() {
+    return view('product-single');
+    }
 }
