@@ -30,7 +30,7 @@
 </div>
 <div class="row mt-3">
   <div class="col-md-12 text-right">
-    <button class="btn btn-success" id="btnSearchItem" onclick="searchItem()" style="margin: 10px 10px 10px;"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
+    <button class="btn btn-success" id="btnSearchItem" onclick="searchCate()" style="margin: 10px 10px 10px;"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
     <button class="btn btn-primary" data-toggle="modal" data-target="#createCategory" onclick="" style="margin:10px 10px 10px ;"><i class="fa fa-fw fa-plus"></i>Thêm mới</button>
   </div>
 
