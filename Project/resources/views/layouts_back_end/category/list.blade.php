@@ -112,13 +112,13 @@
             <label class="text-dark">Tên danh mục:</label>
           </div>
           <div class="col-md-7">
-            <input type="text" id="txtName" class="form-control" placeholder="Nhập tên danh mục" />
+            <input type="text" id="txtNameupdate" class="form-control" placeholder="Nhập tên danh mục" />
             <input type="hidden" id="valIdCat" />
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success"><i class="fa fa-save mr-1"></i>Lưu</button>
+        <button type="button" class="btn btn-success" onclick="updateCategory()"><i class="fa fa-save mr-1"></i>Lưu</button>
       </div>
     </div>
   </div>
@@ -130,8 +130,8 @@
     var thiss = data.closest('tr');
     var id = data.attr('id');
     var name = thiss.children('.cat_name').text();
-
-    $('#txtName').val(name);
+    
+    $('#txtNameupdate').val(name);
     $('#valIdCat').val(id);
   }
 
@@ -180,6 +180,80 @@
 
   //thêm
   function createCategory() {
+        var name = $.trim($('#txtNamecreate').val());
+        var token = $('meta[name="csrf-token"]').attr('content');
+        if (name.length == 0 ) {
+            swal({
+                title: 'Please input full data',
+                text: '',
+                icon: 'warning'
+            })
+            return;
+        }
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "cate_manage/store",
+            data: {
+                name
+            },
+            type: 'put',
+            success: function(res) {
+                swal({
+                    title: res.message,
+                    text: "",
+                    icon: "success"
+                }).then((success) => {
+                    if (success) {
+                        location.reload();
+                    }
+                })
+            }
+        })
+    }
+        
+
+        //sửa
+    function updateCategory() {
+      var name = $.trim($('#txtNameupdate').val());
+      var token = $('meta[name="csrf-token"]').attr('content');
+    swal({
+      title: "Bạn chắc chắn muốn sửa chứ?",
+      text: "",
+      icon: "warning",
+      buttons: ['Cancel', 'OK']
+    }).then((sure) => {
+      if (sure) {
+        $.ajax({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          url: "cate_manage/update",
+          data: {
+            name
+          },
+          type: "PATCH",
+          success: function(res) {
+            if (res.status == 1) {
+              swal({
+                title: res.message,
+                text: "",
+                icon: "success"
+              }).then((success) => {
+                if (success) {
+                  location.reload();
+                }
+              })
+            } else {
+              swal({
+                title: res.message,
+                text: "",
+                icon: "error",
+              })
+            }
+          }
+        })
     var name = $.trim($('#txtNamecreate').val());
 
     var token = $('meta[name="csrf-token"]').attr('content');
