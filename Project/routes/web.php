@@ -16,13 +16,15 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'FrontendController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/shop.html/{id?}', 'FrontendController@shop');
+Route::get('/shop.html/{id?}', 'FrontendController@shop')->name('index.shop');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/cart.html', 'FrontendController@cart');
 Route::get('/product-single.html', 'FrontendController@single');
 Route::post('subscribe','FrontendController@subscribe');
-Route::get('/about.html', 'FrontendController@about');
+Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact');
+
+Route::get('/category/cat_name', 'FrontendController@cate')->name('category.id');
 
 //
 // Route::get('/shop', 'ShopController')->name('shop');
