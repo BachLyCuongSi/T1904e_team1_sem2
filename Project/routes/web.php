@@ -17,6 +17,11 @@ Route::get('/', 'FrontendController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/shop.html/{id?}', 'FrontendController@shop')->name('index.shop');
+Route::get('/vegetables.html','FrontendController@vegetables');
+Route::get('/shop.html', 'FrontendController@shop');
+Route::get('/fruits.html', 'FrontendController@fruits');
+Route::get('/juice.html', 'FrontendController@juice');
+Route::get('/dried.html', 'FrontendController@dried');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/cart.html', 'FrontendController@cart');
 Route::get('/product-single.html', 'FrontendController@single');
