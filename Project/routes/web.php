@@ -29,7 +29,7 @@ Route::post('subscribe','FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact');
 
-Route::get('/category/cat_name', 'FrontendController@cate')->name('category.id');
+Route::get('/category/{id}', 'FrontendController@cate')->name('category.id');
 
 //
 // Route::get('/shop', 'ShopController')->name('shop');

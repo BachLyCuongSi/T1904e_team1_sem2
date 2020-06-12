@@ -17,7 +17,7 @@ class FrontendController extends Controller
         // $lsComment = $com->commindex();
     $lsCategory = category::all();
         //$lsProduct = product::select('select * from products where pr_discount != 0 ORDER BY pr_id DESC LIMIT 8');
-    $lsProduct= DB::table('products')->where('pr_discount','!=',0)->orderBy('pr_id','desc')->limit('8')->get();
+    $lsProduct= DB::table('products')->where('discount','!=',0)->orderBy('pr_id','desc')->limit('8')->get();
         // $lsComment = comment::select('select * from comments inner join customers on comments.cus_id =customers.cus_id ORDER BY comm_id DESC limit 3');
      $lsComment=DB::table('comments')->join('customers','comments.cus_id','=','customers.cus_id')->orderBy('comm_id','DESC')->limit('3')->get();
 
@@ -81,7 +81,8 @@ class FrontendController extends Controller
     }
 
     public function cate($id){
+        //lấy tất cả sản phẩm theo từng category
         $lsProduct = DB::table('products')->where('cat_id','=',$id)->get();
-        return view('categories',compact('lsProduct'));
+        return view('wishlist',compact('lsProduct'));
     }
 }
