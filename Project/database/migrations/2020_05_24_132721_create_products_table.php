@@ -19,7 +19,6 @@ class CreateProductsTable extends Migration
             $table->String('pr_name');
             $table->String('pr_image');
             $table->double('pr_price');
-            $table->integer('discount');
             $table->String('pr_title');
             $table->String('pr_description');
             $table->float('pr_quantity');
