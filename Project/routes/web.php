@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'FrontendController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/vegetables.html','FrontendController@vegetables');
+Route::get('/vegetables.html', 'FrontendController@vegetables');
 Route::get('/shop.html', 'FrontendController@shop');
 Route::get('/fruits.html', 'FrontendController@fruits');
 Route::get('/juice.html', 'FrontendController@juice');
@@ -23,7 +23,7 @@ Route::get('/dried.html', 'FrontendController@dried');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/cart.html', 'FrontendController@cart');
 Route::get('/product-single.html', 'FrontendController@single');
-Route::post('subscribe','FrontendController@subscribe');
+Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about');
 Route::get('/contact.html', 'FrontendController@contact');
 
@@ -42,6 +42,7 @@ date_default_timezone_set(DateTimeZone::listIdentifiers(DateTimeZone::ASIA)[27])
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/cate_manage', 'CategoryController@index');
+
 
 // Route::resource('/cate_manage', function () {
 
@@ -64,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('user_manage', 'UserController');
         Route::resource('customer_manage', 'CustomerController');
         Route::resource('comment_manage', 'CommentController');
+        Route::get('cate_manage.search', 'CategoryController@search')->name('comment_manage.search');
         Route::group(['prefix' => 'admin'], function () {
         });
         //  Route::get('dashboard', 'Dashboard1Controller');
