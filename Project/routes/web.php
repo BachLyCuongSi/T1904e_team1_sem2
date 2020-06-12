@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'FrontendController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/vegetables.html', 'FrontendController@vegetables');
+
+Route::get('/shop.html/{id?}', 'FrontendController@shop')->name('index.shop');
+Route::get('/vegetables.html', 'FrontendController@vegetables');
 Route::get('/shop.html', 'FrontendController@shop');
 Route::get('/fruits.html', 'FrontendController@fruits');
 Route::get('/juice.html', 'FrontendController@juice');
@@ -25,7 +28,11 @@ Route::get('/cart.html', 'FrontendController@cart');
 Route::get('/product-single.html', 'FrontendController@single');
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about');
+Route::post('subscribe', 'FrontendController@subscribe');
+Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact');
+
+Route::get('/category/{id}', 'FrontendController@cate')->name('category.id');
 
 //
 // Route::get('/shop', 'ShopController')->name('shop');

@@ -17,9 +17,11 @@ class CreateCustomersTable extends Migration
             $table->bigIncrements('cus_id');
             $table->string('cus_name');
             $table->string('cus_email');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->string('cus_phone');
             $table->string('cus_addres');
-
+            $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
         });
