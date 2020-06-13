@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\category;
 use App\comment;
 use App\product;
 // use App\Category;
 // use App\Product;
+use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,10 +26,12 @@ class FrontendController extends Controller
 
   public function shop($pr_id=null) {
 
-      $lsProduct= Product::paginate(4);
-      $allProduct=Product::all();
+      $lsProduct= Product::where('deleted_at', null)->paginate(4);
+      $allProduct=Product::where('deleted_at',null)->get();
+      $lstCategory=category::where('deleted_at',null)->get();
 
-    return view('shop')->with(['lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
+    return view('shop')->with(['lsProduct'=>$lsProduct , 'allProduct'=>$allProduct,'lstCategory'=>$lstCategory]);
+
   }
 
   public function vegetables($pr_id=null){
@@ -65,14 +67,15 @@ class FrontendController extends Controller
     return view('wishlist');
   }
 
-  public function cart() {
-    return view('cart');
-  }
 
-  public function single() {
-    return view('product-single');
-  }
+  public function single($pr_id=null) {
+    $SProduct =Product::where('pr_id',$pr_id)->find($pr_id);
 
+    $lsProduct= Product::paginate(4);
+    $allProduct=Product::all();
+    return
+    view('product-single')->with(['SProduct'=>$SProduct,'lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
+    }
     public function about() {
       return view('about');
     }
@@ -81,14 +84,53 @@ class FrontendController extends Controller
       return view('contact');
     }
 
+    //Manh load chi tiet san pham
+
+    public function loadDeatilProduct(Request $request){
+
+      try{
+        $data = product::where('pr_id',$request->id)->first();
+        return response()->json(['status'=>1,'data'=>$data]);
+      }catch(Exception $ex){
+        $ex->getMessage();
+        return response()->json(['status'=>0,'data'=>null]);
+      }
+    }
+
     public function cate($id){
         //lấy tất cả sản phẩm theo từng category
         $lsProduct = DB::table('products')->where('cat_id','=',$id)->get();
         return view('wishlist',compact('lsProduct'));
     }
 
-//     public function loadWishlist(Request $request){
-//         $dataCat = DB::table('products')->where('cat_id',) ->join('categories', 'products.cat_id', '=', 'categories.cat_id')->paginate(4);
-// //     // return view('shop',compact('dataCat'));
-//     }
+
+
+//Phan gio hang
+
+    public function cart() {
+      return view('cart');
+    }
+
+    public function getAddCart($id){
+      $lsproduct = Product::find($id);
+      Cart::add(['id' => $id, 'name' => $lsproduct->pr_name,
+      'qty' => 1, 'price' => $lsproduct->pr_price,
+      'options' => ['img' => $lsproduct->pr_image]]);
+      return back();
+    }
+
+    public function getDeleteCart($id){
+      dd($id);
+      // Cart::remove();
+      // return view('cart');
+    }
+
+    //Manh-> load product of a category
+
+    public function loadProducOfCate(Request $request){
+      $lsProduct = product::where('deleted_at', null)->where('cat_id',$request->id)->paginate(4);
+      return view('lstProduct',compact('lsProduct'));
+
+    }
+
 }

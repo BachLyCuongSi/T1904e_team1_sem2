@@ -23,7 +23,7 @@
           <li><a href="{{asset('/shop.html')}}" >All</a></li>
           <li><a href="{{asset('/vegetables.html')}}">Vegetables</a></li>
           <li><a href="{{asset('/fruits.html')}}">Fruits</a></li>
-          <li><a href="{{asset('/juice.html')}}" class="active">Juice</a></li>
+          <li><a href="{{asset('/juice.html')}}">Juice</a></li>
           <li><a href="{{asset('/dried.html')}}">Dried</a></li>
         </ul>
       </div>

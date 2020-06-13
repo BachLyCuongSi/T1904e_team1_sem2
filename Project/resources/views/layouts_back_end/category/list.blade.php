@@ -19,11 +19,11 @@
   </div>
 
   <div class="col-sm-4 col-md-4 col-lg-4 col-xl-54">
-    <input type="text" id="fromDateItem" class="form-control relative-icon-calendar date" placeholder="Từ ngày" />
+    <input type="text" id="txt-fromDate" class="form-control relative-icon-calendar date" placeholder="Từ ngày" />
     <i class="fa fa-calendar absolute-icon-calendar"></i>
   </div>
   <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
-    <input type="text" id="toDateItem" class="form-control relative-icon-calendar date" placeholder="Đến ngày" />
+    <input type="text" id="txt-toDtate" class="form-control relative-icon-calendar date" placeholder="Đến ngày" />
     <i class="fa fa-calendar absolute-icon-calendar"></i>
   </div>
 
@@ -42,22 +42,26 @@
         <tr>
           <th style="text-align:center">STT</th>
           <th style="text-align:center">Tên danh mục</th>
-
+          <th style="text-align:center">Ảnh danh mục</th>
+          <th style="text-align:center">Ngày tạo</th>
           <th style="text-align:center">Chức năng</th>
         </tr>
       </thead>
       <tbody>
         @foreach($lsCategory as $category)
         <tr>
-          <td>{{$category->cat_id}}</td>
+          <td>{{ $loop->iteration }}</td>
           <td class="cat_name">{{$category->cat_name}}</td>
 
-
+          <td class="imgUrl">
+            <div class="col-md-3"><img src="{{$category->imgUrl}}" style="height:100px;" /></div>
+          </td>
+          <td>{{date('d-m-Y',strtotime($category->created_at))}}</td>
           <td style="text-align:center">
             <button id="{{$category->cat_id}}" type="button" class="btn btn-success" onclick="loadCatDetail($(this));" data-toggle="modal" data-target="#myModal" title="Sửa Danh Mục">
               <i class="fa fa-pencil"></i>
             </button>
-            <button type="button" class="btn btn-danger" title="Xóa Danh Mục" onclick="delCat({{$category->cat_id}})">
+            <button type="button" class="btn btn-danger" title="Xóa Danh Mục" onclick="delCat()">
               <i class="fa fa-trash-o"></i>
             </button>
           </td>
@@ -65,9 +69,12 @@
         @endforeach
       </tbody>
     </table>
+    <div class="row">
+      {{$lsCategory->links()}}
+    </div>
   </div>
 </div>
-{{$lsCategory->links()}}
+
 
 
 <!-- thêm-->
@@ -89,6 +96,25 @@
             <input type="hidden" id="" />
           </div>
         </div>
+        <div class="row" style="margin-top:10px;">
+          <div class="col-md-5">
+            <label class="text-dark">Ảnh danh mục:</label>
+          </div>
+          <div class="col-md-7">
+            <div class="position-relative form-group">
+              <div class="input-group">
+                <input type="file" id="cat_image" name="url_image" value="{{ old('url_image') }}">
+              </div>
+              @if($errors->first('url_image'))
+              <span class="text-danger">{{$errors->first('url_image')}}</span>
+              @endif
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <img src="" id="category-img-tag" width="200px" />
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" onclick="createCategory()"><i class="fa fa-plus mr-1"></i>Thêm</button>
@@ -97,6 +123,7 @@
   </div>
 </div>
 
+@section('modal')
 <!-- sửa-->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -124,13 +151,14 @@
   </div>
 </div>
 
+@endsection
 
 <script type="text/javascript">
   function loadCatDetail(data) {
     var thiss = data.closest('tr');
     var id = data.attr('id');
     var name = thiss.children('.cat_name').text();
-    
+
     $('#txtNameupdate').val(name);
     $('#valIdCat').val(id);
   }
@@ -180,84 +208,8 @@
 
   //thêm
   function createCategory() {
-        var name = $.trim($('#txtNamecreate').val());
-        var token = $('meta[name="csrf-token"]').attr('content');
-        if (name.length == 0 ) {
-            swal({
-                title: 'Please input full data',
-                text: '',
-                icon: 'warning'
-            })
-            return;
-        }
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: "cate_manage/store",
-            data: {
-                name
-            },
-            type: 'put',
-            success: function(res) {
-                swal({
-                    title: res.message,
-                    text: "",
-                    icon: "success"
-                }).then((success) => {
-                    if (success) {
-                        location.reload();
-                    }
-                })
-            }
-        })
-    }
-        
-
-        //sửa
-    function updateCategory() {
-      var name = $.trim($('#txtNameupdate').val());
-      var token = $('meta[name="csrf-token"]').attr('content');
-    swal({
-      title: "Bạn chắc chắn muốn sửa chứ?",
-      text: "",
-      icon: "warning",
-      buttons: ['Cancel', 'OK']
-    }).then((sure) => {
-      if (sure) {
-        $.ajax({
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          url: "cate_manage/update",
-          data: {
-            name
-          },
-          type: "PATCH",
-          success: function(res) {
-            if (res.status == 1) {
-              swal({
-                title: res.message,
-                text: "",
-                icon: "success"
-              }).then((success) => {
-                if (success) {
-                  location.reload();
-                }
-              })
-            } else {
-              swal({
-                title: res.message,
-                text: "",
-                icon: "error",
-              })
-            }
-          }
-        })
     var name = $.trim($('#txtNamecreate').val());
-
     var token = $('meta[name="csrf-token"]').attr('content');
-
     if (name.length == 0) {
       swal({
         title: 'Please input full data',
@@ -266,7 +218,6 @@
       })
       return;
     }
-
     $.ajax({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -275,7 +226,7 @@
       data: {
         name
       },
-      type: 'POST',
+      type: 'put',
       success: function(res) {
         swal({
           title: res.message,
@@ -289,5 +240,57 @@
       }
     })
   }
+
+  //Tìm kiếm thông tin danh mục
+
+  function searchCate() {
+    var name = $.trim($('#cat-name').val());
+    var toDate = $.trim($('#txt-toDtate').val());
+    var fromDate = $.trim($('#txt-fromDate').val());
+
+    $('#modalLoad').modal('show');
+
+    $.ajax({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: "{{route('comment_manage.search')}}",
+      type: "GET",
+      data: {
+        name,
+        fromDate,
+        toDate
+      },
+      success: function(res) {
+        $('#modalLoad').modal('hide');
+        $('#TableCategory').html(res);
+      }
+    })
+  }
+
+  $('#category-img-tag').hide();
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+
+
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#category-img-tag').show();
+        $('#category-img-tag').attr('src', e.target.result);
+
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+
+  }
+
+  $("#cat_image").change(function() {
+
+    readURL(this);
+  });
 </script>
+
 @endsection
