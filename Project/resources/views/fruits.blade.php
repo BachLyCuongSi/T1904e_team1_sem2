@@ -20,11 +20,11 @@
     <div class="row justify-content-center">
       <div class="col-md-10 mb-5 text-center">
         <ul class="product-category">
-          <li><a href="{{asset('/shop.html')}}" >All</a></li>
-          <li><a href="{{asset('/vegetables.html')}}">Vegetables</a></li>
-          <li><a href="{{asset('/fruits.html')}}" class="active">Fruits</a></li>
-          <li><a href="{{asset('/juice.html')}}">Juice</a></li>
-          <li><a href="{{asset('/dried.html')}}">Dried</a></li>
+          <li><a href="javascript:void(0);" class="active">All</a></li>
+          @foreach($lstCategory as $cat)
+          <li><a href="javascript:void(0);" onclick="loadListProduct({{$cat->cat_id}})" class="active">{{$Product->$cat->cat_name}}</a></li>
+          @endforeach
+
         </ul>
       </div>
     </div>

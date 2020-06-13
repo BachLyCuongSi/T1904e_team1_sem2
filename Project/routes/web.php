@@ -26,6 +26,7 @@ Route::get('/product-single.html', 'FrontendController@single');
 Route::post('subscribe','FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about');
 Route::get('/contact.html', 'FrontendController@contact');
+Route::get('/loadDeatilProduct','FrontendController@loadDeatilProduct')->name('product.detail');
 
 //
 // Route::get('/shop', 'ShopController')->name('shop');

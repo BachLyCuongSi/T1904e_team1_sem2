@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Category;
+use App\category;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -13,10 +13,11 @@ class FrontendController extends Controller
 
   public function shop($pr_id=null) {
     
-      $lsProduct= Product::paginate(4);
-      $allProduct=Product::all();
+      $lsProduct= Product::where('deleted_at', null)->paginate(4);
+      $allProduct=Product::where('deleted_at',null)->get();
+      $lstCategory=category::where('deleted_at',null)->get();
     
-    return view('shop')->with(['lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
+    return view('shop')->with(['lsProduct'=>$lsProduct , 'allProduct'=>$allProduct,'lstCategory'=>$lstCategory]);
   }
 
   public function vegetables($pr_id=null){
@@ -55,8 +56,12 @@ class FrontendController extends Controller
     return view('cart');
   }
 
-  public function single() {
-    return view('product-single');
+  public function single($pr_id=null) {
+    $SProduct =Product::where('pr_id',$pr_id)->find($pr_id);
+    
+    $lsProduct= Product::paginate(4);
+    $allProduct=Product::all();
+    return view('product-single')->with(['SProduct'=>$SProduct,'lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
     }
 
     public function about() {
@@ -65,5 +70,18 @@ class FrontendController extends Controller
 
     public function contact() {
       return view('contact');
+    }
+
+    //Manh load chi tiet san pham
+
+    public function loadDeatilProduct(Request $request){
+
+      try{
+        $data = product::where('pr_id',$request->id)->first();
+        return response()->json(['status'=>1,'data'=>$data]);
+      }catch(Exception $ex){
+        $ex->getMessage();
+        return response()->json(['status'=>0,'data'=>null]);
+      }
     }
 }
