@@ -143,6 +143,7 @@ class FrontendController extends Controller
     // return view('cart');
   }
 
+}
   //Manh-> load product of a category
 
   public function loadProducOfCate(Request $request)
