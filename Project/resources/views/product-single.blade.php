@@ -16,7 +16,7 @@
 <section class="ftco-section">
   <div class="container">
     <div class="row">
-      @foreach($SProduct as $Product)
+      
       <div class="col-lg-6 mb-5 ftco-animate">
         <a href="" class="image-popup"><img src="" id="img" class="img-fluid" alt="Colorlib Template"></a>
       </div>
@@ -75,9 +75,9 @@
             <p style="color: #000;"></p>
           </div>
         </div>
-        <p><a href="add/{{$Product->pr_id}}" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+        <p><a href="#" class="btn btn-black py-3 px-5">Add to Cart</a></p>
       </div>
-      @endforeach
+      
     </div>
   </div>
 </section>
@@ -137,7 +137,8 @@ function loadProductDeatil(id){
 $.ajax({
   headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },url:"{{route('product.detail')}}",
+          },
+          url:"{{route('product.detail')}}",
             type:"GET",
             data:{id},
             success:function(res) {

@@ -32,10 +32,6 @@ class FrontendController extends Controller
     
     return view('shop')->with(['lsProduct'=>$lsProduct , 'allProduct'=>$allProduct,'lstCategory'=>$lstCategory]);
 
-      $lsProduct= Product::paginate(4);
-      $allProduct=Product::all();
-
-    return view('shop')->with(['lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
   }
 
   public function vegetables($pr_id=null){
@@ -76,7 +72,8 @@ class FrontendController extends Controller
     
     $lsProduct= Product::paginate(4);
     $allProduct=Product::all();
-    return view('product-single')->with(['SProduct'=>$SProduct,'lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
+    return 
+    view('product-single')->with(['SProduct'=>$SProduct,'lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
     }
     public function about() {
       return view('about');
@@ -98,6 +95,7 @@ class FrontendController extends Controller
         return response()->json(['status'=>0,'data'=>null]);
       }
     }
+
     public function cate($id){
         //lấy tất cả sản phẩm theo từng category
         $lsProduct = DB::table('products')->where('cat_id','=',$id)->get();
@@ -123,6 +121,14 @@ class FrontendController extends Controller
       dd($id);
       // Cart::remove();
       // return view('cart');
+    }
+
+    //Manh-> load product of a category
+
+    public function loadProducOfCate(Request $request){
+      $lsProduct = product::where('deleted_at', null)->where('cat_id',$request->id)->paginate(4);
+      return view('lstProduct',compact('lsProduct'));
+
     }
 
 }

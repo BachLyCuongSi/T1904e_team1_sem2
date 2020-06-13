@@ -32,6 +32,7 @@ Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact');
 Route::get('/loadDeatilProduct','FrontendController@loadDeatilProduct')->name('product.detail');
+Route::get('/loadProduct','FrontendController@loadProducOfCate')->name('lstProductOfCate');
 
 Route::get('/category/{id}', 'FrontendController@cate')->name('category.id');
 
