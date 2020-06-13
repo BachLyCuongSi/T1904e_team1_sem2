@@ -35,6 +35,7 @@ Route::get('/contact.html', 'FrontendController@contact');
 Route::get('/category/{id}', 'FrontendController@cate')->name('category.id');
 
 Route::get('add/{id}','FrontendController@getAddCart');
+Route::get('delete/{id}','FrontendController@getDeleteCart');
 
 
 //

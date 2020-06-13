@@ -104,4 +104,10 @@ class FrontendController extends Controller
       return back();
     }
 
+    public function getDeleteCart($id){
+      dd($id);
+      // Cart::remove();
+      // return view('cart');
+    }
+
 }

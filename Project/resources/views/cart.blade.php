@@ -32,9 +32,9 @@
             </thead>
             <tbody>
               <tr class="text-center">
-                <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                <td class="product-remove"><a href="{{asset('/delete'.$item->rowId)}}"><span class="ion-ios-close"></span></a></td>
 
-                <td class="image-prod"><div class="img" style="background-image:url('{{asset($item->pr_image)}}')"></div></td>
+                <td class="image-prod"><div class="img" style="background-image:url('{{$item->options->img}}')"></div></td>
 
                 <td class="product-name">
                   <h3>{{$item->name}}</h3>
@@ -60,7 +60,7 @@
       @endforeach
     </div>
     <div class="row justify-content-end">
-      <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+      <!-- <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
         <div class="cart-total mb-3">
           <h3>Coupon Code</h3>
           <p>Enter your coupon code if you have one</p>
@@ -93,8 +93,8 @@
           </form>
         </div>
         <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
-      </div>
-      <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+      </div> -->
+      <div class="col-lg-4 mt-5 cart-wrap ftco-animatet">
         <div class="cart-total mb-3">
           <h3>Cart Totals</h3>
           <p class="d-flex">
