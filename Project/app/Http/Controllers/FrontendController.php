@@ -7,6 +7,7 @@ use App\comment;
 use App\product;
 // use App\Category;
 // use App\Product;
+use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -64,12 +65,14 @@ class FrontendController extends Controller
     return view('wishlist');
   }
 
-  public function cart() {
-    return view('cart');
-  }
 
-  public function single() {
-    return view('product-single');
+
+  public function single($pr_id=null) {
+  $SProduct =Product::where('pr_id',$pr_id)->find($pr_id);
+  $SProduct =Product::paginate(1);
+  $lsProduct= Product::paginate(4);
+  $allProduct=Product::all();
+  return view('product-single')->with(['SProduct'=>$SProduct,'lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
   }
 
     public function about() {
@@ -85,4 +88,20 @@ class FrontendController extends Controller
         $lsProduct = DB::table('products')->where('cat_id','=',$id)->get();
         return view('wishlist',compact('lsProduct'));
     }
+
+
+//Phan gio hang
+
+    public function cart() {
+      return view('cart');
+    }
+
+    public function getAddCart($id){
+      $lsproduct = Product::find($id);
+      Cart::add(['id' => $id, 'name' => $lsproduct->pr_name,
+      'qty' => 1, 'price' => $lsproduct->pr_price,
+      'options' => ['img' => $lsproduct->pr_image]]);
+      return back();
+    }
+
 }
