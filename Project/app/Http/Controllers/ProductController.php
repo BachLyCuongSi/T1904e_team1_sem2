@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use App\product;
-
 class ProductController extends Controller
 {
     /**
@@ -17,8 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         $lstCategory = DB::table('categories')->where('deleted_at', null)->get();
-        $lstProduct = DB::table('products')->where('deleted_at', null)->paginate(10);
-
+        $lstProduct = DB::table('products as p')->leftjoin('categories as c','p.cat_id','=','c.cat_id')->where('p.deleted_at', null)->paginate(10);
         return view('layouts_back_end.product.list', compact('lstCategory', 'lstProduct'));
     }
 
@@ -40,24 +40,47 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+       
+        try { 
             $it = new product();
             $it->cat_id = $request->category;
             $it->pr_name = $request->name;
-            $it->pr_image = $request->imgUrl;
             $it->pr_price = $request->price;
             $it->pr_description = $request->description;
             $it->pr_quantity = $request->amount;
             $it->pr_title = $request->title;
-            $it->created_at = Carbon::now();
+
+            // $cover = $request->image;
+            
+            // $filename = str_replace(' ', '-', $cover);
+            
+            // $filename = uniqid() . '.' . $filename;
+           
+            // $path = $filename->store('images', $filename);
+            
+            // $url = Storage::disk('public')->put($path,  File::get($cover));
+            // $it->pr_image = 'uploads/'.$path;
+            
+            $it->fill($request->all());
             $it->save();
             return response()->json(['status' => 1, 'message' => "Thêm sản phẩm mới thành công"]);
         } catch (\Exception $e) {
-            $e->getMessage();
+            dd($e);
             return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
         }
     }
-
+    public function saveedit(Request $request)
+    {
+        try { 
+            $pr = DB::table('products')->where('pr_id', $request->id)
+            ->update(['pr_name' => $request->name,'pr_price'=>$request->price,
+            'pr_description'=>$request->description,'pr_quantity'=> $request->amount, 'pr_title'=>$request->title,'cat_id'=>$request->category]);
+            return response()->json(['status' => 1, 'message' => "Sửa sản phẩm thành công"]);
+        } catch (\Exception $e) {
+            dd($e);
+            return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
+        }
+    }
     /**
      * Display the specified resource.
      *
@@ -75,9 +98,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
     }
 
     /**
@@ -98,8 +120,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $pr = DB::table('products')->where('pr_id', $request->id)
+            ->update(['deleted_at' => Carbon::now()]);
+            
+            return response()->json(['status' => 1, 'message' => "Xóa sản phẩm thành công"]);
+        } catch (\Exception $e) {
+            dd($e);
+            return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
+        }
     }
 }
