@@ -31,8 +31,13 @@ Route::get('/about.html', 'FrontendController@about');
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact');
+Route::get('/loadDeatilProduct','FrontendController@loadDeatilProduct')->name('product.detail');
 
 Route::get('/category/{id}', 'FrontendController@cate')->name('category.id');
+
+Route::get('add/{id}','FrontendController@getAddCart');
+Route::get('delete/{id}','FrontendController@getDeleteCart');
+
 
 //
 // Route::get('/shop', 'ShopController')->name('shop');

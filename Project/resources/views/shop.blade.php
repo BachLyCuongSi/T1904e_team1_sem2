@@ -21,14 +21,12 @@
       <div class="col-md-10 mb-5 text-center">
         <ul class="product-category">
           <li><a href="{{asset('/shop.html')}}" class="active">All</a></li>
-          <li><a href="{{asset('/vegetables.html')}}" >Vegetables</a></li>
-          <li><a href="{{asset('/fruits.html')}}" >Fruits</a></li>
-          <li><a href="{{asset('/juice.html')}}" >Juice</a></li>
-          <li><a href="{{asset('/dried.html')}}" >Dried</a></li>
-        </ul>
+        
       </div>
     </div>
     
+    <div class="row" id="lst-Product">
+
     <div class="row">
     @foreach($lsProduct as $Product)
       <div class="col-md-6 col-lg-3 ftco-animate">
@@ -48,7 +46,7 @@
                 <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                   <span><i class="ion-ios-menu"></i></span>
                 </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                <a href="add/{{$Product->pr_id}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
                   <span><i class="ion-ios-cart"></i></span>
                 </a>
                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
@@ -60,9 +58,10 @@
         </div>
       </div>
        @endforeach
+
        {{$lsProduct->links()}}
 
-    
+
 </section>
 
 

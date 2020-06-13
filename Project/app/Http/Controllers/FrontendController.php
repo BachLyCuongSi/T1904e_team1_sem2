@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\category;
 use App\comment;
 use App\product;
 // use App\Category;
 // use App\Product;
+use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,6 +25,12 @@ class FrontendController extends Controller
   }
 
   public function shop($pr_id=null) {
+    
+      $lsProduct= Product::where('deleted_at', null)->paginate(4);
+      $allProduct=Product::where('deleted_at',null)->get();
+      $lstCategory=category::where('deleted_at',null)->get();
+    
+    return view('shop')->with(['lsProduct'=>$lsProduct , 'allProduct'=>$allProduct,'lstCategory'=>$lstCategory]);
 
       $lsProduct= Product::paginate(4);
       $allProduct=Product::all();
@@ -64,14 +70,14 @@ class FrontendController extends Controller
     return view('wishlist');
   }
 
-  public function cart() {
-    return view('cart');
-  }
 
-  public function single() {
-    return view('product-single');
-  }
-
+  public function single($pr_id=null) {
+    $SProduct =Product::where('pr_id',$pr_id)->find($pr_id);
+    
+    $lsProduct= Product::paginate(4);
+    $allProduct=Product::all();
+    return view('product-single')->with(['SProduct'=>$SProduct,'lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
+    }
     public function about() {
       return view('about');
     }
@@ -80,9 +86,43 @@ class FrontendController extends Controller
       return view('contact');
     }
 
+    //Manh load chi tiet san pham
+
+    public function loadDeatilProduct(Request $request){
+
+      try{
+        $data = product::where('pr_id',$request->id)->first();
+        return response()->json(['status'=>1,'data'=>$data]);
+      }catch(Exception $ex){
+        $ex->getMessage();
+        return response()->json(['status'=>0,'data'=>null]);
+      }
+    }
     public function cate($id){
         //lấy tất cả sản phẩm theo từng category
         $lsProduct = DB::table('products')->where('cat_id','=',$id)->get();
         return view('wishlist',compact('lsProduct'));
     }
+
+
+//Phan gio hang
+
+    public function cart() {
+      return view('cart');
+    }
+
+    public function getAddCart($id){
+      $lsproduct = Product::find($id);
+      Cart::add(['id' => $id, 'name' => $lsproduct->pr_name,
+      'qty' => 1, 'price' => $lsproduct->pr_price,
+      'options' => ['img' => $lsproduct->pr_image]]);
+      return back();
+    }
+
+    public function getDeleteCart($id){
+      dd($id);
+      // Cart::remove();
+      // return view('cart');
+    }
+
 }

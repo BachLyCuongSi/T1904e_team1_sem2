@@ -54,7 +54,7 @@
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="{{ acset('/{{ $product->pr_name }}') }}">{{ $product->pr_name }}</a></h3>
+                        <h3><a href="#">{{ $product->pr_name }}</a></h3>
                         <div class="d-flex">
                         <div class="pricing">
                             <p class="price"><span class="mr-2 price-dc">${{ $product->pr_price }}</span><span class="price-sale">${{ ($product->pr_price)-($product->pr_price)*($product->discount)/100 }}</span> </p>
