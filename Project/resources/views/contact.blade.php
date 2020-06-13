@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
- 
+
 @section ('content')
 
 
@@ -7,7 +7,7 @@
   <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-              <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact us</span></p>
+              <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Contact us</span></p>
               <h1 class="mb-0 bread">Contact us</h1>
           </div>
       </div>
@@ -62,13 +62,13 @@
           </div>
 
           <div class="col-md-6 d-flex">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0968141835706!2d105.78009371563375!3d21.02881188599833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313455f9bdf0e1c7%3A0x26caee8e7662dd9b!2zRlBUIEFwdGVjaCBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1592062747246!5m2!1svi!2s" 
-              width="600" 
-              height="600" 
-              frameborder="0" 
-              style="border:0;" 
-              allowfullscreen="" 
-              aria-hidden="false" 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0968141835706!2d105.78009371563375!3d21.02881188599833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313455f9bdf0e1c7%3A0x26caee8e7662dd9b!2zRlBUIEFwdGVjaCBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1592062747246!5m2!1svi!2s"
+              width="600"
+              height="600"
+              frameborder="0"
+              style="border:0;"
+              allowfullscreen=""
+              aria-hidden="false"
               tabindex="0">
             </iframe>
           </div>

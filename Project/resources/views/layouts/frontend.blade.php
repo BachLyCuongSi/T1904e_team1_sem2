@@ -63,7 +63,7 @@
 	          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="{{asset('/shop.html')}}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                    <a class="dropdown-item" href="{{asset('/shop.html')}}">Shop</a>
+                    <a class="dropdown-item" href="{{route('shop')}}">Shop</a>
                     <a class="dropdown-item" href="{{asset('/wishlist.html')}}">Wishlist</a>
                     <a class="dropdown-item" href="{{asset('/product-single.html')}}">Single Product</a>
                     <a class="dropdown-item" href="{{asset('/checkout.html')}}">Checkout</a>
@@ -123,7 +123,7 @@
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="https://www.facebook.com/RauGiongHuuCo/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
@@ -135,7 +135,7 @@
                 <li><a href="{{ route('index.shop') }}" class="py-2 d-block">Shop</a></li>
                 <li><a href="{{ route('about') }}" class="py-2 d-block">About</a></li>
                 {{-- <li><a href="#" class="py-2 d-block">Journal</a></li> --}}
-                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="{{ route('contactUs') }}" class="py-2 d-block">Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -173,9 +173,9 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</p>
+			  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+			  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			</p>
           </div>
         </div>
       </div>
@@ -183,9 +183,9 @@
 
 
 
-  <!-- loader -->
+  {{-- <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
+ --}}
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
