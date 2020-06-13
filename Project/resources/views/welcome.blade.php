@@ -22,10 +22,11 @@
     <hr>
     <div class="row">
       @foreach ($lsCategory as $cat)
-        <div class="col-md-4">
-        <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/{{ $cat->cat_img }});">
+
+        <div class="col-md-6">
+        <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/{{ $cat->imgUrl}});">
           <div class="text px-3 py-1">
-            <h2 class="mb-0"><a href="">{{ $cat->cat_name }}</a></h2>
+            <h2 class="mb-0"><a href="{{route('loadPR.loadWhishList',$cat->cat_id)}}">{{ $cat->cat_name }}</a></h2>
           </div>
         </div>
       </div>
@@ -49,12 +50,12 @@
         @foreach ($lsProduct as $product)
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
+                    <a href="#" class="img-prod"><img class="img-fluid" src="images/{{ $product->pr_image }}" alt="Colorlib Template">
                         <span class="status">{{ $product->discount }}%</span>
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="{{ acset('/{{ $product->pr_name }}') }}">{{ $product->pr_name }}</a></h3>
+                        <h3><a href="">{{ $product->pr_name }}</a></h3>
                         <div class="d-flex">
                         <div class="pricing">
                             <p class="price"><span class="mr-2 price-dc">${{ $product->pr_price }}</span><span class="price-sale">${{ ($product->pr_price)-($product->pr_price)*($product->discount)/100 }}</span> </p>

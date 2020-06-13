@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +22,7 @@ Route::get('/shop.html/{id?}', 'FrontendController@shop')->name('index.shop');
 Route::get('/vegetables.html','FrontendController@vegetables');
 Route::get('/shop.html', 'FrontendController@shop');
 Route::get('/fruits.html', 'FrontendController@fruits');
-Route::get('/juice.html', 'FrontendController@juice');
+Route::get('/juice.html', 'FrontendController@juice')->name('juce');
 Route::get('/dried.html', 'FrontendController@dried');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/cart.html', 'FrontendController@cart');
@@ -28,8 +30,15 @@ Route::get('/product-single.html', 'FrontendController@single');
 Route::post('subscribe','FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact');
+Route::get('/loadPR/{id}', function($id){
+    $dataPrCat = DB::table('products')->where('cat_id', $id)->paginate(4);
+    return view('wishlist',compact('dataPrCat'));
+})->name('loadPR.loadWhishList');
 
-Route::get('/category/{id}', 'FrontendController@cate')->name('category.id');
+// Route::get('/category/{id}', function($id){
+//     $dataCat = DB::table('products')->join('categories','products.cat_id','=','categories.cat_id')->paginate(4);
+//     // return view('shop',compact('dataCat'));
+// })->name('category.id');
 
 //
 // Route::get('/shop', 'ShopController')->name('shop');

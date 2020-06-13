@@ -60,7 +60,8 @@ class FrontendController extends Controller
     return view('dried')->with(['lsProduct'=>$lsProduct]);
   }
 
-  public function wishlist() {
+  public function wishlist($id) {
+
     return view('wishlist');
   }
 
@@ -85,4 +86,9 @@ class FrontendController extends Controller
         $lsProduct = DB::table('products')->where('cat_id','=',$id)->get();
         return view('wishlist',compact('lsProduct'));
     }
+
+//     public function loadWishlist(Request $request){
+//         $dataCat = DB::table('products')->where('cat_id',) ->join('categories', 'products.cat_id', '=', 'categories.cat_id')->paginate(4);
+// //     // return view('shop',compact('dataCat'));
+//     }
 }
