@@ -16,7 +16,7 @@
 <section class="ftco-section ftco-cart">
   <div class="container">
     <div class="row">
-      @foreach (Cart::content() as $item)
+
       <div class="col-md-12 ftco-animate">
         <div class="cart-list">
           <table class="table">
@@ -30,6 +30,7 @@
 						    <th>Total</th>
               </tr>
             </thead>
+            @foreach (Cart::content() as $item)
             <tbody>
               <tr class="text-center">
                 <td class="product-remove"><a href="{{asset('/delete'.$item->rowId)}}"><span class="ion-ios-close"></span></a></td>
@@ -54,10 +55,11 @@
 
 
             </tbody>
+            @endforeach
           </table>
         </div>
       </div>
-      @endforeach
+
     </div>
     <div class="row justify-content-end">
       <!-- <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
