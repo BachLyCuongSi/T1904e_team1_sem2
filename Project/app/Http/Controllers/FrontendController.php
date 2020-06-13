@@ -78,6 +78,8 @@ class FrontendController extends Controller
     $allProduct=Product::all();
     return view('product-single')->with(['SProduct'=>$SProduct,'lsProduct'=>$lsProduct , 'allProduct'=>$allProduct]);
     }
+
+    
     public function about() {
       return view('about');
     }
