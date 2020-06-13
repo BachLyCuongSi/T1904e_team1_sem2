@@ -74,16 +74,22 @@ Route::resource('/cate_manage', 'CategoryController@index');
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::resource('cate_manage', 'CategoryController');
+
+        //Sản phẩm
         Route::resource('product_manage', 'ProductController');
+        Route::post('edit', 'ProductController@saveedit')->name('admin.pro.edit');
+        Route::post('delete', 'ProductController@destroy')->name('admin.pro.destroy');
+        Route::post('savepr', 'ProductController@store')->name('admin.pro.store');
+
+        //Kết thúc route sp
+
         Route::resource('user_manage', 'UserController');
         Route::resource('customer_manage', 'CustomerController');
         Route::resource('comment_manage', 'CommentController');
         Route::get('cate_manage.search', 'CategoryController@search')->name('comment_manage.search');
         Route::group(['prefix' => 'admin'], function () {
         });
-        //  Route::get('dashboard', 'Dashboard1Controller');
-        // Route::group(['prefix' => 'admin'], function () {
-        // });
+       
     });
 });
 

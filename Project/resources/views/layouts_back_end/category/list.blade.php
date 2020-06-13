@@ -96,6 +96,25 @@
             <input type="hidden" id="" />
           </div>
         </div>
+        <div class="row" style="margin-top:10px;">
+          <div class="col-md-5">
+            <label class="text-dark">Ảnh danh mục:</label>
+          </div>
+          <div class="col-md-7">
+            <div class="position-relative form-group">
+              <div class="input-group">
+                <input type="file" id="cat_image" name="url_image" value="{{ old('url_image') }}">
+              </div>
+              @if($errors->first('url_image'))
+              <span class="text-danger">{{$errors->first('url_image')}}</span>
+              @endif
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <img src="" id="category-img-tag" width="200px" />
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" onclick="createCategory()"><i class="fa fa-plus mr-1"></i>Thêm</button>
@@ -248,6 +267,30 @@
       }
     })
   }
+
+  $('#category-img-tag').hide();
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+
+
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#category-img-tag').show();
+        $('#category-img-tag').attr('src', e.target.result);
+
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+
+  }
+
+  $("#cat_image").change(function() {
+
+    readURL(this);
+  });
 </script>
 
 @endsection
