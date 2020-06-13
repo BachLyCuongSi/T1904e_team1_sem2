@@ -16,11 +16,13 @@
 <section class="ftco-section">
   <div class="container">
     <div class="row">
+      @foreach($SProduct as $Product)
       <div class="col-lg-6 mb-5 ftco-animate">
         <a href="" class="image-popup"><img src="" id="img" class="img-fluid" alt="Colorlib Template"></a>
       </div>
       <div class="col-lg-6 product-details pl-md-5 ftco-animate">
         <h3 id="name"></h3>
+
         <div class="rating d-flex">
           <p class="text-left mr-4">
             <a href="#" class="mr-2">5.0</a>
@@ -39,6 +41,7 @@
         </div>
         <p class="price"><span id="price"></span></p>
         <p id="title"></p>
+
         <div class="row mt-4">
           <div class="col-md-6">
             <div class="form-group d-flex">
@@ -72,8 +75,9 @@
             <p style="color: #000;"></p>
           </div>
         </div>
-        <p><a href="cart.html" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+        <p><a href="add/{{$Product->pr_id}}" class="btn btn-black py-3 px-5">Add to Cart</a></p>
       </div>
+      @endforeach
     </div>
   </div>
 </section>
