@@ -33,6 +33,8 @@ Route::get('/about.html', 'FrontendController@about');
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact');
+
+// an chưa sử lý, chỉ truyền được tham số
 Route::get('/loadPR/{id}', function($id){
     $dataPrCat = DB::table('products')->where('cat_id', $id)->paginate(4);
     return view('wishlist',compact('dataPrCat'));
@@ -40,11 +42,6 @@ Route::get('/loadPR/{id}', function($id){
 
 Route::get('/loadDeatilProduct','FrontendController@loadDeatilProduct')->name('product.detail');
 Route::get('/loadProduct','FrontendController@loadProducOfCate')->name('lstProductOfCate');
-
-// Route::get('/category/{id}', function($id){
-//     $dataCat = DB::table('products')->join('categories','products.cat_id','=','categories.cat_id')->paginate(4);
-//     // return view('shop',compact('dataCat'));
-// })->name('category.id');
 
 Route::get('add/{id}','FrontendController@getAddCart');
 Route::get('delete/{id}','FrontendController@getDeleteCart');

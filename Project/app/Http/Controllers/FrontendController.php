@@ -11,6 +11,8 @@ use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Controllers\Exception;
+
 class FrontendController extends Controller
 {
   public function welcome()
@@ -26,6 +28,7 @@ class FrontendController extends Controller
     return view('welcome')->with('lsCategory', $lsCategory)->with('lsProduct', $lsProduct)->with('lsComment', $lsComment);
   }
 
+// trang shop
   public function shop($pr_id=null) {
 
       $lsProduct= Product::where('deleted_at', null)->paginate(4);
@@ -37,6 +40,15 @@ class FrontendController extends Controller
 
     return view('shop')->with(['lsProduct' => $lsProduct, 'allProduct' => $allProduct, 'lstCategory' => $lstCategory]);
   }
+
+    public function shopAll()
+    {
+        $lsProduct = product::where('deleted_at', null)->get();
+        return view('shop', compact('lsProduct'));
+    }
+
+
+//   ket thuc trang shop
 
   public function vegetables($pr_id = null)
   {
@@ -125,6 +137,7 @@ class FrontendController extends Controller
     return view('cart');
   }
 
+//   lỗi nè
   public function getAddCart($id)
   {
     $lsproduct = Product::find($id);
@@ -151,4 +164,6 @@ class FrontendController extends Controller
     $lsProduct = product::where('deleted_at', null)->where('cat_id', $request->id)->paginate(4);
     return view('lstProduct', compact('lsProduct'));
   }
+
+
 }
