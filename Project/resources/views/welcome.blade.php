@@ -107,7 +107,7 @@
         <div class="col-md-6">
         <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/{{ $cat->imgUrl}});">
           <div class="text px-3 py-1">
-            <h2 class="mb-0"><a href="{{route('loadPR.loadWhishList',$cat->cat_id)}}">{{ $cat->cat_name }}</a></h2>
+            <h2 class="mb-0"><a href="{{route('shop.id',$cat->cat_id)}}">{{ $cat->cat_name }}</a></h2>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@
         @foreach ($lsProduct as $product)
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="images/{{ $product->pr_image }}" alt="Colorlib Template">
+                    <a href="{{ route('prdsingle.id',$product->pr_id)}}" class="img-prod"><img class="img-fluid" src="images/{{ $product->pr_image }}" alt="Colorlib Template">
                         <span class="status">{{ $product->discount }}%</span>
                         <div class="overlay"></div>
                     </a>
@@ -148,7 +148,7 @@
                             <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                             <span><i class="ion-ios-menu"></i></span>
                             </a>
-                            <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                            <a href="add/{{$Product->pr_id}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
                             <span><i class="ion-ios-cart"></i></span>
                             </a>
                             <a href="#" class="heart d-flex justify-content-center align-items-center ">

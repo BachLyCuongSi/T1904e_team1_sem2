@@ -6,14 +6,15 @@
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="{{ routE('home') }}">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
         <h1 class="mb-0 bread">Product Single</h1>
       </div>
     </div>
   </div>
 </div>
-
-<section class="ftco-section">
+{{-- chi tiet san pham neu co --}}
+@if (isset($productId))
+    <section class="ftco-section">
   <div class="container">
     <div class="row">
 
@@ -32,12 +33,12 @@
             <a href="#"><span class="ion-ios-star-outline"></span></a>
             <a href="#"><span class="ion-ios-star-outline"></span></a>
           </p>
-          <p class="text-left mr-4">
+          {{-- <p class="text-left mr-4">
             <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
           </p>
           <p class="text-left">
             <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
-          </p>
+          </p> --}}
         </div>
         <p class="price"><span id="price"></span></p>
         <p id="title"></p>
@@ -82,6 +83,18 @@
   </div>
 </section>
 
+@else
+    <div class="container">
+        <div class="row">
+            <h1>Bạn chưa chọn sản phẩm nào  </h1>
+        </div>
+
+    </div>
+@endif
+
+{{-- end  --}}
+
+{{-- cac san pham llien quan or noi bat --}}
 <section class="ftco-section">
   <div class="container">
     <div class="row justify-content-center mb-3 pb-3">
@@ -94,17 +107,18 @@
   </div>
   <div class="container">
     <div class="row">
-    @foreach($lsProduct as $Product)
+    @foreach($listproduct as $product)
       <div class="col-md-6 col-lg-3 ftco-animate">
         <div class="product">
-          <a href="javascript:void(0)" onclick="loadProductDeatil({{$Product->pr_id}})" class="img-prod"><img class="img-fluid" src="{{asset($Product->pr_image)}}" alt="Colorlib Template">
+            <a href="" class="img-prod">
+                <img class="img-fluid" src="images/{{ $product->pr_image }}" alt="Colorlib Template">
             <div class="overlay"></div>
           </a>
           <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#">{{$Product->pr_name}}</a></h3>
+            <h3><a href="#">{{$product->pr_name}}</a></h3>
             <div class="d-flex">
               <div class="pricing">
-                <p class="price"><span>{{$Product->pr_price}}</span></p>
+                <p class="price"><span>{{$product->pr_price}}</span></p>
               </div>
             </div>
             <div class="bottom-area d-flex px-3">
@@ -126,29 +140,9 @@
       @endforeach
 
     </div>
-    {{$lsProduct->links()}}
+    {{$listproduct->links()}}
   </div>
 </section>
+{{-- end --}}
 
-<script>
-//Load chi tiet san pham
-
-function loadProductDeatil(id){
-$.ajax({
-  headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          url:"{{route('product.detail')}}",
-            type:"GET",
-            data:{id},
-            success:function(res) {
-              $('#name').text(res.data.pr_name);
-              $('#title').text(res.data.pr_title);
-              $('#price').text(res.data.pr_price);
-              $('#img').attr('src',res.data.pr_image);
-            }
-
-})
-}
-</script>
 @endsection

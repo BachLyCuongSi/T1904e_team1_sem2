@@ -22,12 +22,10 @@
         <ul class="product-category">
           <li><a href="{{route('shop')}}">All</a></li>
           @foreach($lstCategory as $cat)
-          {{-- <li><a href="javascript:void(1);" onclick="loadlistProduct({{$cat->cat_id}});">{{$cat->cat_name}}</a></li> --}}
-          <li><a href="{{route('shop.id',$cat->cat_id) }}"> {{$cat->cat_name}}</a></li>
+          <li class=" "  ><a href="{{route('shop.id',$cat->cat_id) }}"> {{$cat->cat_name}}</a></li>
           @endforeach
       </div>
     </div>
-
 
 
     <div class="row">
@@ -59,7 +57,7 @@
                                 <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                 <span><i class="ion-ios-menu"></i></span>
                                 </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                <a href="add/{{$Product->pr_id}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                 <span><i class="ion-ios-cart"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">

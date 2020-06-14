@@ -35,19 +35,14 @@ Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/cart.html', 'FrontendController@cart');
 // chi tiet san pham
 
-Route::get('/product-single/{id}', 'FrontendController@single')->name('prd_single');
+Route::get('/productsingle{id}', 'FrontendController@singleId')->name('prdsingle.id');
+Route::get('/productsingle', 'FrontendController@single')->name('prdsingle');
 
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about');
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
-
-// an chưa sử lý, chỉ truyền được tham số
-Route::get('/loadPR/{id}', function($id){
-    $dataPrCat = DB::table('products')->where('cat_id', $id)->paginate(4);
-    return view('wishlist',compact('dataPrCat'));
-})->name('loadPR.loadWhishList');
 
 Route::get('/loadDeatilProduct','FrontendController@loadDeatilProduct')->name('product.detail');
 
@@ -56,15 +51,6 @@ Route::get('/loadProduct','FrontendController@loadProducOfCate')->name('lstProdu
 Route::get('add/{id}','FrontendController@getAddCart');
 Route::get('delete/{id}','FrontendController@getDeleteCart');
 
-
-//
-// Route::get('/shop', 'ShopController')->name('shop');
-// Route::get('/', 'IndexController@index');
-// Route::group('/', function(){
-//     Route::get('users/{id}', function ($id) {
-
-//     });
-// });
 
 Auth::routes();
 date_default_timezone_set(DateTimeZone::listIdentifiers(DateTimeZone::ASIA)[27]);

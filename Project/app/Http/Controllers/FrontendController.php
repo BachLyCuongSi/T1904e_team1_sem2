@@ -55,58 +55,18 @@ class FrontendController extends Controller
 //   ket thuc trang shop
 
 
-    public function vegetables($pr_id = null)
-    {
-        $lsProduct = Product::where('cat_id', '1')->paginate(4);
-
-
-        return view('vegetables')->with(['lsProduct' => $lsProduct]);
-    }
-
-    public function fruits($pr_id = null)
-    {
-        $lsProduct = Product::where('cat_id', '2')->paginate(4);
-
-
-        return view('fruits')->with(['lsProduct' => $lsProduct]);
-    }
-
-    public function juice($pr_id = null)
-    {
-        $lsProduct = Product::where('cat_id', '3')->paginate(4);
-
-
-        return view('vegetables')->with(['lsProduct' => $lsProduct]);
-    }
-
-    public function dried($pr_id = null)
-    {
-        $lsProduct = Product::where('cat_id', '4')->paginate(4);
-
-
-        return view('dried')->with(['lsProduct' => $lsProduct]);
-    }
-
-    public function wishlist($id) {
-
-        return view('wishlist');
-    }
-
 
 // chi tiet san pham an
-    public function single($id )
-    {
-    if($id!=0){
-        $lsProduct = product::where('deleted_at', null)->where('pr_id', $id)->get();
-        // $a =1;
-        // // $lsProduct->cat_id;
-        // $lspr = product::where('deleted_at', null)->where('cat_id',$a)->paginate(4);
-    }else{
-         $lsProduct = product::where('deleted_at', null)->find();
-
+    public function single(){
+        $listproduct = DB::table('products')->where('deleted_at',null)->where('discount','>',0)->orderBy('pr_id','desc')->paginate(4);
+        return view('product-single', compact('listproduct'));
     }
-    $lspr = product::where('deleted_at', null)->paginate(4);
-        return view('product-single')->with(['lsProduct' => $lsProduct, 'lspr' => $lspr]);
+
+    public function singleId($id){
+        $product = product::where('deleted_at',null)->where('pr_id',$id)->first();
+        $catid = $product->cat_id;
+        $listproduct = product::where('deleted_at',null)->where('cat_id',$catid)->paginate(4);
+        return view('product-single', compact('product', 'listproduct'));
     }
 // manh
 //   public function single()

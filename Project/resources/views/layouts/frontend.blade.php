@@ -65,7 +65,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                     <a class="dropdown-item" href="{{route('shop')}}">Shop</a>
                     <a class="dropdown-item" href="{{asset('/wishlist.html')}}">Wishlist</a>
-                    <a class="dropdown-item" href="{{asset('/product-single.html')}}">Single Product</a>
+                    <a class="dropdown-item" href="{{route('prdsingle')}}">Single Product</a>
                     <a class="dropdown-item" href="{{asset('/checkout.html')}}">Checkout</a>
                 </div>
             </li>
