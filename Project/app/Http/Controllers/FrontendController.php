@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Exception;
 
+
 class FrontendController extends Controller
 {
     public function welcome()
@@ -55,59 +56,24 @@ class FrontendController extends Controller
 //   ket thuc trang shop
 
 
-    public function vegetables($pr_id = null)
-    {
-        $lsProduct = Product::where('cat_id', '1')->paginate(4);
-
-
-        return view('vegetables')->with(['lsProduct' => $lsProduct]);
-    }
-
-    public function fruits($pr_id = null)
-    {
-        $lsProduct = Product::where('cat_id', '2')->paginate(4);
-
-
-        return view('fruits')->with(['lsProduct' => $lsProduct]);
-    }
-
-    public function juice($pr_id = null)
-    {
-        $lsProduct = Product::where('cat_id', '3')->paginate(4);
-
-
-        return view('vegetables')->with(['lsProduct' => $lsProduct]);
-    }
-
-    public function dried($pr_id = null)
-    {
-        $lsProduct = Product::where('cat_id', '4')->paginate(4);
-
-
-        return view('dried')->with(['lsProduct' => $lsProduct]);
-    }
-
-    public function wishlist($id) {
-
-        return view('wishlist');
-    }
-
 
 // chi tiet san pham an
-    public function single($id )
-    {
-    if($id!=0){
-        $lsProduct = product::where('deleted_at', null)->where('pr_id', $id)->get();
-        // $a =1;
-        // // $lsProduct->cat_id;
-        // $lspr = product::where('deleted_at', null)->where('cat_id',$a)->paginate(4);
-    }else{
-         $lsProduct = product::where('deleted_at', null)->find();
+    public function single(){
+        $listproduct = DB::table('products')->where('deleted_at',null)->where('discount','>',0)->orderBy('pr_id','desc')->paginate(4);
+        return view('product-single', compact('listproduct'));
+    }
 
+    public function singleId($id){
+        // $product = product::where('deleted_at',null)->where('pr_id',$id)->get();
+
+      //Lấy chi tiết một sản phẩm
+      $product = product::where('deleted_at',null)->where('pr_id',$id)->first();
+      //Lấy danh sach cac sản phẩm liên quan
+       $lstProduct = DB::table('products')->where('cat_id',$product->cat_id)->where('deleted_at', null)->paginate(4);
+         return view('product-single', compact('product', 'lstProduct'));
     }
-    $lspr = product::where('deleted_at', null)->paginate(4);
-        return view('product-single')->with(['lsProduct' => $lsProduct, 'lspr' => $lspr]);
-    }
+
+
 // manh
 //   public function single()
 //   {
@@ -160,7 +126,7 @@ class FrontendController extends Controller
     //   lỗi nè
     public function getAddCart($id)
     {
-        $lsproduct = Product::find($id);
+         $lsproduct = Product::find($id);
         Cart::add([
         'id' => $id, 'name' => $lsproduct->pr_name,
         'qty' => 1, 'price' => $lsproduct->pr_price,
