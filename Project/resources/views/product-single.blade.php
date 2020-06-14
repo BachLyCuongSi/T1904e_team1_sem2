@@ -6,19 +6,19 @@
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{ routE('home') }}">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
         <h1 class="mb-0 bread">Product Single</h1>
       </div>
     </div>
   </div>
 </div>
- 
+
 <section class="ftco-section">
   <div class="container">
     <div class="row">
-      
+
       <div class="col-lg-6 mb-5 ftco-animate">
-        <a href="" class="image-popup"><img src="" id="img" class="img-fluid" alt="Colorlib Template"></a>
+        <a href="" class="image-popup"><img src="" id="img" class="img-fluid" alt="Colorlib Template">aa</a>
       </div>
       <div class="col-lg-6 product-details pl-md-5 ftco-animate">
         <h3 id="name"></h3>
@@ -77,7 +77,7 @@
         </div>
         <p><a href="#" class="btn btn-black py-3 px-5">Add to Cart</a></p>
       </div>
-      
+
     </div>
   </div>
 </section>
@@ -124,7 +124,7 @@
         </div>
       </div>
       @endforeach
-       
+
     </div>
     {{$lsProduct->links()}}
   </div>

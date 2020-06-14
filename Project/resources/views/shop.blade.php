@@ -20,54 +20,69 @@
     <div class="row justify-content-center">
       <div class="col-md-10 mb-5 text-center">
         <ul class="product-category">
-          <li><a href="">All</a></li>
-          @foreach($lstCategory as $category)
-          <li><a href="javascript:void(0);" onclick="loadlistProduct({{$category->cat_id}});">{{$category->cat_name}}</a></li>
+          <li><a href="{{route('shop')}}">All</a></li>
+          @foreach($lstCategory as $cat)
+          {{-- <li><a href="javascript:void(1);" onclick="loadlistProduct({{$cat->cat_id}});">{{$cat->cat_name}}</a></li> --}}
+          <li><a href="{{route('shop.id',$cat->cat_id) }}"> {{$cat->cat_name}}</a></li>
           @endforeach
       </div>
     </div>
 
+
+
     <div class="row">
       <div class="container">
         <div class="row" id="lst-Product">
-          @foreach($lsProduct as $Product)
-          <div class="col-md-6 col-lg-3 ftco-animate">
-            <div class="product">
-              <a href="#" class="img-prod"><img class="img-fluid" src="{{asset($Product->pr_image)}}" alt="Colorlib Template">
-                <div class="overlay"></div>
-              </a>
-              <div class="text py-3 pb-4 px-3 text-center">
-                <h3><a href="">{{$Product->pr_name}}</a></h3>
-                <div class="d-flex">
-                  <div class="pricing">
-                    <p class="price"><span>{{$Product->pr_price}}</span></p>
-                  </div>
+            @foreach ($lsProduct as $product)
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="product">
+                        <a href="#" class="img-prod"><img class="img-fluid" src="images/{{ $product->pr_image }}" alt="Colorlib Template">
+                            @if (($product['discount']) !=0)
+                                <span class="status">{{ $product->discount }}%</span>
+                            @endif
+                            <div class="overlay"></div>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center">
+                            {{-- chua day link qua chi tiet --}}
+                            <h3><a href="#">{{ $product->pr_name }}</a></h3>
+                            <div class="d-flex">
+                            <div class="pricing">
+                                <p class="price"><span class="mr-2 @if (($product['discount']) !=0)  price-dc     @endif">${{ $product->pr_price }}</span>
+                                @if (($product['discount']) !=0)
+                                    <span class="price-sale">${{ ($product->pr_price)-($product->pr_price)*($product->discount)/100 }}</span> </p>
+                                @endif
+
+                            </div>
+                            </div>
+                            <div class="bottom-area d-flex px-3">
+                            <div class="m-auto d-flex">
+                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                <span><i class="ion-ios-menu"></i></span>
+                                </a>
+                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                <span><i class="ion-ios-cart"></i></span>
+                                </a>
+                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                <span><i class="ion-ios-heart"></i></span>
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bottom-area d-flex px-3">
-                  <div class="m-auto d-flex">
-                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                      <span><i class="ion-ios-menu"></i></span>
-                    </a>
-                    <a href="add/{{$Product->pr_id}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                      <span><i class="ion-ios-cart"></i></span>
-                    </a>
-                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                      <span><i class="ion-ios-heart"></i></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+            @endforeach
 
-            </div>
-
-          </div>
-          @endforeach
-
-          <div class="row">
-            {{$lsProduct->links()}}
-          </div>
         </div>
-      </div>
+         <hr>
+
+        <div class="row "  >
+            <div class="col-md-5"></div>
+            <div class="col-md-4 text-center">
+                {{$lsProduct->links()}}
+            </div>
+            <div class="col-md-3"></div>
+
+        </div>
     </div>
   </div>
 </section>
