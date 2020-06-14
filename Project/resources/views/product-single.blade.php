@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
         <h1 class="mb-0 bread">Product Single</h1>
       </div>
     </div>
@@ -18,13 +18,11 @@
     <section class="ftco-section">
         <div class="container">
         <div class="row">
-            @foreach ($product as $product)
-
                 <div class="col-lg-6 mb-5 ftco-animate">
-                    <a href="" class="image-popup"><img src="images/{{ $product->pr_image }}" id="img" class="img-fluid" alt="Colorlib Template">aa</a>
+                    <a href="" class="image-popup"><img src="images/{{$product->pr_image}}" id="img" class="img-fluid" alt="Colorlib Template">aa</a>
                 </div>
                 <div class="col-lg-6 product-details pl-md-5 ftco-animate">
-                    <h3 id="name">{{ $product->pr_name }}</h3>
+                    <h3 id="name">{{$product->pr_name}}</h3>
 
                     <div class="rating d-flex">
                     <p class="text-left mr-4">
@@ -80,7 +78,6 @@
                     </div>
                     <p><a href="#" class="btn btn-black py-3 px-5">Add to Cart</a></p>
                 </div>
-                @endforeach
             </div>
         </div>
     </section>
@@ -109,18 +106,18 @@
   </div>
   <div class="container">
     <div class="row">
-    @foreach($listproduct as $product)
+    @foreach($lstProduct as $pr)
       <div class="col-md-6 col-lg-3 ftco-animate">
         <div class="product">
             <a href="" class="img-prod">
-                <img class="img-fluid" src="images/{{ $product->pr_image }}" alt="Colorlib Template">
+                <img class="img-fluid" src="images/{{$pr->pr_image}}" alt="Colorlib Template">
             <div class="overlay"></div>
           </a>
           <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#">{{$product->pr_name}}</a></h3>
+            <h3><a href="#">{{$pr->pr_name}}</a></h3>
             <div class="d-flex">
               <div class="pricing">
-                <p class="price"><span>{{$product->pr_price}}</span></p>
+                <p class="price"><span>{{$pr->pr_price}}</span></p>
               </div>
             </div>
             <div class="bottom-area d-flex px-3">
@@ -142,9 +139,7 @@
       @endforeach
 
     </div>
-    {{$listproduct->links()}}
+<div class="row">{{$lstProduct->links()}}</div>
   </div>
 </section>
 {{-- end --}}
-
-@endsection

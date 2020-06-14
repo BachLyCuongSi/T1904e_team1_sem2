@@ -65,12 +65,15 @@ class FrontendController extends Controller
 
     public function singleId($id){
         // $product = product::where('deleted_at',null)->where('pr_id',$id)->get();
-        $product =DB::table('products')->where('deleted_at',null)->where('pr_id',$id)->get();
-         $catid = $product['cat_id'] ;
-        // $listproduct = product::where('deleted_at',null)->where('cat_id',$product['cat_id'] )->paginate(4);
-        $listproduct = DB::table('products')->where('deleted_at',null)->where('cat_id','=',$catid)->paginate(4);
-        return view('product-single', compact('product', 'listproduct'));
+
+      //Lấy chi tiết một sản phẩm
+      $product = product::where('deleted_at',null)->where('pr_id',$id)->first();
+      //Lấy danh sach cac sản phẩm liên quan
+       $lstProduct = DB::table('products')->where('cat_id',$product->cat_id)->where('deleted_at', null)->paginate(4);
+         return view('product-single', compact('product', 'lstProduct'));
     }
+
+
 // manh
 //   public function single()
 //   {
