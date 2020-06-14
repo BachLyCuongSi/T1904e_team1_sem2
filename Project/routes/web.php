@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +23,7 @@ Route::get('/shop.html/{id?}', 'FrontendController@shop')->name('index.shop');
 Route::get('/vegetables.html', 'FrontendController@vegetables');
 Route::get('/shop.html', 'FrontendController@shop');
 Route::get('/fruits.html', 'FrontendController@fruits');
-Route::get('/juice.html', 'FrontendController@juice');
+Route::get('/juice.html', 'FrontendController@juice')->name('juce');
 Route::get('/dried.html', 'FrontendController@dried');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/cart.html', 'FrontendController@cart');
@@ -31,10 +33,15 @@ Route::get('/about.html', 'FrontendController@about');
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact');
+
+// an chưa sử lý, chỉ truyền được tham số
+Route::get('/loadPR/{id}', function($id){
+    $dataPrCat = DB::table('products')->where('cat_id', $id)->paginate(4);
+    return view('wishlist',compact('dataPrCat'));
+})->name('loadPR.loadWhishList');
+
 Route::get('/loadDeatilProduct','FrontendController@loadDeatilProduct')->name('product.detail');
 Route::get('/loadProduct','FrontendController@loadProducOfCate')->name('lstProductOfCate');
-
-Route::get('/category/{id}', 'FrontendController@cate')->name('category.id');
 
 Route::get('add/{id}','FrontendController@getAddCart');
 Route::get('delete/{id}','FrontendController@getDeleteCart');
@@ -89,7 +96,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('cate_manage.search', 'CategoryController@search')->name('comment_manage.search');
         Route::group(['prefix' => 'admin'], function () {
         });
-       
+
     });
 });
 

@@ -61,19 +61,19 @@
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="{{asset('/')}}" class="nav-link">Home</a></li>
 	          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="{{asset('/shop.html')}}">Shop</a>
-              	<a class="dropdown-item" href="{{asset('/wishlist.html')}}">Wishlist</a>
-                <a class="dropdown-item" href="{{asset('/product-single.html')}}">Single Product</a>
-                <a class="dropdown-item" href="{{asset('/checkout.html')}}">Checkout</a>
-              </div>
+              <a class="nav-link dropdown-toggle" href="{{asset('/shop.html')}}" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <a class="dropdown-item" href="{{route('shop')}}">Shop</a>
+                    <a class="dropdown-item" href="{{asset('/wishlist.html')}}">Wishlist</a>
+                    <a class="dropdown-item" href="{{asset('/product-single.html')}}">Single Product</a>
+                    <a class="dropdown-item" href="{{asset('/checkout.html')}}">Checkout</a>
+                </div>
             </li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	          <li class="nav-item cta cta-colored"><a href="{{asset('/cart.html')}}" class="nav-link"><span class="icon-shopping_cart"></span>{{Cart::count()}}</a></li>
               <li class="nav-item cta cta-colored">
-                  <a href="{{asset('/')}}" class="nav-link"><span class="ion-log-in"></span>Login/</a> <a href="{{asset('/')}}" class="nav-link"><span class="ion-log-out"></span>Reseter</a>
+                  {{-- <a href="{{asset('/')}}" class="nav-link"><span class="ion-log-in"></span>Login/</a> <a href="{{asset('/')}}" class="nav-link"><span class="ion-log-out"></span>Reseter</a> --}}
                 </li>
 	        </ul>
 	      </div>
@@ -82,90 +82,7 @@
     <!-- END nav -->
 
 
-    <section id="home-section" class="hero">
-      <div class="home-slider owl-carousel">
-        <div class="slider-item" style="background-image: url(images/bg_1.jpg);">
-          <div class="overlay"></div>
-          <div class="container">
-            <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-              <div class="col-md-12 ftco-animate text-center">
-                <h1 class="mb-2">We serve Fresh Vegestables &amp; Fruits</h1>
-                <h2 class="subheading mb-4">We deliver organic vegetables &amp; fruits</h2>
-                <p><a href="#" class="btn btn-primary">View Details</a></p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="slider-item" style="background-image: url(images/bg_2.jpg);">
-          <div class="overlay"></div>
-          <div class="container">
-            <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-
-              <div class="col-sm-12 ftco-animate text-center">
-                <h1 class="mb-2">100% Fresh &amp; Organic Foods</h1>
-                <h2 class="subheading mb-4">We deliver organic vegetables &amp; fruits</h2>
-                <p><a href="#" class="btn btn-primary">View Details</a></p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row no-gutters ftco-services">
-          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services mb-md-0 mb-4">
-              <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
-                <span class="flaticon-shipped"></span>
-              </div>
-              <div class="media-body">
-                <h3 class="heading">Free Shipping</h3>
-                <span>On order over $100</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services mb-md-0 mb-4">
-              <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
-                <span class="flaticon-diet"></span>
-              </div>
-              <div class="media-body">
-                <h3 class="heading">Always Fresh</h3>
-                <span>Product well package</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services mb-md-0 mb-4">
-              <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
-                <span class="flaticon-award"></span>
-              </div>
-              <div class="media-body">
-                <h3 class="heading">Superior Quality</h3>
-                <span>Quality Products</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services mb-md-0 mb-4">
-              <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
-                <span class="flaticon-customer-service"></span>
-              </div>
-              <div class="media-body">
-                <h3 class="heading">Support</h3>
-                <span>24/7 Support</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     @yield('content')
 
@@ -206,7 +123,7 @@
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="https://www.facebook.com/RauGiongHuuCo/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
@@ -218,7 +135,7 @@
                 <li><a href="{{ route('index.shop') }}" class="py-2 d-block">Shop</a></li>
                 <li><a href="{{ route('about') }}" class="py-2 d-block">About</a></li>
                 {{-- <li><a href="#" class="py-2 d-block">Journal</a></li> --}}
-                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                <li><a href="{{ route('contactUs') }}" class="py-2 d-block">Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -256,9 +173,9 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</p>
+			  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+			  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			</p>
           </div>
         </div>
       </div>
@@ -266,9 +183,9 @@
 
 
 
-  <!-- loader -->
+  {{-- <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
+ --}}
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>

@@ -20,6 +20,7 @@
     <div class="row justify-content-center">
       <div class="col-md-10 mb-5 text-center">
         <ul class="product-category">
+          <li><a href="">All</a></li>
           @foreach($lstCategory as $category)
           <li><a href="javascript:void(0);" onclick="loadlistProduct({{$category->cat_id}});">{{$category->cat_name}}</a></li>
           @endforeach

@@ -31,24 +31,27 @@
             </thead>
             <tbody>
               <tr class="text-center">
-                <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                  @foreach ($dataPrCat as $pr)
 
-                <td class="image-prod"><div class="img" style="background-image:url(images/product-1.jpg);"></div></td>
+                        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
-                <td class="product-name">
-                  <h3>Bell Pepper</h3>
-                  <p>Far far away, behind the word mountains, far from the countries</p>
-                </td>
+                        <td class="image-prod"><div class="img" style="background-image:url(images/{{ acset('$pr->pr_image') }});"></div></td>
 
-                <td class="price">$4.90</td>
+                        <td class="product-name">
+                        <h3>{{ acset($pr->pr_name) }}</h3>
+                        <p>{{ acset($pr->pr_title) }}</p>
+                        </td>
 
-                <td class="quantity">
-                  <div class="input-group mb-3">
-                    <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-                  </div>
-                </td>
+                        <td class="price">${{ acset($pr->pr_price) }} </td>
 
-                <td class="total">$4.90</td>
+                        <td class="quantity">
+                        <div class="input-group mb-3">
+                            <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+                        </div>
+                        </td>
+
+                        <td class="total">$4.90</td>
+                 @endforeach
               </tr><!-- END TR-->
 
 
