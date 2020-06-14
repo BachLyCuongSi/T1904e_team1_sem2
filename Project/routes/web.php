@@ -24,7 +24,7 @@ Route::get('/vegetables.html', 'FrontendController@vegetables');
 
 Route::get('/shop.html', 'FrontendController@shop')->name('shop');
 //an lam
-Route::get('/shop/{id}', 'FrontendController@shopId')->name('shop.id');
+Route::get('/shop{id}', 'FrontendController@shopId')->name('shop.id');
 
 // end an lam
 
