@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Exception;
+use Illuminate\Support\Facades\Redirect;
 
 class FrontendController extends Controller
 {
@@ -120,7 +121,7 @@ class FrontendController extends Controller
     //   lỗi nè
     public function getAddCart($id)
     {
-        $lsproduct = Product::find($id);
+         $lsproduct = Product::find($id);
         Cart::add([
         'id' => $id, 'name' => $lsproduct->pr_name,
         'qty' => 1, 'price' => $lsproduct->pr_price,
