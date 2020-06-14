@@ -93,7 +93,7 @@ class FrontendController extends Controller
     }
 
 
-// chi tiet san pham
+// chi tiet san pham an
     public function single($id )
     {
     if($id!=0){
@@ -108,6 +108,13 @@ class FrontendController extends Controller
     $lspr = product::where('deleted_at', null)->paginate(4);
         return view('product-single')->with(['lsProduct' => $lsProduct, 'lspr' => $lspr]);
     }
+// manh
+//   public function single()
+//   {
+//     $lsProduct = product::where('deleted_at', null)->paginate(4);
+//     $allProduct = product::where('deleted_at', null)->get();
+//     return view('product-single')->with(['lsProduct' => $lsProduct, 'allProduct' => $allProduct]);
+//   }
 
     public function about()
     {
