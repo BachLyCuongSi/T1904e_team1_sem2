@@ -34,7 +34,7 @@
             @foreach ($lsProduct as $product)
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product">
-                        <a href="#" class="img-prod"><img class="img-fluid" src="images/{{ $product->pr_image }}" alt="Colorlib Template">
+                        <a href="{{ route('prdsingle.id',$product->pr_id)}}" class="img-prod"><img class="img-fluid" src="images/{{ $product->pr_image }}" alt="Colorlib Template">
                             @if (($product['discount']) !=0)
                                 <span class="status">{{ $product->discount }}%</span>
                             @endif
