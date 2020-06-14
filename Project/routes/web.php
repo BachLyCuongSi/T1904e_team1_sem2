@@ -44,17 +44,17 @@ Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
 
 // an chưa sử lý, chỉ truyền được tham số
-Route::get('/loadPR/{id}', function($id){
+Route::get('/loadPR/{id}', function ($id) {
     $dataPrCat = DB::table('products')->where('cat_id', $id)->paginate(4);
-    return view('wishlist',compact('dataPrCat'));
+    return view('wishlist', compact('dataPrCat'));
 })->name('loadPR.loadWhishList');
 
-Route::get('/loadDeatilProduct','FrontendController@loadDeatilProduct')->name('product.detail');
+Route::get('/loadDeatilProduct', 'FrontendController@loadDeatilProduct')->name('product.detail');
 
-Route::get('/loadProduct','FrontendController@loadProducOfCate')->name('lstProductOfCate');
+Route::get('/loadProduct', 'FrontendController@loadProducOfCate')->name('lstProductOfCate');
 
-Route::get('add/{id}','FrontendController@getAddCart');
-Route::get('delete/{id}','FrontendController@getDeleteCart');
+Route::get('add/{id}', 'FrontendController@getAddCart');
+Route::get('delete/{id}', 'FrontendController@getDeleteCart');
 
 
 //
@@ -97,6 +97,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('edit', 'ProductController@saveedit')->name('admin.pro.edit');
         Route::post('delete', 'ProductController@destroy')->name('admin.pro.destroy');
         Route::post('savepr', 'ProductController@store')->name('admin.pro.store');
+        Route::get('searhch', 'ProductController@search')->name('product.search');
 
         //Kết thúc route sp
 
@@ -106,7 +107,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('cate_manage.search', 'CategoryController@search')->name('comment_manage.search');
         Route::group(['prefix' => 'admin'], function () {
         });
-
     });
 });
 
