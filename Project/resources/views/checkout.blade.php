@@ -136,12 +136,13 @@
               </div>
             </div>
             <div class="w-100"></div>
-            <div class="row">
-              <div class="col-md-6">
-                <textarea name="note" rows="8" cols="80" id="note"></textarea>
-              </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="note">Note</label>
+                <textarea name="note" rows="8" cols="76" id="note"></textarea>
               </div>
             </div>
+
             <div class="w-100"></div>
             <div class="col-md-12">
               <div class="form-group mt-4">
