@@ -61,7 +61,7 @@ Route::get('update','FrontendController@getUpdateCart');
 
 //Phan thanh toan
 Route::get('/checkout.html','FrontendController@checkout');
-Route::post('checkout','FrontendController@postComplete');
+Route::post('checkout','FrontendController@createOrder');
 
 
 

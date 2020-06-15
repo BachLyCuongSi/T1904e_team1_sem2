@@ -9,6 +9,9 @@ use App\product;
 // use App\Product;
 use Cart;
 use Mail;
+use App\Order;
+use App\Orderdetail;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -152,9 +155,27 @@ class FrontendController extends Controller
       return view('checkout');
     }
 
-    // puclic function postComplete(Request $request){
-    //   // $data = $request->all();
-    // }
+    public function createOrder(Request $request){
+       $od = new Order();
+       $oddetail = new Orderdetail();
+       $od -> cus_id = 1;
+       $od -> cus_status = $request -> note;
+       $od -> status = 0;
+       $od -> created_at = Carbon::now();
+       $od -> save();
+
+       $idOrder = Order::orderBy('od_id','DESC')->first();
+
+       foreach($request->lsOrder as $order){
+         $oddetail -> pr_id = $oddetail -> id;
+         $oddetail -> oddt_quantity = $oddetail -> quantity;
+         $oddetail -> od_id = $idOrder;
+         $oddetail -> created_at = Carbon::now();
+         $oddetail -> save();
+       }
+
+
+    }
 
 
     //Manh-> load product of a category

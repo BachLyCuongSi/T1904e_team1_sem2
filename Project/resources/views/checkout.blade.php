@@ -29,11 +29,11 @@
           </tr>
         </thead>
         @foreach (Cart::content() as $item)
-        <tbody>
+        <tbody id="tblorder">
           <tr class="text-center">
-            <td class="product-remove"><a href="#"></a></td>
+            <td class="product-remove"></td>
 
-            <td class="image-prod"><div class="img" style="background-image:url('images/{{$item->options->img}}')"></div></td>
+            <td class="image-prod" id="{{$item->id}}"><div class="img" style="background-image:url('images/{{$item->options->img}}')"></div></td>
 
             <td class="product-name">
               <h3>{{$item->name}}</h3>
@@ -42,7 +42,7 @@
 
             <td class="price">$ {{number_format($item->price,0,',','.')}}</td>
 
-            <td class="quantity">
+            <td class="quantity" id="{{$item->qty}}">
               <div class="input-group mb-3">
                 <input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->qty}}" min="1" max="100">
               </div>
@@ -50,7 +50,6 @@
 
             <td class="total">$ {{number_format($item->price*$item->qty,0,',','.')}} </td>
           </tr><!-- END TR-->
-
 
         </tbody>
         @endforeach
@@ -69,7 +68,7 @@
           @csrf
           <h3 class="mb-4 billing-heading">Billing Details</h3>
           <div class="row align-items-end">
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="form-group">
                 <label for="firstname">Firt Name</label>
                 <input type="text" class="form-control" placeholder="">
@@ -80,8 +79,8 @@
                 <label for="lastname">Last Name</label>
                 <input type="text" class="form-control" placeholder="">
               </div>
-            </div>
-            <div class="w-100"></div>
+            </div> -->
+            <!-- <div class="w-100"></div>
             <div class="col-md-12">
               <div class="form-group">
                 <label for="country">State / Country</label>
@@ -97,7 +96,7 @@
                   </select>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="w-100"></div>
             <div class="col-md-6">
               <div class="form-group">
@@ -137,6 +136,13 @@
               </div>
             </div>
             <div class="w-100"></div>
+            <div class="row">
+              <div class="col-md-6">
+                <textarea name="note" rows="8" cols="80" id="note"></textarea>
+              </div>
+              </div>
+            </div>
+            <div class="w-100"></div>
             <div class="col-md-12">
               <div class="form-group mt-4">
                 <div class="radio">
@@ -155,7 +161,7 @@
               <h3 class="billing-heading mb-4">Cart Total</h3>
               <p class="d-flex">
                 <span>Subtotal</span>
-                <span>$20.60</span>
+                <span>$ {{Cart::subtotal()}}</span>
               </p>
               <p class="d-flex">
                 <span>Delivery</span>
@@ -203,7 +209,8 @@
                   </div>
                 </div>
               </div>
-              <p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
+              <p><a href="javascript:void(0)" onclick="saveOrder()" class="btn btn-primary py-3 px-4">Place an order</a></p>
+              <p><a href="#" class="btn btn-danger py-3 px-4">Cancel</a></p>
             </div>
           </div>
         </div>
@@ -211,5 +218,13 @@
     </div>
   </div>
 </section> <!-- .section -->
-
+<script type="text/javascript">
+  function saveOrder(){
+    var lsOrder = [];
+    $.each($('#tblorder > tr'),function(){
+      lsOrder.push({id:$(this).find('.image-prod').attr('id'), quantity:$(this).find('.quantity').attr('id')});
+    });
+    console.log(lsOrder);
+  }
+</script>
 @endsection
