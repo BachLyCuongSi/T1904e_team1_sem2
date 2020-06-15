@@ -137,9 +137,12 @@ class FrontendController extends Controller
 
     public function getDeleteCart($id)
     {
-        dd($id);
-        // Cart::remove();
-        // return view('cart');
+      if ($id == 'all') {
+        Cart::destroy();
+      } else {
+        Cart::remove($id);
+      }
+      return back();
     }
 
 

@@ -32,7 +32,7 @@ Route::get('/fruits.html', 'FrontendController@fruits');
 Route::get('/juice.html', 'FrontendController@juice')->name('juce');
 Route::get('/dried.html', 'FrontendController@dried');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
-Route::get('/cart.html', 'FrontendController@cart');
+
 // chi tiet san pham
 
 Route::get('/productsingle{id}', 'FrontendController@singleId')->name('prdsingle.id');
@@ -53,8 +53,11 @@ Route::get('/loadDeatilProduct', 'FrontendController@loadDeatilProduct')->name('
 
 Route::get('/loadProduct', 'FrontendController@loadProducOfCate')->name('lstProductOfCate');
 
+//Phan gio hang
+Route::get('/cart.html', 'FrontendController@cart');
 Route::get('add/{id}', 'FrontendController@getAddCart');
 Route::get('delete/{id}', 'FrontendController@getDeleteCart');
+
 
 
 Auth::routes();

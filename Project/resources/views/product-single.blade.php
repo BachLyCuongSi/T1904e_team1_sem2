@@ -76,7 +76,7 @@
                         <p style="color: #000;"></p>
                     </div>
                     </div>
-                    <p><a href="#" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+                    <p><a href="add/{{$product->pr_id}}" class="btn btn-black py-3 px-5">Add to Cart</a></p>
                 </div>
             </div>
         </div>
