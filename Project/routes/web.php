@@ -57,6 +57,11 @@ Route::get('/loadProduct', 'FrontendController@loadProducOfCate')->name('lstProd
 Route::get('/cart.html', 'FrontendController@cart');
 Route::get('add/{id}', 'FrontendController@getAddCart');
 Route::get('delete/{id}', 'FrontendController@getDeleteCart');
+Route::get('update','FrontendController@getUpdateCart');
+
+//Phan thanh toan
+Route::get('/checkout.html','FrontendController@checkout');
+Route::post('checkout','FrontendController@postComplete');
 
 
 

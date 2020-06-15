@@ -8,6 +8,8 @@ use App\product;
 // use App\Category;
 // use App\Product;
 use Cart;
+use Mail;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -106,8 +108,6 @@ class FrontendController extends Controller
         }
     }
 
-
-    //Phan gio hang
     public function cate($id)
     {
         //lấy tất cả sản phẩm theo từng category
@@ -116,14 +116,12 @@ class FrontendController extends Controller
     }
 
 
-    //Phan gio hang
-
+    // Gio hang
     public function cart()
     {
         return view('cart');
     }
 
-    //   lỗi nè
     public function getAddCart($id)
     {
          $lsproduct = Product::find($id);
@@ -143,6 +141,19 @@ class FrontendController extends Controller
         Cart::remove($id);
       }
       return back();
+    }
+
+    public function getUpdateCart(Request $request){
+        Cart::update($request->rowId, $request->qty);
+    }
+
+    // Thanh toan
+    public function checkout(){
+      return view('checkout');
+    }
+
+    puclic function postComplete(Request $request){
+      $data = $request->all();
     }
 
 

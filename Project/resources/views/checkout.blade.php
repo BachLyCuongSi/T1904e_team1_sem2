@@ -17,7 +17,8 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-7 ftco-animate">
-        <form action="#" class="billing-form">
+        <form action="#" class="billing-form" method="post">
+          @csrf
           <h3 class="mb-4 billing-heading">Billing Details</h3>
           <div class="row align-items-end">
             <div class="col-md-6">

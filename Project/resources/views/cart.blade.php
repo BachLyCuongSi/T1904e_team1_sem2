@@ -16,7 +16,7 @@
 <section class="ftco-section ftco-cart">
   <div class="container">
     <div class="row">
-
+      @if (Cart::count()>=1)
       <div class="col-md-12 ftco-animate">
         <div class="cart-list">
           <table class="table">
@@ -46,7 +46,8 @@
 
                 <td class="quantity">
                   <div class="input-group mb-3">
-                    <input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->qty}}" min="1" max="100">
+                    <input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->qty}}" min="1" max="100"
+                    onchange="updateCart(this.value,'{{$item->rowId}}')">
                   </div>
                 </td>
 
@@ -64,9 +65,6 @@
     <div class="row justify-content-end">
       <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
         <p><a href="shop.html" class="btn btn-primary py-3 px-4">Continue Shopping</a></p>
-      </div>
-      <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-        <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Update Cart</a></p>
       </div>
       <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
         <p><a href="delete/all" class="btn btn-primary py-3 px-4">Delete Cart</a></p>
@@ -95,7 +93,21 @@
         <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
       </div>
     </div>
+    @else
+    <h1>Empty Cart!</h1>
+    @endif
   </div>
 </section>
+<script type="text/javascript">
+  function updateCart(qty,rowId){
+    $.get(
+      '{{asset('update')}}',
+      {qty:qty,rowId:rowId},
+      function(){
+        location.reload();
+      }
+    );
+  }
+</script>
 
 @endsection
