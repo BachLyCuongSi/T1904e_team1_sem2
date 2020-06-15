@@ -42,7 +42,7 @@
                   <p>Far far away, behind the word mountains, far from the countries</p>
                 </td>
 
-                <td class="price">{{$item->price}}</td>
+                <td class="price">$ {{number_format($item->price,0,',','.')}}</td>
 
                 <td class="quantity">
                   <div class="input-group mb-3">
@@ -51,7 +51,7 @@
                   </div>
                 </td>
 
-                <td class="total">$ {{$item->price*$item->qty}} </td>
+                <td class="total">$ {{number_format($item->price*$item->qty,0,',','.')}} </td>
               </tr><!-- END TR-->
 
 
@@ -74,7 +74,7 @@
           <h3>Cart Totals</h3>
           <p class="d-flex">
             <span>Subtotal</span>
-            <span>{{Cart::subtotal()}}</span>
+            <span>$ {{Cart::subtotal()}}</span>
           </p>
           <p class="d-flex">
             <span>Delivery</span>

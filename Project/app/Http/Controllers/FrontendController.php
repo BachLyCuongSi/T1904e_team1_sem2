@@ -152,9 +152,9 @@ class FrontendController extends Controller
       return view('checkout');
     }
 
-    puclic function postComplete(Request $request){
-      $data = $request->all();
-    }
+    // puclic function postComplete(Request $request){
+    //   // $data = $request->all();
+    // }
 
 
     //Manh-> load product of a category
