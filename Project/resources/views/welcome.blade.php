@@ -196,8 +196,8 @@
     </div>
     <div class="row ftco-animate">
       <div class="col-md-12">
-        <div class="carousel-testimony owl-carousel">
-            @foreach($lsComment as $comm)
+        @foreach($lsComment as $comm)
+            <div class="col-md-4">
                 <div class="item">
                     <div class="testimony-wrap p-4 pb-5">
                         <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
@@ -206,14 +206,15 @@
                             </span>
                         </div>
                         <div class="text text-center">
-                            <p class="mb-5 pl-4 line">{{ $comm->comm_conten }}</p>
+                            <p class="mb-5 pl-4 ">{{ $comm->comm_conten }}</p>
                             <p class="name">{{ $comm->cus_name }}</p>
                             <span class="position">{{ $comm->cus_addres }}</span>
                         </div>
                     </div>
                 </div>
-            @endforeach
-        </div>
+            </div>
+
+        @endforeach
       </div>
     </div>
   </div>
