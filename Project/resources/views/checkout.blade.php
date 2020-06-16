@@ -88,12 +88,10 @@
 	                </div>
                 </div>
                 <div class="w-100"></div>
-		            <div class="col-md-6">
-	                <div class="form-group">
+	                <div class="form-group col-sm-12 col-md-12 col-lg-12">
 	                	<label for="note">Note</label>
-	                  <textarea name="note" rows="8" cols="88"></textarea>
+	                  <textarea name="note" class="form-control" style="height:115px !important;"></textarea>
 	                </div>
-	              </div>
                 <div class="w-100"></div>
                 <div class="col-md-12">
                 	<div class="form-group mt-4">

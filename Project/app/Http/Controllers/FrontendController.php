@@ -158,6 +158,7 @@ class FrontendController extends Controller
      }
 
      public function postCheckOut(Request $request){
+
        $cartInfor = Cart::content();
        $od = new Order();
        $od -> cus_id = 1;
@@ -169,10 +170,13 @@ class FrontendController extends Controller
        $od -> created_at = Carbon::now();
        $od -> save();
 
+$odID = DB::table('orders')->orderBy('od_id','desc')->get('od_id')->first();
+
+
        if (count($cartInfor)>0) {
-       foreach (Cart::content() as $key => $item){
+       foreach ($cartInfor as $key => $item){
          $oddetail = new Orderdetail();
-         $oddetail -> od_id = 1;
+         $oddetail -> od_id = $odID -> od_id;
          $oddetail -> pr_id = $item -> id;
          $oddetail -> oddt_quantity = $item -> qty;
          $oddetail -> created_at = Carbon::now();
