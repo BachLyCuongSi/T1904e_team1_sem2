@@ -60,8 +60,9 @@ Route::get('delete/{id}', 'FrontendController@getDeleteCart');
 Route::get('update','FrontendController@getUpdateCart');
 
 //Phan thanh toan
-Route::get('/checkout.html','FrontendController@checkout');
-Route::post('checkout','FrontendController@createOrder');
+
+Route::get('/checkout.html','FrontendController@getCheckOut');
+Route::post('checkout','FrontendController@postCheckOut');
 
 
 

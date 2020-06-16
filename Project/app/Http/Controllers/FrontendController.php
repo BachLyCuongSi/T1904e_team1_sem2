@@ -151,31 +151,38 @@ class FrontendController extends Controller
     }
 
     // Thanh toan
-    public function checkout(){
-      return view('checkout');
-    }
 
-    public function createOrder(Request $request){
+
+     public function getCheckOut(){
+       return view ('checkout');
+     }
+
+     public function postCheckOut(Request $request){
+       $cartInfor = Cart::content();
        $od = new Order();
-       $oddetail = new Orderdetail();
        $od -> cus_id = 1;
        $od -> cus_status = $request -> note;
        $od -> status = 0;
+       $od -> cus_total_price = 10000;
+       $od -> cus_total_price_PayMent = 10000;
+
        $od -> created_at = Carbon::now();
        $od -> save();
 
-       $idOrder = Order::orderBy('od_id','DESC')->first();
-
-       foreach($request->lsOrder as $order){
-         $oddetail -> pr_id = $oddetail -> id;
-         $oddetail -> oddt_quantity = $oddetail -> quantity;
-         $oddetail -> od_id = $idOrder;
+       if (count($cartInfor)>0) {
+       foreach (Cart::content() as $key => $item){
+         $oddetail = new Orderdetail();
+         $oddetail -> od_id = 1;
+         $oddetail -> pr_id = $item -> id;
+         $oddetail -> oddt_quantity = $item -> qty;
          $oddetail -> created_at = Carbon::now();
          $oddetail -> save();
        }
+     }
+       Cart::destroy();
 
-
-    }
+       return view ('checkout');
+     }
 
 
     //Manh-> load product of a category
