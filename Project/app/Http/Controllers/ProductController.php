@@ -60,7 +60,7 @@ class ProductController extends Controller
             // $path = $filename->store('images', $filename);
 
             // $url = Storage::disk('public')->put($path,  File::get($cover));
-            // $it->pr_image = 'uploads/'.$path;
+            // $it->pr_image = 'images/' . $path;
 
             $it->fill($request->all());
             $it->save();
