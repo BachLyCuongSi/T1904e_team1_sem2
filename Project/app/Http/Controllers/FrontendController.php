@@ -137,6 +137,7 @@ class FrontendController extends Controller
         'id' => $id, 'name' => $lsproduct->pr_name,
         'qty' => 1, 'price' => $lsproduct->pr_price,
         'options' => ['img' => $lsproduct->pr_image]
+        // 'options' => ['discount' => $lsproduct->discount]
         ]);
         return back();
     }
@@ -156,17 +157,12 @@ class FrontendController extends Controller
     }
 
     // Thanh toan
-
-
      public function getCheckOut(){
        return view ('checkout');
      }
 
      public function postCheckOut(Request $request){
-
        $cartInfor = Cart::content();
-
-
 
        $od = new Order();
        $od -> cus_id = 1;
@@ -190,9 +186,8 @@ class FrontendController extends Controller
          $oddetail -> created_at = Carbon::now();
          $oddetail -> save();
 
-         // $prod = new Product();
-         // $prod -> pr_quantity = pr_quantity - $item -> qty;
-         // $prod -> save();
+         $product = Product::find($item->id);
+         $product->decrement('pr_quantity', $item->qty);
        }
      }
        Cart::destroy();
