@@ -10,5 +10,8 @@ class product extends Model
     protected $fillable = ['pr_id','cat_id','pr_name','pr_image','pr_prcie','pr_description','pr_quantity','pr_title'];
     public function products(){
     	return $this->belongsTo('App\category', 'cat_id','cat_id');
+
+    //Khong xoa dong nay
+    protected $primaryKey = 'pr_id';
     }
 }
