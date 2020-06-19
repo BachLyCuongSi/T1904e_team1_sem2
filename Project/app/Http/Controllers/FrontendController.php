@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Exception;
 
+use App\Subscriber;
+
+use App\Mail\DemoEmail;
+
+
 
 class FrontendController extends Controller
 {
@@ -160,6 +165,9 @@ class FrontendController extends Controller
      public function postCheckOut(Request $request){
 
        $cartInfor = Cart::content();
+
+
+
        $od = new Order();
        $od -> cus_id = 1;
        $od -> cus_status = $request -> note;
@@ -170,7 +178,7 @@ class FrontendController extends Controller
        $od -> created_at = Carbon::now();
        $od -> save();
 
-$odID = DB::table('orders')->orderBy('od_id','desc')->get('od_id')->first();
+       $odID = DB::table('orders')->orderBy('od_id','desc')->get('od_id')->first();
 
 
        if (count($cartInfor)>0) {
@@ -181,22 +189,38 @@ $odID = DB::table('orders')->orderBy('od_id','desc')->get('od_id')->first();
          $oddetail -> oddt_quantity = $item -> qty;
          $oddetail -> created_at = Carbon::now();
          $oddetail -> save();
+
+         // $prod = new Product();
+         // $prod -> pr_quantity = pr_quantity - $item -> qty;
+         // $prod -> save();
        }
      }
        Cart::destroy();
 
-       return view ('checkout');
+       return view ('complete');
+     }
+
+     public function complete(){
+             return view('complete');
      }
 
 
-    //Manh-> load product of a category
+    // Mail subscriber
 
-    public function loadProducOfCate(Request $request)
-    {
-        $lsProduct = product::where('deleted_at', null)->where('cat_id', $request->id)->paginate(4);
+    public function subscribe(Request $request) {
+      $s = new Subscriber();
+      $s->email = $request->email;
+      $s->save();
 
-        return view('shop', compact('lsProduct'));
-    }
+      $objDemo = new \stdClass();
+      $objDemo->demo_one = 'Demo One Value';
+      $objDemo->demo_two = 'Demo Two Value';
+      $objDemo->sender = 'Bot';
+      $objDemo->receiver = 'team 1';
 
+      Mail::to($s->email)->send(new DemoEmail($objDemo));
+
+      return redirect()->back();
+      }
 
 }

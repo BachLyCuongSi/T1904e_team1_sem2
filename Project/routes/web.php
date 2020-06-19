@@ -63,6 +63,7 @@ Route::get('update','FrontendController@getUpdateCart');
 
 Route::get('/checkout.html','FrontendController@getCheckOut');
 Route::post('checkout','FrontendController@postCheckOut');
+Route::get('/complete.html','FrontendController@complete');
 
 
 
