@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,56 +13,40 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', 'FrontendController@welcome')->name('home');
-// Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/vegetables.html', 'FrontendController@vegetables');
+Route::get('/', 'FrontendController@welcome');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/vegetables.html', 'FrontendController@vegetables');
 
 Route::get('/shop.html/{id?}', 'FrontendController@shop')->name('index.shop');
 Route::get('/vegetables.html', 'FrontendController@vegetables');
-
-Route::get('/shop.html', 'FrontendController@shop')->name('shop');
-//an lam
-Route::get('/shop{id}', 'FrontendController@shopId')->name('shop.id');
-
-// end an lam
-
+Route::get('/shop.html', 'FrontendController@shop');
 Route::get('/fruits.html', 'FrontendController@fruits');
-Route::get('/juice.html', 'FrontendController@juice')->name('juce');
+Route::get('/juice.html', 'FrontendController@juice');
 Route::get('/dried.html', 'FrontendController@dried');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
-
-// chi tiet san pham
-
-Route::get('/productsingle{id}', 'FrontendController@singleId')->name('prdsingle.id');
-Route::get('/productsingle', 'FrontendController@single')->name('prdsingle');
-
+Route::get('/cart.html', 'FrontendController@cart');
+Route::get('/product-single.html', 'FrontendController@single');
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about');
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
-Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
+Route::get('/contact.html', 'FrontendController@contact');
+Route::get('/loadDeatilProduct','FrontendController@loadDeatilProduct')->name('product.detail');
 
-// an chưa sử lý, chỉ truyền được tham số
-Route::get('/loadPR/{id}', function ($id) {
-    $dataPrCat = DB::table('products')->where('cat_id', $id)->paginate(4);
-    return view('wishlist', compact('dataPrCat'));
-})->name('loadPR.loadWhishList');
-Route::get('/loadDeatilProduct', 'FrontendController@loadDeatilProduct')->name('product.detail');
+Route::get('/category/{id}', 'FrontendController@cate')->name('category.id');
 
-Route::get('/loadProduct', 'FrontendController@loadProducOfCate')->name('lstProductOfCate');
-
-//Phan gio hang
-Route::get('/cart.html', 'FrontendController@cart');
-Route::get('add/{id}', 'FrontendController@getAddCart');
-Route::get('delete/{id}', 'FrontendController@getDeleteCart');
-Route::get('update','FrontendController@getUpdateCart');
-
-//Phan thanh toan
-
-Route::get('/checkout.html','FrontendController@getCheckOut');
-Route::post('checkout','FrontendController@postCheckOut');
+Route::get('add/{id}','FrontendController@getAddCart');
+Route::get('delete/{id}','FrontendController@getDeleteCart');
 
 
+//
+// Route::get('/shop', 'ShopController')->name('shop');
+// Route::get('/', 'IndexController@index');
+// Route::group('/', function(){
+//     Route::get('users/{id}', function ($id) {
+
+//     });
+// });
 
 Auth::routes();
 date_default_timezone_set(DateTimeZone::listIdentifiers(DateTimeZone::ASIA)[27]);
@@ -97,7 +79,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('edit', 'ProductController@saveedit')->name('admin.pro.edit');
         Route::post('delete', 'ProductController@destroy')->name('admin.pro.destroy');
         Route::post('savepr', 'ProductController@store')->name('admin.pro.store');
-        Route::get('searhch', 'ProductController@search')->name('product.search');
 
         //Kết thúc route sp
 
@@ -107,6 +88,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('cate_manage.search', 'CategoryController@search')->name('comment_manage.search');
         Route::group(['prefix' => 'admin'], function () {
         });
+       
     });
 });
 

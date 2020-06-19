@@ -11,5 +11,4 @@ class product extends Model
     public function products(){
     	return $this->belongsTo('App\category', 'cat_id','cat_id');
     }
-    protected $primaryKey = 'pr_id';
 }

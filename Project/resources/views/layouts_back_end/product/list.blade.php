@@ -25,6 +25,18 @@
         <i class="fa fa-calendar absolute-icon-calendar"></i>
     </div>
     <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+        <select id="itemStatus" class="form-control">
+            <optgroup label="Trạng thái">
+                <option value="">Tất cả</option>
+                <option value="1" selected>Đang hoạt động</option>
+                <option value="0">Ngừng hoạt động</option>
+
+            </optgroup>
+        </select>
+    </div>
+</div>
+<div class="row mt-3" style="margin-top: 10px;">
+    <div class="col-md-3 ">
         <select class="form-control" id="cate-id">
             <option value="" selected disabled hidden>--Danh mục--</option>
             @if (count($lstCategory) > 0 && $lstCategory != null)
@@ -35,60 +47,52 @@
             @endif
         </select>
     </div>
-</div>
-<div class="row mt-3" style="margin-top: 10px;">
-
-    <div class="col-md-7 col-md-offset-5 text-right">
+    <div class="col-md-4 col-md-offset-5 text-right">
         <button class="btn btn-primary" id="btnSearchItem" onclick="searchItem()"><i class="fa fa-search mr-1"></i>Tìm kiếm</button>
         <button class="btn btn-success" data-toggle="modal" data-target="#createIten"><i class="fa fa-plus mr-1"></i>Thêm mới</button>
     </div>
 </div>
 <div class="row" style="margin-top: 50px;">
-    <div class="col-md-12" id="TableCategory">
-        <table style="text-align:center" class="table table-bordered table-hover mt-2 w-100">
-            <thead>
-                <tr>
-                    <th style="text-align:center">STT</th>
-                    <th style="text-align:center">Tên sản phẩm</th>
-                    <th style="text-align:center">Giá sản phẩm</th>
-                    <th style="text-align:center">Danh mục </th>
-                    <th style="text-align:center">Số lượng</th>
-                    <th style="text-align:center">Ngày tạo</th>
-                    <th style="text-align:center">Chức năng</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if(count($lstProduct) == 0 || $lstProduct == null)
-                <tr class="text-center">
-                    <td colspan="7">Không có dữ liệu</td>
-                </tr>
-                @else
-                @foreach($lstProduct as $pro)
-                <tr>
-                    <td>{{$pro->pr_id}}</td>
+  <div class="col-md-12" id="TableCategory">
+    <table style="text-align:center" class="table table-bordered table-hover mt-2 w-100">
+      <thead>
+        <tr>
+          <th style="text-align:center">STT</th>
+          <th style="text-align:center">Tên sản phẩm</th>
+          <th style="text-align:center">Giá sản phẩm</th>
+          <th style="text-align:center">Danh mục </th>
+          <th style="text-align:center">Số lượng</th>
 
-                    <td class="pr_name">{{$pro->pr_name}}</td>
-                    <td class="pr_price">{{$pro->pr_price}}</td>
-                    <td class="cat_name">{{$pro->cat_name}}</td>
-                    <td class="pr_quantity">{{$pro->pr_quantity}}</td>
-                    <td style="display: none;" class="pr_title">{{$pro->pr_title}}</td>
-                    <td style="display: none;" class="pr_des">{{$pro->pr_description}}</td>
-                    <td>{{date('d-m-Y',strtotime($pro->created_at))}} </td>
+          <th style="text-align:center">Chức năng</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($lstProduct as $pro)
+        <tr>
+          <td>{{$pro->pr_id}}</td>
+          
+          <td class="pr_name">{{$pro->pr_name}}</td>
+          <td class="pr_price">{{$pro->pr_price}}</td>
+          <td class="cat_name">{{$pro->cat_name}}</td>
+          <td class="pr_quantity">{{$pro->pr_quantity}}</td>
+          <td style="display: none;" class="pr_title">{{$pro->pr_title}}</td>
+          <td style="display: none;" class="pr_des">{{$pro->pr_description}}</td>
 
-                    <td style="text-align:center">
-                        <button id="{{$pro->pr_id}}" type="button" class="btn btn-success" onclick="loadProDetail($(this));" data-toggle="modal" data-target="#myModal" title="Sửa sản phẩm">
-                            <i class="fa fa-pencil"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger" delid="{{$pro->pr_id}}" data-toggle="modal" data-target="#mdDelPro" title="Xóa sản phẩm" onclick="delPro($(this))">
-                            <i class="fa fa-trash-o"></i>
-                        </button>
-                    </td>
-                </tr>
-                @endforeach
-                @endif
-            </tbody>
-        </table>
-    </div>
+
+          <td style="text-align:center">
+            <button id="{{$pro->pr_id}}" type="button" class="btn btn-success" onclick="loadProDetail($(this));" 
+            data-toggle="modal" data-target="#myModal" title="Sửa sản phẩm">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button type="button" class="btn btn-danger" delid="{{$pro->pr_id}}"  data-toggle="modal" data-target="#mdDelPro" title="Xóa sản phẩm" onclick="delPro($(this))">
+              <i class="fa fa-trash-o"></i>
+            </button>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
 </div>
 @endsection
 
@@ -142,8 +146,7 @@
                         <div class=form-row>
                             <div class="row">
                                 <div class="col-sm-7">
-                                    <img src="" id="category-img-tag" width="200px" />
-                                    <!--for preview purpose -->
+                                <img src="" id="category-img-tag" width="200px" />   <!--for preview purpose -->
                                 </div>
                             </div>
                         </div>
@@ -168,7 +171,7 @@
 
 <!-- sửa-->
 <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -191,10 +194,11 @@
                                 <select class="form-control" id="txtCateupdate" name="txtCateupdate">
                                     <option value="0" selected disabled hidden>--Danh mục--</option>
                                     @if (count($lstCategory) > 0 && $lstCategory != null)
-                                    @foreach($lstCategory as $ct)
-                                    <option value="{{ $ct->cat_id }}">{{ $ct->cat_name}}</option>
-                                    @endforeach
-                                    @else
+                                        @foreach($lstCategory as $ct)
+                                            <option value="{{ $ct->cat_id }}" 
+                                               >{{ $ct->cat_name }}</option>
+                                        @endforeach
+                                        @else
                                     @endif
                                 </select>
                             </div>
@@ -206,18 +210,17 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" id="idEditUser" />
+                    <input type="hidden" id="idEditUser"/>
                     <div class="col-sm-6 col-md-6 col-lg-6">
                         <div class="row" style="text-align:center">
                             <label class="mt-3">Ảnh sản phẩm:</label>
-                            <input type="file" id="pr_image" name="pr_image" value="" class="form-control">
+                            <input type="file" id="pr_image"  name="pr_image" value="" class="form-control">
                         </div>
                         <!-- Show image -->
                         <div class=form-row>
                             <div class="row">
                                 <div class="col-sm-7">
-                                    <img src="" id="category-img-tag" width="200px" />
-                                    <!--for preview purpose -->
+                                <img src="" id="category-img-tag" width="200px" />   <!--for preview purpose -->
                                 </div>
                             </div>
                         </div>
@@ -242,7 +245,7 @@
 
 <!-- Bắt đầu modal delete product-->
 <div class="modal fade" id="mdDelPro" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+	<div class="modal-dialog" role="document">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="col-sm-3 col-md-3 col-lg-3"></div>
             <div class="modal-content col-sm-6 col-md-6 col-lg-6">
@@ -251,292 +254,258 @@
                 </div>
                 <div class="modal-body">
                     <span>Bạn muốn xóa sản phẩm <b id="txtName" name="txtName"></b> &nbsp?</span>
-                    <input type="hidden" id="valIDUser" />
+                    <input type="hidden" id="valIDUser"/>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
                     <button type="button" class="btn btn-danger" onclick="destroyPro()">Xóa</button>
                 </div>
             </div>
-        </div>
-    </div>
+	</div>
+	</div>
 </div>
 <!-- Kết thúc modal delete product -->
 
-<script type="text/javascript">
-    //Show modal Sửa sản phẩm 
-    function loadProDetail(data) {
-        var thiss = data.closest('tr');
+    <script type="text/javascript">
+        //Show modal Sửa sản phẩm 
+        function loadProDetail(data) {
+            var thiss = data.closest('tr');
 
-        var id = data.attr('id');
-        var name = thiss.children('.pr_name').text();
-        var price = thiss.children('.pr_price').text();
-        var des = thiss.children('.pr_des').text();
-        var quan = thiss.children('.pr_quantity').text();
-        var title = thiss.children('.pr_title').text();
-        var cate = thiss.children('.cat_name').text();
+            var id = data.attr('id');
+            var name = thiss.children('.pr_name').text();
+            var price = thiss.children('.pr_price').text();
+            var des = thiss.children('.pr_des').text();
+            var quan = thiss.children('.pr_quantity').text();
+            var title = thiss.children('.pr_title').text();
+            var cate = thiss.children('.cat_name').text();
 
-        $('#txtNameupdate').val(name);
-        $('#txtPriceupdate').val(price);
-        $('#txtDesupdate').val(des);
-        $('#txtTitleupdate').val(title);
-        $('#txtQuanupdate').val(quan);
-        $('#idEditUser').val(id);
-        $('#txtCateupdate').val(cate);
+            $('#txtNameupdate').val(name);
+            $('#txtPriceupdate').val(price);
+            $('#txtDesupdate').val(des);
+            $('#txtTitleupdate').val(title);
+            $('#txtQuanupdate').val(quan);
+            $('#idEditUser').val(id);
+            $('#txtCateupdate').val(cate);
 
-    }
+        }
 
-    function updatePro() {
+        function updatePro(){
         var id = $.trim($("#idEditUser").val());
-        var name = $.trim($("#txtNameupdate").val());
+		var name = $.trim($("#txtNameupdate").val());
         var price = $.trim($("#txtPriceupdate").val());
         var description = $.trim($("#txtDesupdate").val());
         var amount = $.trim($("#txtQuanupdate").val());
         var title = $.trim($("#txtTitleupdate").val());
         var category = $.trim($("#txtCateupdate").val());
         var data = {
-            id,
-            name,
-            title,
-            description,
-            category,
-            amount,
-            price
-        }
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{route('admin.pro.edit')}}",
-            type: 'POST',
-            data: data,
-            success: function(res) {
-                if (res.status == 1) {
-                    swal({
-                        title: res.message,
-                        text: "",
-                        icon: "success"
-                    }).then((success) => {
-                        if (success) {
-                            $('#createIten').modal('hide');
-                            location.reload();
-                        }
-
-                    })
-                } else {
-                    swal({
-                        title: res.message,
-                        text: "",
-                        icon: "error"
-                    })
-                }
-            }
-        })
-    }
-
-
-    //end show
-
-    //Hiển thị ảnh sản phẩm
-    $('#category-img-tag').hide();
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-
-
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('#category-img-tag').show();
-                $('#category-img-tag').attr('src', e.target.result);
-
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-
-    }
-
-    $("#pr_image").change(function() {
-
-        readURL(this);
-    });
-    //Tạo mới một sản phẩm
-
-    function createItem() {
-        var name = $.trim($('#txt-name').val());
-        var title = $.trim($('#txt-title').val());
-        var description = $.trim($('#txt-description').val());
-        var category = $('#valcate-id').val();
-        var price = $.trim($('#price').val().replace(/,/g, ""));
-        var amount = $('#amount').val();
-        var pr_image = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
-        var data = {
-            name,
-            title,
-            description,
-            category,
-            amount,
-            price,
-            pr_image
-        }
-        if (title.length == 0 || name.length == 0) {
-            swal({
-                title: "Cảnh báo!",
-                text: "Vui lòng nhập đầy đủ thông tin",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        if (category == "" || category == null) {
-            swal({
-                title: "Cảnh báo!",
-                text: "Vui lòng chọn danh mục cho sản phẩm",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        if (typeof pr_image === "undefined") {
-            swal({
-                title: "Cảnh báo!",
-                text: "Vui lòng chọn ảnh cho sản phẩm",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        if (parseInt(price) == 0 || parseInt(price) == null) {
-            swal({
-                title: "Cảnh báo!",
-                text: "Giá phải lớn hơn 0",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        if (parseInt(amount) == 0 || parseInt(amount) == null) {
-            swal({
-                title: "Cảnh báo!",
-                text: "Số lượng phải lớn hơn 0",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-
-            }
-        });
-
-        $.ajax({
-            url: "{{route('admin.pro.store')}}",
-            type: 'POST',
-            data: data,
-            success: function(res) {
-                console.log(res);
-                if (res.status == 1) {
-                    swal({
-                        title: res.message,
-                        text: "",
-                        icon: "success"
-                    }).then((success) => {
-                        if (success) {
-                            $('#createIten').modal('hide');
-                            location.reload();
-                        }
-
-                    })
-                } else {
-                    swal({
-                        title: res.message,
-                        text: "",
-                        icon: "error"
-                    })
-                }
-            }
-        })
-    }
-
-    function delPro(pro) {
-        var thiss = pro.closest('tr');
-        var name = thiss.children('.pr_name').text();
-        var id = pro.attr('delid');
-        $('#txtName').text(name);
-        $('#valIDUser').val(id);
-    }
-
-    function destroyPro() {
-        var id = $.trim($("#valIDUser").val());
-        // alert(id)
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{route('admin.pro.destroy')}}",
-            type: 'POST',
-            data: {
-                id: id
-            },
-            success: function(res) {
-                if (res.status == 1) {
-                    swal({
-                        title: res.message,
-                        text: "",
-                        icon: "success"
-                    }).then((success) => {
-                        if (success) {
-                            $('#createIten').modal('hide');
-                            location.reload();
-                        }
-
-                    })
-                } else {
-                    swal({
-                        title: res.message,
-                        text: "",
-                        icon: "error"
-                    })
-                }
-            }
-        })
-    }
-
-    //Tìm kiếm thông tin sản phẩm
-
-    function searchItem() {
-        var name = $.trim($('#itemName').val());
-        var fromDate = $.trim($('#fromDateItem').val());
-        var toDate = $.trim($('#toDateItem').val());
-        var cateId = $('#cate-id').val();
-        $('#modalLoad').modal('show');
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: "{{route('product.search')}}",
-            data: {
+                id,
                 name,
-                fromDate,
-                toDate,
-                cateId
-            },
-            type: "GET",
+                title,
+                description,
+                category,
+                amount,
+                price
+            }
+        $.ajaxSetup({
+            headers:
+                { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
+		$.ajax({
+			url: "{{route("admin.pro.edit")}}",
+			type: 'POST',
+			data: data,
             success: function(res) {
-                console.log(res);
-                $('#modalLoad').modal('hide');
-                $('#TableCategory').html(res);
+                    if (res.status == 1) {
+                        swal({
+                            title: res.message,
+                            text: "",
+                            icon: "success"
+                        }).then((success) => {
+                            if (success) {
+                                $('#createIten').modal('hide');
+                                location.reload();
+                            }
+
+                        })
+                    } else {
+                        swal({
+                            title: res.message,
+                            text: "",
+                            icon: "error"
+                        })
+                    }
+                }
+            })
+        }
+
+
+        //end show
+
+        //Hiển thị ảnh sản phẩm
+            $('#category-img-tag').hide();
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    
+                    
+                    var reader = new FileReader();
+                    
+                    reader.onload = function (e) {
+                        $('#category-img-tag').show();
+                        $('#category-img-tag').attr('src', e.target.result);
+
+                    }
+                    
+                    reader.readAsDataURL(input.files[0]);
+                }
+                
+            }
+            
+            $("#pr_image").change(function(){
+                
+                readURL(this);
+            });
+        //Tạo mới một sản phẩm
+
+        function createItem() {
+            var name = $.trim($('#txt-name').val());
+            var title = $.trim($('#txt-title').val());
+            var description = $.trim($('#txt-description').val());
+            var category = $('#valcate-id').val();
+            var price = $.trim($('#price').val().replace(/,/g, ""));
+            var amount = $('#amount').val();
+            var pr_image = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
+
+            var data = {
+                name,
+                title,
+                description,
+                category,
+                amount,
+                price,
+                pr_image
+            }
+            if (title.length == 0 || name.length == 0) {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Vui lòng nhập đầy đủ thông tin",
+                    icon: 'warning'
+                })
+                return;
             }
 
-        })
-    }
-</script>
-@endsection
+            if (category == "" || category == null) {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Vui lòng chọn danh mục cho sản phẩm",
+                    icon: 'warning'
+                })
+                return;
+            }
+
+            if (typeof pr_image === "undefined") {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Vui lòng chọn ảnh cho sản phẩm",
+                    icon: 'warning'
+                })
+                return;
+            }
+
+            if (parseInt(price) == 0 || parseInt(price) == null) {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Giá phải lớn hơn 0",
+                    icon: 'warning'
+                })
+                return;
+            }
+
+            if (parseInt(amount) == 0 || parseInt(amount) == null) {
+                swal({
+                    title: "Cảnh báo!",
+                    text: "Số lượng phải lớn hơn 0",
+                    icon: 'warning'
+                })
+                return;
+            }
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    
+                }
+            });
+
+            $.ajax({
+                url: "{{route("admin.pro.store")}}",
+                type:'POST',
+                data: data,
+                success: function(res) {
+                    if (res.status == 1) {
+                        swal({
+                            title: res.message,
+                            text: "",
+                            icon: "success"
+                        }).then((success) => {
+                            if (success) {
+                                $('#createIten').modal('hide');
+                                location.reload();
+                            }
+
+                        })
+                    } else {
+                        swal({
+                            title: res.message,
+                            text: "",
+                            icon: "error"
+                        })
+                    }
+                }
+            })
+        }
+        function delPro(pro){
+            var thiss = pro.closest('tr');
+            var name = thiss.children('.pr_name').text();
+            var id = pro.attr('delid');
+            $('#txtName').text(name);
+		    $('#valIDUser').val(id);
+        }
+        function destroyPro(){
+            var id = $.trim($("#valIDUser").val());
+            // alert(id)
+            
+            $.ajaxSetup({
+                    headers:
+                        { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+                });
+            $.ajax({
+                url: "{{route("admin.pro.destroy")}}",
+                type: 'POST',
+                data: {
+                    id:id
+                },
+                success: function(res) {
+                    if (res.status == 1) {
+                        swal({
+                            title: res.message,
+                            text: "",
+                            icon: "success"
+                        }).then((success) => {
+                            if (success) {
+                                $('#createIten').modal('hide');
+                                location.reload();
+                            }
+
+                        })
+                    } else {
+                        swal({
+                            title: res.message,
+                            text: "",
+                            icon: "error"
+                        })
+                    }
+                }
+            })
+        }
+    </script>
+    @endsection
