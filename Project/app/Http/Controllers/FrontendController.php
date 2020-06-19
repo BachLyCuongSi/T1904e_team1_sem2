@@ -28,10 +28,9 @@ class FrontendController extends Controller
         $lsCategory = category::all();
         //$lsProduct = product::select('select * from products where pr_discount != 0 ORDER BY pr_id DESC LIMIT 8');
         $lsProduct = DB::table('products')->where('deleted_at', null)->where('discount', '!=', 0)->orderBy('pr_id', 'desc')->limit('8')->get();
-        // $lsComment = comment::select('select * from comments inner join customers on comments.cus_id =customers.cus_id ORDER BY comm_id DESC limit 3');
-        $lsComment = DB::table('comments')->join('customers', 'comments.cus_id', '=', 'customers.cus_id')->orderBy('comm_id', 'DESC')->limit('3')->get();
+        // $lsComment = DB::table('comments')->join('customers', 'comments.cus_id', '=', 'customers.cus_id')->orderBy('comm_id', 'DESC')->limit('3')->get();
 
-        return view('welcome')->with('lsCategory', $lsCategory)->with('lsProduct', $lsProduct)->with('lsComment', $lsComment);
+        return view('welcome')->with('lsCategory', $lsCategory)->with('lsProduct', $lsProduct);
     }
 
 //  trang shop
@@ -64,18 +63,17 @@ class FrontendController extends Controller
 
 // chi tiet san pham an
     public function single(){
-        $listproduct = DB::table('products')->where('deleted_at',null)->where('discount','>',0)->orderBy('pr_id','desc')->paginate(4);
-        return view('product-single', compact('listproduct'));
+        $listproduct = DB::table('products')->where('deleted_at',null)->where('pr_quantity','>',0)->orderBy('pr_id','desc')->paginate(4);
+
+        return view('product-single' )->with('listproduct',$listproduct);
     }
 
     public function singleId($id){
-        // $product = product::where('deleted_at',null)->where('pr_id',$id)->get();
-
       //Lấy chi tiết một sản phẩm
-      $product = product::where('deleted_at',null)->where('pr_id',$id)->first();
+         $product = product::where('deleted_at',null)->where('pr_id',$id)->first();
       //Lấy danh sach cac sản phẩm liên quan
-       $lstProduct = DB::table('products')->where('cat_id',$product->cat_id)->where('deleted_at', null)->paginate(4);
-         return view('product-single', compact('product', 'lstProduct'));
+        $listproduct = DB::table('products')->where('cat_id',$product->cat_id)->where('deleted_at', null)->paginate(4);
+         return view('product-single', compact('product', 'listproduct'));
     }
 
 
@@ -186,6 +184,7 @@ class FrontendController extends Controller
 
         return view('shop', compact('lsProduct'));
     }
+
 
 
 }
