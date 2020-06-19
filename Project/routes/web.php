@@ -70,7 +70,7 @@ Route::post('checkout', 'FrontendController@postCheckOut');
 
 
 //
-Route::get('/shop', 'ShopController')->name('shop');
+//Route::get('/shop', 'ShopController')->name('shop');
 // Route::get('/', 'IndexController@index');
 // Route::group('/', function(){
 //     Route::get('users/{id}', function ($id) {
