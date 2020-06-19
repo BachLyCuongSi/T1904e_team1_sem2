@@ -82,12 +82,12 @@
           </p>
           <p class="d-flex">
             <span>Discount</span>
-            <span>$3.00</span>
+            <span>$0.00</span>
           </p>
           <hr>
           <p class="d-flex total-price">
             <span>Total</span>
-            <span>$17.60</span>
+            <span>$ {{Cart::subtotal()}}</span>
           </p>
         </div>
         <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>

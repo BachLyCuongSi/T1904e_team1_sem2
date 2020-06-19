@@ -373,7 +373,6 @@
         var price = $.trim($('#price').val().replace(/,/g, ""));
         var amount = $('#amount').val();
         var pr_image = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
-
         var data = {
             name,
             title,

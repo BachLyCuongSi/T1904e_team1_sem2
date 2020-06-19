@@ -20,6 +20,10 @@ $(document).ready(function() {
         var cb = e.originalEvent.clipboardData || window.clipboardData;
         if (!$.isNumeric(cb.getData('text'))) e.preventDefault();
     });
+
+
+
+
 });
 
 function selectFileWithCKFinder(elementId) {
