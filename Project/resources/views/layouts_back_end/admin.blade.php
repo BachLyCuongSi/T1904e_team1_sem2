@@ -68,24 +68,24 @@
     <div class="container-fluid">
         <div class="row">
             <div id="sidebar-collapse" class="col-md-2 sidebar">
-                <ul class="nav menu">
-                    <li class="active"><a href=""><svg class="glyph stroked dashboard-dial">
+                <ul class="nav menu" id="menu">
+                    <li class="active li"><a href=""><svg class="glyph stroked dashboard-dial">
                                 <use xlink:href="#stroked-dashboard-dial"></use>
                             </svg> Dashboard</a></li>
-                    <li><a href="{{route('user_manage.index')}}"><svg class="glyph stroked male user ">
+                    <li class="li"><a href="{{route('user_manage.index')}}"><svg class="glyph stroked male user ">
                                 <use xlink:href="#stroked-male-user" /></svg>Quản lý thành viên</a></li>
 
-                    <li><a href="{{route('cate_manage.index')}}"><svg class="glyph stroked open folder">
+                    <li class="li"><a href="{{route('cate_manage.index')}}"><svg class="glyph stroked open folder">
                                 <use xlink:href="#stroked-open-folder" /></svg>Quản lý danh mục</a></li>
 
-                    <li><a href="{{route('product_manage.index')}}"><svg class="glyph stroked bag">
+                    <li class="li"><a href="{{route('product_manage.index')}}"><svg class="glyph stroked bag">
                                 <use xlink:href="#stroked-bag"></use>
                             </svg>Quản lý sản phẩm</a></li>
 
-                    <li><a href="{{route('comment_manage.index')}}"><svg class="glyph stroked two messages">
+                    <li class="li"><a href="{{route('comment_manage.index')}}"><svg class="glyph stroked two messages">
                                 <use xlink:href="#stroked-two-messages" /></svg> Quản lý bình luận</a></li>
 
-                    <li><a href="{{route('customer_manage.index')}}"><svg class="glyph stroked chain">
+                    <li class="li"><a href="{{route('customer_manage.index')}}"><svg class="glyph stroked chain">
                                 <use xlink:href="#stroked-chain" /></svg> Quản lý khách hàng</a></li>
                 </ul>
 
@@ -107,7 +107,17 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script type="text/javascript" src="{{asset('ckfinder/ckfinder.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/ready.js')}}"></script>
-
+    <script type="text/javascript">
+        var header = document.getElementById("menu");
+        var btns = header.getElementsByClassName("li");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+    </script>
 
     <!-- jQuery -->
     <!-- Bootstrap Core JavaScript -->
