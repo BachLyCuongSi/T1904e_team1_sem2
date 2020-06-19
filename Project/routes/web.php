@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 /*
+
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -22,10 +24,13 @@ Route::get('/', 'FrontendController@welcome')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/vegetables.html', 'FrontendController@vegetables');
 
+Route::get('/shop.html', 'FrontendController@shop')->name('shop');
+Route::get('/shop{id}', 'FrontendController@shopId')->name('shop.id');
 Route::get('/shop.html/{id?}', 'FrontendController@shop')->name('index.shop');
 Route::get('/vegetables.html', 'FrontendController@vegetables');
 Route::get('/shop.html', 'FrontendController@shop');
 Route::get('/fruits.html', 'FrontendController@fruits');
+Route::get('/juice.html', 'FrontendController@juice')->name('juce');
 Route::get('/juice.html', 'FrontendController@juice');
 Route::get('/dried.html', 'FrontendController@dried');
 Route::get('/wishlist.html', 'FrontendController@wishlist');
@@ -36,16 +41,36 @@ Route::get('/about.html', 'FrontendController@about');
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact');
-Route::get('/loadDeatilProduct','FrontendController@loadDeatilProduct')->name('product.detail');
+Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
+Route::get('/loadDeatilProduct', 'FrontendController@loadDeatilProduct')->name('product.detail');
+Route::get('/productsingle{id}', 'FrontendController@singleId')->name('prdsingle.id');
+Route::get('/productsingle', 'FrontendController@single')->name('prdsingle');
 
 Route::get('/category/{id}', 'FrontendController@cate')->name('category.id');
 
-Route::get('add/{id}','FrontendController@getAddCart');
-Route::get('delete/{id}','FrontendController@getDeleteCart');
+Route::get('add/{id}', 'FrontendController@getAddCart');
+Route::get('delete/{id}', 'FrontendController@getDeleteCart');
+
+// an ch?a s? l�, ch? truy?n ???c tham s?
+Route::get('/loadPR/{id}', function ($id) {
+    $dataPrCat = DB::table('products')->where('cat_id', $id)->paginate(4);
+    return view('wishlist', compact('dataPrCat'));
+})->name('loadPR.loadWhishList');
+Route::get('/loadDeatilProduct', 'FrontendController@loadDeatilProduct')->name('product.detail');
+
+//Phan gio hang
+Route::get('/cart.html', 'FrontendController@cart');
+Route::get('delete/{id}', 'FrontendController@getDeleteCart');
+Route::get('update', 'FrontendController@getUpdateCart');
+Route::get('update', 'FrontendController@getUpdateCart');
+
+//Phan thanh toan
+Route::get('/checkout.html', 'FrontendController@getCheckOut');
+Route::post('checkout', 'FrontendController@postCheckOut');
 
 
 //
-// Route::get('/shop', 'ShopController')->name('shop');
+Route::get('/shop', 'ShopController')->name('shop');
 // Route::get('/', 'IndexController@index');
 // Route::group('/', function(){
 //     Route::get('users/{id}', function ($id) {
@@ -79,13 +104,14 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::resource('cate_manage', 'CategoryController');
 
-        //Sản phẩm
+        //S?n ph?m
         Route::resource('product_manage', 'ProductController');
         Route::post('edit', 'ProductController@saveedit')->name('admin.pro.edit');
         Route::post('delete', 'ProductController@destroy')->name('admin.pro.destroy');
         Route::post('savepr', 'ProductController@store')->name('admin.pro.store');
+        Route::get('searhch', 'ProductController@search')->name('product.search');
 
-        //Kết thúc route sp
+        //K?t th�c route sp
 
         Route::resource('user_manage', 'UserController');
         Route::resource('customer_manage', 'CustomerController');
@@ -93,7 +119,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('cate_manage.search', 'CategoryController@search')->name('comment_manage.search');
         Route::group(['prefix' => 'admin'], function () {
         });
-       
     });
 });
 
