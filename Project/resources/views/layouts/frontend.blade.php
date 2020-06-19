@@ -72,8 +72,12 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	          <li class="nav-item cta cta-colored"><a href="{{asset('/cart.html')}}" class="nav-link"><span class="icon-shopping_cart"></span>{{Cart::count()}}</a></li>
-              <li class="nav-item cta cta-colored">
-                  {{-- <a href="{{asset('/')}}" class="nav-link"><span class="ion-log-in"></span>Login/</a> <a href="{{asset('/')}}" class="nav-link"><span class="ion-log-out"></span>Reseter</a> --}}
+              <li class="nav-item ">
+                    @if (isset($name))
+                        <a href="{{ asset('/') }} class="nav-link""> <span>{{ $name}}</span> </a>
+                    @else
+                        <a href="{{asset('/login')}}" class="nav-link"> <span> Login/Register</span> </a>
+                    @endif
                 </li>
 	        </ul>
 	      </div>

@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'FrontendController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/vegetables.html', 'FrontendController@vegetables');
+Route::get('/', 'FrontendController@welcome')->name('home');
+// Route::get('/{name}', 'FrontendController@welcomename');
+
+// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/vegetables.html', 'FrontendController@vegetables');
 
 Route::get('/shop.html/{id?}', 'FrontendController@shop')->name('index.shop');
 Route::get('/vegetables.html', 'FrontendController@vegetables');
@@ -99,3 +104,11 @@ Route::middleware(['auth', 'team'])->group(function () {
         Route::resource('employee_manage', 'EmployeeController');
     });
 });
+
+// login logout
+Route::get('/login', 'LoginController@login');
+Route::post('login', 'LoginController@postLogin');
+Route::get('logout', 'LoginController@logout');
+// register
+Route::get('/register', 'LoginController@register');
+Route::post('register', 'LoginController@postRegister');

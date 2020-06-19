@@ -112,6 +112,7 @@
         </div>
       </div>
       @endforeach
+
     </div>
   </div>
 </section>
@@ -138,10 +139,10 @@
                     <div class="text py-3 pb-4 px-3 text-center">
 
                         <h3><a href="#">{{ $product->pr_name }}</a></h3>
-                        <div class="d-flex">
-                        <div class="pricing">
-                            <p class="price"><span class="mr-2 price-dc">${{ $product->pr_price }}</span><span class="price-sale">${{ ($product->pr_price)-($product->pr_price)*($product->discount)/100 }}</span> </p>
-                        </div>
+                         <div class="d-flex">
+                            <div class="pricing">
+                                <p class="price"><span class="mr-2 price-dc">${{ $product->pr_price }}</span><span class="price-sale">${{ ($product->pr_price)-($product->pr_price)*($product->discount)/100 }}</span> </p>
+                            </div>
                         </div>
                         <div class="bottom-area d-flex px-3">
                         <div class="m-auto d-flex">
@@ -184,42 +185,95 @@
     </div>
   </div>
 </section>
-
+{{-- mạnh làm --}}
+{{-- không có coment , đây là những lời chia sẻ của người sáng lập --}}
 <section class="ftco-section testimony-section">
-  <div class="container">
-    <div class="row justify-content-center mb-5 pb-3">
-      <div class="col-md-7 heading-section ftco-animate text-center">
-        <span class="subheading">Testimony</span>
-        <h2 class="mb-4">Our satisfied customer says</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
-      </div>
-    </div>
-    <div class="row ftco-animate">
-      <div class="col-md-12">
-        @foreach($lsComment as $comm)
-            <div class="col-md-4">
-                <div class="item">
-                    <div class="testimony-wrap p-4 pb-5">
-                        <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                            <span class="quote d-flex align-items-center justify-content-center">
-                            <i class="icon-quote-left"></i>
-                            </span>
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate text-center">
+                <span class="subheading">Testimony</span>
+                <h2 class="mb-4">Our satisfied customer says</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+            </div>
+        </div>
+        <div class="row ftco-animate">
+            <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel">
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">Marketing Manager</span>
+                            </div>
                         </div>
-                        <div class="text text-center">
-                            <p class="mb-5 pl-4 ">{{ $comm->comm_conten }}</p>
-                            <p class="name">{{ $comm->cus_name }}</p>
-                            <span class="position">{{ $comm->cus_addres }}</span>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">Interface Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(images/person_3.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">UI Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">Web Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text text-center">
+                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Garreth Smith</p>
+                                <span class="position">System Analyst</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        @endforeach
-      </div>
+        </div>
     </div>
-  </div>
 </section>
-
 <hr>
 
 </section>
