@@ -41,7 +41,7 @@
 
                 <td class="product-name">
                   <h3>{{$item->name}}</h3>
-                  <p>Far far away, behind the word mountains, far from the countries</p>
+                  <p>{{$item->options->description}}</p>
                 </td>
 
                 <td class="price">$ {{number_format($item->price,0,',','.')}}</td>
@@ -53,7 +53,7 @@
                     onchange="updateCart(this.value,'{{$item->rowId}}')">
                   </div>
                 </td>
-                <td class="total">$ {{number_format($item->price-($item->price*$item->options->discount*0.01)*$item->qty,0,',','.')}} </td>
+                <td class="total">$ {{number_format(($item->price-($item->price*$item->options->discount*0.01))*$item->qty,0,',','.')}} </td>
               </tr><!-- END TR-->
 
 
