@@ -130,12 +130,15 @@ class FrontendController extends Controller
 
     public function getAddCart($id)
     {
-         $lsproduct = Product::find($id);
+        $lsproduct = Product::find($id);
         Cart::add([
-        'id' => $id, 'name' => $lsproduct->pr_name,
-        'qty' => 1, 'price' => $lsproduct->pr_price,
-        'options' => ['img' => $lsproduct->pr_image]
-        // 'options' => ['discount' => $lsproduct->discount]
+        'id' => $id,
+        'name' => $lsproduct->pr_name,
+        'qty' => 1,
+        'price' => $lsproduct->pr_price,
+        'options' => [
+          'img' => $lsproduct->pr_image,
+          'discount' => $lsproduct->discount]
         ]);
         return back();
     }

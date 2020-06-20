@@ -26,6 +26,7 @@
 						    <th>&nbsp;</th>
 						    <th>Product name</th>
 						    <th>Price</th>
+                <th>Discount</th>
 						    <th>Quantity</th>
 						    <th>Total</th>
               </tr>
@@ -43,6 +44,7 @@
                 </td>
 
                 <td class="price">$ {{number_format($item->price,0,',','.')}}</td>
+                <td class="discount">{{$item->options->discount}} %</td>
 
                 <td class="quantity">
                   <div class="input-group mb-3">
@@ -50,8 +52,7 @@
                     onchange="updateCart(this.value,'{{$item->rowId}}')">
                   </div>
                 </td>
-
-                <td class="total">$ {{number_format($item->price*$item->qty,0,',','.')}} </td>
+                <td class="total">$ {{number_format($item->price-($item->price*$item->options->discount*0.01)*$item->qty,0,',','.')}} </td>
               </tr><!-- END TR-->
 
 
@@ -77,17 +78,13 @@
             <span>$ {{Cart::subtotal()}}</span>
           </p>
           <p class="d-flex">
-            <span>Delivery</span>
-            <span>$0.00</span>
-          </p>
-          <p class="d-flex">
             <span>Discount</span>
-            <span>$0.00</span>
+            <span>{{$item->options->discount}} %</span>
           </p>
           <hr>
           <p class="d-flex total-price">
             <span>Total</span>
-            <span>$ {{Cart::subtotal()}}</span>
+            <span>$ {{Cart::subtotal()-((Cart::subtotal()*$item->options->discount)/100)}}</span>
           </p>
         </div>
         <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
