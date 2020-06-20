@@ -137,8 +137,8 @@ class FrontendController extends Controller
         'qty' => 1,
         'price' => $lsproduct->pr_price,
         'options' => [
-          'img' => $lsproduct->pr_image,
-          'discount' => $lsproduct->discount]
+            'img' => $lsproduct->pr_image,
+            'discount' => $lsproduct->discount]
         ]);
         return back();
     }

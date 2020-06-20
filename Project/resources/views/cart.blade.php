@@ -25,8 +25,9 @@
                 <th>Delete</th>
 						    <th>&nbsp;</th>
 						    <th>Product name</th>
-						    <th>Price</th>
+						    <th>Original Price</th>
                 <th>Discount</th>
+                <th>Discounted Price</th>
 						    <th>Quantity</th>
 						    <th>Total</th>
               </tr>
@@ -45,7 +46,7 @@
 
                 <td class="price">$ {{number_format($item->price,0,',','.')}}</td>
                 <td class="discount">{{$item->options->discount}} %</td>
-
+                <td class="price">$ {{$item->price-($item->price*$item->options->discount*0.01)}}</td>
                 <td class="quantity">
                   <div class="input-group mb-3">
                     <input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->qty}}" min="1" max="100"
@@ -84,7 +85,7 @@
           <hr>
           <p class="d-flex total-price">
             <span>Total</span>
-            <span>$ {{Cart::subtotal()-((Cart::subtotal()*$item->options->discount)/100)}}</span>
+            <span>$ {{Cart::subtotal()}}</span>
           </p>
         </div>
         <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
