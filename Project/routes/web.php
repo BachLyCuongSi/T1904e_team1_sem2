@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+Route::get('dangnhap', 'LoginController@login')->name('login');
 Route::get('/', 'FrontendController@welcome')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/vegetables.html', 'FrontendController@vegetables');
@@ -57,13 +58,13 @@ Route::get('/loadProduct', 'FrontendController@loadProducOfCate')->name('lstProd
 Route::get('/cart.html', 'FrontendController@cart');
 Route::get('add/{id}', 'FrontendController@getAddCart');
 Route::get('delete/{id}', 'FrontendController@getDeleteCart');
-Route::get('update','FrontendController@getUpdateCart');
+Route::get('update', 'FrontendController@getUpdateCart');
 
 //Phan thanh toan
 
-Route::get('/checkout.html','FrontendController@getCheckOut');
-Route::post('checkout','FrontendController@postCheckOut');
-Route::get('/complete.html','FrontendController@complete');
+Route::get('/checkout.html', 'FrontendController@getCheckOut');
+Route::post('checkout', 'FrontendController@postCheckOut');
+Route::get('/complete.html', 'FrontendController@complete');
 
 
 
