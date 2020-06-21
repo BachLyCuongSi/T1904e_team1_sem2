@@ -39,9 +39,8 @@ Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/productsingle{id}', 'FrontendController@singleId')->name('prdsingle.id');
 Route::get('/productsingle', 'FrontendController@single')->name('prdsingle');
 
-Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about');
-Route::post('subscribe', 'FrontendController@subscribe');
+Route::post('subscribe','FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
 
@@ -107,6 +106,10 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('customer_manage', 'CustomerController');
         Route::resource('comment_manage', 'CommentController');
         Route::get('cate_manage.search', 'CategoryController@search')->name('comment_manage.search');
+
+        //Quản lý đơn hàng
+        Route::resource('order_manage', 'OrderController');
+
         Route::group(['prefix' => 'admin'], function () {
         });
     });
