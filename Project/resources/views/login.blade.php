@@ -10,12 +10,18 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="{{ url('/register')}}" class="signup-image-link">Create an account</a>
+                        <a href="{{ asset('/register')}}" class="signup-image-link">Create an account</a>
                     </div>
-
+{{-- {{ $request->session()->get('message') }} --}}
                     <div class="signin-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form action="{{ url('/login') }}" method="POST" class="register-form" id="login-form">
+
+                        {{-- @if (Session::has('flags') && Session::has('message'))
+                            <div class="alert alert-{{ Session::get('flags') }}"> {{ Session::get('message') }}</div>
+                        @endif --}}
+
+                        <form action="{{ route('index.login') }}" method="POST" class="register-form" id="login-form">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             @csrf
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>

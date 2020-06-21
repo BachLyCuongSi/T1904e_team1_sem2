@@ -39,9 +39,8 @@ Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/productsingle{id}', 'FrontendController@singleId')->name('prdsingle.id');
 Route::get('/productsingle', 'FrontendController@single')->name('prdsingle');
 
-Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about');
-Route::post('subscribe', 'FrontendController@subscribe');
+Route::post('subscribe','FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
 
@@ -125,3 +124,16 @@ Route::middleware(['auth', 'team'])->group(function () {
         Route::resource('employee_manage', 'EmployeeController');
     });
 });
+
+// login/logout
+Route::get('/login','LoginOutController@login')->name('index.login');
+Route::post('/login','LoginOutController@postLogin')->name('index.postLogin');
+
+Route::get('/logout','LoginOutController@logout')->name('index.logout');
+Route::post('/logout','LoginOutController@postlogout')->name('index.postlogout');
+
+Route::get('/register','LoginOutController@register')->name('register');
+Route::post('/register', 'LoginOutController@postRegister')->name('postRegister');
+
+
+

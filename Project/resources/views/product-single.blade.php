@@ -28,14 +28,7 @@
                     <h3 id="name">{{$product->pr_name}}</h3>
 
                     <div class="rating d-flex">
-                    <p class="text-left mr-4">
-                        <a href="#" class="mr-2">5.0</a>
-                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                        <a href="#"><span class="ion-ios-star-outline"></span></a>
-                    </p>
+
                     </div>
                     <p class="price"><span id="price">
                         @if ($product->discount > 0)
@@ -46,18 +39,8 @@
                     <p id="title"></p>
 
                     <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="form-group d-flex">
-                        <div class="select-wrap">
-                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                            <select name="" id="" class="form-control">
-                            <option value="">Small</option>
-                            <option value="">Medium</option>
-                            <option value="">Large</option>
-                            <option value="">Extra Large</option>
-                            </select>
-                        </div>
-                        </div>
+                    <div class="col-md-8">
+                        <div class="text-editor">{{ $product->pr_description }} </div>
                     </div>
                     <div class="w-100"></div>
                     <div class="input-group col-md-6 d-flex mb-3">

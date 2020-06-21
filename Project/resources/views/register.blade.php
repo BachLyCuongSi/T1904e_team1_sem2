@@ -10,7 +10,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form action="{{ url('/register') }}" method="POST" class="register-form" id="register-form">
+                        <form action="{{ route('register') }}" method="POST" class="register-form" id="register-form">
                             @csrf
                             @if (count($errors)> 0)
                                 <div class="alert alert-danger">
@@ -19,13 +19,6 @@
                                     @endforeach
                                 </div>
                             @endif
-
-                            {{-- @if ( section::)
-
-                            <div    class="alert alert-success">
-                                    {{ Session::get('thanhcong') }}
-                                </div>
-                            @endif --}}
 
                             <div class="form-group">
 								<label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -61,7 +54,6 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">I am already member</a>
                     </div>
                 </div>
             </div>

@@ -25,9 +25,8 @@
                 <th>Delete</th>
 						    <th>&nbsp;</th>
 						    <th>Product name</th>
-						    <th>Original Price</th>
-                <th>Discount</th>
-                <th>Discounted Price</th>
+
+						    <th>Price</th>
 						    <th>Quantity</th>
 						    <th>Total</th>
               </tr>
@@ -41,19 +40,16 @@
 
                 <td class="product-name">
                   <h3>{{$item->name}}</h3>
-                  <p>{{$item->options->description}}</p>
                 </td>
-
-                <td class="price">$ {{number_format($item->price,0,',','.')}}</td>
-                <td class="discount">{{$item->options->discount}} %</td>
-                <td class="price">$ {{$item->price-($item->price*$item->options->discount*0.01)}}</td>
+                <td class="price">$ {{$item->price}}</td>
                 <td class="quantity">
                   <div class="input-group mb-3">
                     <input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->qty}}" min="1" max="100"
                     onchange="updateCart(this.value,'{{$item->rowId}}')">
                   </div>
                 </td>
-                <td class="total">$ {{number_format(($item->price-($item->price*$item->options->discount*0.01))*$item->qty,0,',','.')}} </td>
+
+                <td class="total">$ {{$item->price*$item->qty}} </td>
               </tr><!-- END TR-->
 
 
@@ -74,14 +70,14 @@
       <div class="col-lg-4 mt-5 cart-wrap ftco-animatet">
         <div class="cart-total mb-3">
           <h3>Cart Totals</h3>
-          <p class="d-flex">
+          <!-- <p class="d-flex">
             <span>Subtotal</span>
             <span>$ {{Cart::subtotal()}}</span>
-          </p>
-          <p class="d-flex">
+          </p> -->
+          <!-- <p class="d-flex">
             <span>Discount</span>
             <span>{{$item->options->discount}} %</span>
-          </p>
+          </p> -->
           <hr>
           <p class="d-flex total-price">
             <span>Total</span>
