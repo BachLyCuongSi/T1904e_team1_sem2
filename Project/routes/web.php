@@ -119,3 +119,16 @@ Route::middleware(['auth', 'team'])->group(function () {
         Route::resource('employee_manage', 'EmployeeController');
     });
 });
+
+// login/logout
+Route::get('/login','LoginOutController@login')->name('index.login');
+Route::post('/login','LoginOutController@postLogin')->name('index.postLogin');
+
+Route::get('/logout','LoginOutController@logout')->name('index.logout');
+Route::post('/logout','LoginOutController@postlogout')->name('index.postlogout');
+
+Route::get('/register','LoginOutController@register')->name('register');
+Route::post('/register', 'LoginOutController@postRegister')->name('postRegister');
+
+
+

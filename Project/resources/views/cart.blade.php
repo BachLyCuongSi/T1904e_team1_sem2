@@ -26,8 +26,8 @@
 						    <th>&nbsp;</th>
 						    <th>Product name</th>
 						    <th>Original Price</th>
-                <th>Discount</th>
-                <th>Discounted Price</th>
+                            <th>Discount</th>
+                            <th>Discounted Price</th>
 						    <th>Quantity</th>
 						    <th>Total</th>
               </tr>
@@ -53,7 +53,7 @@
                     onchange="updateCart(this.value,'{{$item->rowId}}')">
                   </div>
                 </td>
-                <td class="total">$ {{number_format(($item->price-($item->price*$item->options->discount*0.01))*$item->qty,0,',','.')}} </td>
+                <td name ="total" class="total">$ {{number_format(($item->price-($item->price*$item->options->discount*0.01))*$item->qty,0,',','.')}} </td>
               </tr><!-- END TR-->
 
 

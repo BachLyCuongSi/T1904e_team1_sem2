@@ -74,13 +74,17 @@
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
           <li class="nav-item cta cta-colored"><a href="{{asset('/cart.html')}}" class="nav-link"><span class="icon-shopping_cart"></span>{{Cart::count()}}</a></li>
-          <li class="nav-item ">
-            @if (isset($name))
-            <a href="{{ asset('/') }} class=" nav-link""> <span>{{ $name}}</span> </a>
+
+
+            @if (Session::has('name'))
+                {{-- <div  class=" nav-link""> <span>{{ session::get('name') }}</span> </div> --}}
+                <li class="nav-item"><a class="nav-link"  href="#">{{ session::get('name') }}</a></li>
+                <li class="nav-item"><a class="nav-link"  href="{{ route('index.postlogout') }}">Logout</a></li>
+
             @else
-            <a href="{{asset('/login')}}" class="nav-link"> <span> Login/Register</span> </a>
+            <li class="nav-item "> <a href="{{asset('/login')}}" class="nav-link"> <span> Login/Register</span> </a> </li>
             @endif
-          </li>
+
         </ul>
       </div>
     </div>
