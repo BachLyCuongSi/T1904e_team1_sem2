@@ -9,6 +9,7 @@ use Hash;
 use Illuminate\Support\Facades\View;
 use App\providers\AppServiceProvider;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginOutController extends Controller
 {
@@ -109,7 +110,9 @@ class LoginOutController extends Controller
         $cus->cus_phone = $request->phone;
         $cus->save();
 
+        $abc = DB::table('customers')->where([['cus_email',$request->email],['deleted_at',null]])->first();
         $request->session()->put('name',$request->name);
+        $request->session()->put('cus_id',$abc->cus_id);
 
         return redirect()->route('home');
 
