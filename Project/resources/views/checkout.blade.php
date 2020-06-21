@@ -13,56 +13,50 @@
   </div>
 </div>
 <section class="ftco-section ftco-cart">
-        <div class="container">
-            <div class="row">
-                <form action="{{ url('/checkout') }}" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="col-md-12 ftco-animate">
-                      <div class="cart-list">
-                        <table class="table">
-                          <thead class="thead-primary">
-                            <tr class="text-center">
-                              <th>Delete</th>
-              						    <th>&nbsp;</th>
-              						    <th>Product name</th>
-              						    <th>Price</th>
-              						    <th>Quantity</th>
-              						    <th>Total</th>
-                            </tr>
-                          </thead>
-                          @foreach (Cart::content() as $item)
-                          <tbody>
-                            <tr class="text-center">
-                              <td class="product-remove"><a href="delete/{{$item->rowId}}"><span class="ion-ios-close"></span></a></td>
+  <div class="container">
+    <div class="row">
+      <form action="{{ url('/checkout') }}" method="post">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <div class="col-md-12 ftco-animate">
+        <div class="cart-list">
+          <table class="table">
+            <thead class="thead-primary">
+              <tr class="text-center">
+                <th>Delete</th>
+						    <th>&nbsp;</th>
+						    <th>Product name</th>
+						    <th>Price</th>
+						    <th>Quantity</th>
+						    <th>Total</th>
+              </tr>
+            </thead>
+            @foreach (Cart::content() as $item)
+            <tbody>
+              <tr class="text-center">
+                <td class="product-remove"><a href="delete/{{$item->rowId}}"><span class="ion-ios-close"></span></a></td>
 
-                              <td class="image-prod"><div class="img" style="background-image:url('images/{{$item->options->img}}')"></div></td>
+                <td class="image-prod"><div class="img" style="background-image:url('images/{{$item->options->img}}')"></div></td>
 
-                              <td class="product-name">
-                                <h3>{{$item->name}}</h3>
-                                <p>Far far away, behind the word mountains, far from the countries</p>
-                              </td>
+                <td class="product-name">
+                  <h3>{{$item->name}}</h3>
+                </td>
+                <td class="price">$ {{$item->price}}</td>
+                <td class="quantity">
+                  <div class="input-group mb-3">
+                    <input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->qty}}" min="1" max="100"
+                    onchange="updateCart(this.value,'{{$item->rowId}}')">
+                  </div>
+                </td>
+                <td class="total">$ {{$item->price*$item->qty}} </td>
+              </tr><!-- END TR-->
 
-                              <td class="price">$ {{number_format($item->price,0,',','.')}}</td>
 
-                              <td class="quantity">
-                                <div class="input-group mb-3">
-                                  <input type="text" name="quantity" class="quantity form-control input-number" value="{{$item->qty}}" min="1" max="100"
-                                  onchange="updateCart(this.value,'{{$item->rowId}}')">
-                                </div>
-                              </td>
-
-                              <td class="total">$ {{number_format($item->price*$item->qty,0,',','.')}} </td>
-                              @endforeach
-                              <td>
-
-                            </tr><!-- END TR-->
-
-                          </tbody>
-
-                        </table>
-                      </div>
-                    </div>
-                    <div class="row justify-content-center">
+            </tbody>
+            @endforeach
+          </table>
+        </div>
+      </div>
+        <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
 						<form action="#" class="billing-form">
 							<h3 class="mb-4 billing-heading">Billing Details</h3>
@@ -109,18 +103,6 @@
 	          	<div class="col-md-12 d-flex mb-5">
 	          		<div class="cart-detail cart-total p-3 p-md-4">
 	          			<h3 class="billing-heading mb-4">Cart Total</h3>
-	          			<p class="d-flex">
-		    						<span>Subtotal</span>
-		    						<span>{{Cart::subtotal()}}</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>Delivery</span>
-		    						<span>$0.00</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>Discount</span>
-		    						<span>$0.00</span>
-		    					</p>
 		    					<hr>
 		    					<p class="d-flex total-price">
 		    						<span>Total</span>

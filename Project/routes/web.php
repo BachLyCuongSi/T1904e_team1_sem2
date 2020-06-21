@@ -39,9 +39,8 @@ Route::get('/wishlist.html', 'FrontendController@wishlist');
 Route::get('/productsingle{id}', 'FrontendController@singleId')->name('prdsingle.id');
 Route::get('/productsingle', 'FrontendController@single')->name('prdsingle');
 
-Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about');
-Route::post('subscribe', 'FrontendController@subscribe');
+Route::post('subscribe','FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
 

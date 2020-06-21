@@ -8,7 +8,7 @@ use App\product;
 // use App\Category;
 // use App\Product;
 use Cart;
-use Mail;
+// use App\Mail;
 use App\Order;
 use App\Orderdetail;
 use Carbon\Carbon;
@@ -21,6 +21,7 @@ use App\Http\Controllers\Exception;
 use App\Subscriber;
 
 use App\Mail\DemoEmail;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -131,15 +132,18 @@ class FrontendController extends Controller
     public function getAddCart($id)
     {
         $lsproduct = Product::find($id);
+        $b=$lsproduct->pr_price;
+        $a=($lsproduct->pr_price)*((100-($lsproduct->discount))/100);
+
+        // $b=$lsproduct->pr_price;
         Cart::add([
         'id' => $id,
         'name' => $lsproduct->pr_name,
         'qty' => 1,
-        'price' => $lsproduct->pr_price,
+        'price' => $a,
         'options' => [
             'img' => $lsproduct->pr_image,
-            'discount' => $lsproduct->discount,
-            'description' => $lsproduct->pr_desciption]
+            'discount' => $lsproduct->discount]
         ]);
         return back();
     }
@@ -164,23 +168,26 @@ class FrontendController extends Controller
      }
 
      public function postCheckOut(Request $request){
+       $data['info'] = $request->all();
+       $email = $request->email;
+
        $cartInfor = Cart::content();
-
-       $od = new Order();
-       $od -> cus_id = 1;
-       $od -> cus_status = $request -> note;
-       $od -> status = 0;
-       $od -> cus_total_price = 10000;
-       $od -> cus_total_price_PayMent = 10000;
-
-       $od -> created_at = Carbon::now();
-       $od -> save();
+       $subtotal = Cart::subtotal();
 
        $odID = DB::table('orders')->orderBy('od_id','desc')->get('od_id')->first();
 
-
        if (count($cartInfor)>0) {
        foreach ($cartInfor as $key => $item){
+
+         $od = new Order();
+         $od -> cus_id = 1;
+         $od -> cus_status = $request -> note;
+         $od -> cus_total_price = $item-> subtotal;
+         $od -> cus_total_price_PayMent = $item-> subtotal;
+         $od -> status = 0;
+         $od -> created_at = Carbon::now();
+         $od -> save();
+
          $oddetail = new Orderdetail();
          $oddetail -> od_id = $odID -> od_id;
          $oddetail -> pr_id = $item -> id;
@@ -193,6 +200,19 @@ class FrontendController extends Controller
        }
      }
        Cart::destroy();
+
+       $data['cart'] = Cart::content();
+       $data['subtotal'] = Cart::total();
+
+       Mail::send('email', $data, function ($message) use($email){
+         $message->from('t1904efpt@gmail.com', 'Team 1 Shop');
+
+         $message->to('hoanglong2703@gmail.com', 'Long');
+
+         $message->cc('t1904efpt@gmail.com', 'Team 1 Shop');
+
+         $message->subject('Xac nhan hoa don mua hang Team 1 Shop');
+       });
 
        return view ('complete');
      }
@@ -209,13 +229,7 @@ class FrontendController extends Controller
       $s->email = $request->email;
       $s->save();
 
-      $objDemo = new \stdClass();
-      $objDemo->demo_one = 'Demo One Value';
-      $objDemo->demo_two = 'Demo Two Value';
-      $objDemo->sender = 'Bot';
-      $objDemo->receiver = 'team 1';
-
-      Mail::to($s->email)->send(new DemoEmail($objDemo));
+      Mail::to($s->email)->send(new DemoEmail());
 
       return redirect()->back();
       }

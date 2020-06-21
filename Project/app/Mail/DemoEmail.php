@@ -3,13 +3,20 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class DemoEmail extends Mailable
 {
     use Queueable, SerializesModels;
+
+    /**
+     * The demo object instance.
+     *
+     * @return void
+     */
+    public $demo;
 
     /**
      * Create a new message instance.
@@ -28,6 +35,6 @@ class DemoEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+      return $this->view('subscribe');
     }
 }
