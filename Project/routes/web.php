@@ -107,6 +107,10 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('customer_manage', 'CustomerController');
         Route::resource('comment_manage', 'CommentController');
         Route::get('cate_manage.search', 'CategoryController@search')->name('comment_manage.search');
+
+        //Quản lý đơn hàng
+        Route::resource('order_manage', 'OrderController');
+
         Route::group(['prefix' => 'admin'], function () {
         });
     });
