@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::post('/logins', 'Auth\LoginController@login')->name('login');
+Route::get('/logins', 'LoginController@login')->name('login');
 Route::get('/', 'FrontendController@welcome')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/vegetables.html', 'FrontendController@vegetables');
