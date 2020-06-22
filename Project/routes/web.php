@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('dangnhap', 'LoginController@login')->name('login');
+Route::post('/logins', 'Auth\LoginController@login')->name('login');
 Route::get('/', 'FrontendController@welcome')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/vegetables.html', 'FrontendController@vegetables');
@@ -40,7 +40,7 @@ Route::get('/productsingle{id}', 'FrontendController@singleId')->name('prdsingle
 Route::get('/productsingle', 'FrontendController@single')->name('prdsingle');
 
 Route::get('/about.html', 'FrontendController@about');
-Route::post('subscribe','FrontendController@subscribe');
+Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
 
@@ -122,14 +122,11 @@ Route::middleware(['auth', 'team'])->group(function () {
 });
 
 // login/logout
-Route::get('/login','LoginOutController@login')->name('index.login');
-Route::post('/login','LoginOutController@postLogin')->name('index.postLogin');
+// Route::get('/login', 'LoginOutController@login')->name('index.login');
+Route::post('/postlogin', 'LoginOutController@postLogin')->name('index.postLogin');
 
-Route::get('/logout','LoginOutController@logout')->name('index.logout');
-Route::post('/logout','LoginOutController@postlogout')->name('index.postlogout');
+Route::get('/logout', 'LoginOutController@logout')->name('index.logout');
+Route::post('/logout', 'LoginOutController@postlogout')->name('index.postlogout');
 
-Route::get('/register','LoginOutController@register')->name('register');
+Route::get('/register', 'LoginOutController@register')->name('register');
 Route::post('/register', 'LoginOutController@postRegister')->name('postRegister');
-
-
-

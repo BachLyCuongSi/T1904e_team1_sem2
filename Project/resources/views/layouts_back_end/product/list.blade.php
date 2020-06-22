@@ -83,7 +83,6 @@
         </table>
     </div>
 </div>
-@endsection
 
 @section('modal')
 <!-- Modal -->
@@ -255,7 +254,7 @@
     </div>
 </div>
 <!-- Kết thúc modal delete product -->
-
+@endsection
 <script type="text/javascript">
     //Show modal Sửa sản phẩm 
     function loadProDetail(data) {
