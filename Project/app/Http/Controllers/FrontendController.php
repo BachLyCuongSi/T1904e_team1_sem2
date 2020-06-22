@@ -171,48 +171,48 @@ class FrontendController extends Controller
        $data['info'] = $request->all();
        $email = $request->email;
 
+
        $cartInfor = Cart::content();
        $subtotal = Cart::subtotal();
 
+
+       $od = new Order();
+       $od -> cus_id = 1;
+       $od -> cus_status = $request -> note;
+       $od -> cus_total_price =(int)str_replace(',', '', $subtotal) ;
+       $od -> cus_total_price_PayMent =(int)str_replace(',', '', $subtotal);
+       $od -> status = 0;
+       $od -> created_at = Carbon::now();
+       $od -> save();
+
        $odID = DB::table('orders')->orderBy('od_id','desc')->get('od_id')->first();
 
-       if (count($cartInfor)>0) {
        foreach ($cartInfor as $key => $item){
-
-         $od = new Order();
-         $od -> cus_id = 1;
-         $od -> cus_status = $request -> note;
-         $od -> cus_total_price = $item-> subtotal;
-         $od -> cus_total_price_PayMent = $item-> subtotal;
-         $od -> status = 0;
-         $od -> created_at = Carbon::now();
-         $od -> save();
-
          $oddetail = new Orderdetail();
          $oddetail -> od_id = $odID -> od_id;
          $oddetail -> pr_id = $item -> id;
          $oddetail -> oddt_quantity = $item -> qty;
          $oddetail -> created_at = Carbon::now();
          $oddetail -> save();
-
          $product = Product::find($item->id);
          $product->decrement('pr_quantity', $item->qty);
        }
-     }
+
+
+     $data['cart'] = Cart::content();
+     $data['subtotal'] = Cart::subtotal();
+
+     Mail::send('email', $data, function ($message) use($email){
+       $message->from('t1904efpt@gmail.com', 'Team 1 Shop');
+
+       $message->to('hoanglong2703@gmail.com', 'Long');
+
+       $message->cc('t1904efpt@gmail.com', 'Team 1 Shop');
+
+       $message->subject('Xac nhan hoa don mua hang Team 1 Shop');
+     });
+
        Cart::destroy();
-
-       $data['cart'] = Cart::content();
-       $data['subtotal'] = Cart::total();
-
-       Mail::send('email', $data, function ($message) use($email){
-         $message->from('t1904efpt@gmail.com', 'Team 1 Shop');
-
-         $message->to('hoanglong2703@gmail.com', 'Long');
-
-         $message->cc('t1904efpt@gmail.com', 'Team 1 Shop');
-
-         $message->subject('Xac nhan hoa don mua hang Team 1 Shop');
-       });
 
        return view ('complete');
      }
