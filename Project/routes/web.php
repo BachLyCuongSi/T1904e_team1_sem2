@@ -32,7 +32,7 @@ Route::get('/shop{id}', 'FrontendController@shopId')->name('shop.id');
 Route::get('/fruits.html', 'FrontendController@fruits');
 Route::get('/juice.html', 'FrontendController@juice')->name('juce');
 Route::get('/dried.html', 'FrontendController@dried');
-Route::get('/wishlist.html', 'FrontendController@wishlist');
+Route::get('/wishlist.html', 'FrontendController@wishlist')->name('wishlist');
 
 // chi tiet san pham
 
@@ -44,11 +44,7 @@ Route::post('subscribe','FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
 Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
 
-// an chưa sử lý, chỉ truyền được tham số
-Route::get('/loadPR/{id}', function ($id) {
-    $dataPrCat = DB::table('products')->where('cat_id', $id)->paginate(4);
-    return view('wishlist', compact('dataPrCat'));
-})->name('loadPR.loadWhishList');
+
 Route::get('/loadDeatilProduct', 'FrontendController@loadDeatilProduct')->name('product.detail');
 
 Route::get('/loadProduct', 'FrontendController@loadProducOfCate')->name('lstProductOfCate');

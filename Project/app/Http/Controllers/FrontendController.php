@@ -241,5 +241,9 @@ class FrontendController extends Controller
       return redirect()->back();
       }
 
+    public function wishlist(){
+        $data = DB::table('products')->where('deleted_at', null)->where('pr_quantity',0)->get();
+        return view('wishlist', compact('data'));
+    }
 
 }
