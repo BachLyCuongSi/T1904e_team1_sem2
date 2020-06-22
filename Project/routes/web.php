@@ -109,7 +109,9 @@ Route::middleware(['auth'])->group(function () {
 
         //Quản lý đơn hàng
         Route::resource('order_manage', 'OrderController');
-
+        Route::get('detail', 'OrderController@LoadDetai')->name('orderDetail');
+        Route::post('saveEdit', 'OrderController@saveEditBill')->name('saveEdit');
+        Route::get('exportExcel', 'OrderController@ExportExcel')->name('exportExcelBill');
         Route::group(['prefix' => 'admin'], function () {
         });
     });

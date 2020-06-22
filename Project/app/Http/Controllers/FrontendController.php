@@ -23,6 +23,8 @@ use App\Subscriber;
 use App\Mail\DemoEmail;
 use Illuminate\Support\Facades\Mail;
 
+use App\Http\Controllers\Controller;;
+
 
 
 class FrontendController extends Controller
@@ -163,8 +165,13 @@ class FrontendController extends Controller
     }
 
     // Thanh toan
-     public function getCheckOut(){
-       return view ('checkout');
+     public function getCheckOut(request $request){
+         if( $request->session()->has('name') ){
+            return view ('checkout');
+         }else {
+            return redirect()->route('index.login');
+         }
+
      }
 
      public function postCheckOut(Request $request){

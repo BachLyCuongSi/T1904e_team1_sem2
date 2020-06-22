@@ -20,13 +20,6 @@
                                 </div>
                             @endif
 
-                            @if ( isset($thanhcong))
-
-                                <div    class="alert alert-success">
-                                    {{ $thanhcong }}
-                                </div>
-                            @endif
-
                             <div class="form-group">
 								<label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
 								<input type="text" name="name" id="name" placeholder="Your Name"/>
