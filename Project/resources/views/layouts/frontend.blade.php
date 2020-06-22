@@ -82,7 +82,7 @@
                 <li class="nav-item"><a class="nav-link"  href="{{ route('index.postlogout') }}">Logout</a></li>
 
             @else
-            <li class="nav-item "> <a href="{{asset('/login')}}" class="nav-link"> <span> Login/Register</span> </a> </li>
+            <li class="nav-item "> <a href="{{route('index.login')}}" class="nav-link"> <span> Login/Register</span> </a> </li>
             @endif
 
         </ul>
