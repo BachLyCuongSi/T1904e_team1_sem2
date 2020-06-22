@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderController extends Controller
 {
@@ -268,8 +268,8 @@ class OrderController extends Controller
                         }
                     );
                 });
-            })->download('xlsx');
-            return 1;
+            })->download('Bill.xlsx');
+            // return 1;
         } catch (\Exception $e) {
             $e->getmessage();
         }
