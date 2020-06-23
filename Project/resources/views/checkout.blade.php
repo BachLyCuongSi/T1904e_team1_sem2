@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span></p>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Home</a></span> <span>Checkout</span></p>
         <h1 class="mb-0 bread">Checkout</h1>
       </div>
     </div>
@@ -65,27 +65,27 @@
 		            <div class="col-md-12">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Name</label>
-                    <textarea name="note" class="form-control" style="height:55px !important;"> {{ $datacus->cus_name }}  </textarea>
+                    <input type="text" class="form-control" placeholder="" value="{{ $datacus->cus_name }}">
 	                </div>
 		            </div>
                 <div class="w-100"></div>
 		            <div class="col-md-12">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Street Address</label>
-                    <textarea name="note" class="form-control" style="height:50px !important;">{{ $datacus->cus_addres }}</textarea>
+                    <input type="text" class="form-control" placeholder="" value="{{ $datacus->cus_addres }}">
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <textarea required  name="note" class="form-control" style="height:50px !important;">{{ $datacus->cus_phone }}</textarea>
+	                  <input type="text" class="form-control" placeholder="" value="{{ $datacus->cus_phone }}">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <textarea name="note" class="form-control" style="height:50px !important;">{{ $datacus->cus_email }} </textarea>
+	                  <input type="text" class="form-control" placeholder="" value="{{ $datacus->cus_email }}">
 	                </div>
                 </div>
                 <div class="w-100"></div>

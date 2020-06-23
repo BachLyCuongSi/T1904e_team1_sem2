@@ -105,11 +105,12 @@
       @foreach ($lsCategory as $cat)
 
         <div class="col-md-6">
-        <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/{{ $cat->imgUrl}});">
-          <div class="text px-3 py-1">
-            <h2 class="mb-0"><a href="{{route('shop.id',$cat->cat_id)}}">{{ $cat->cat_name }}</a></h2>
-          </div>
-        </div>
+          <a href="#"><div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/{{ $cat->imgUrl}});"></a>
+            <div class="text px-3 py-1">
+              <h2 class="mb-0"><a href="{{route('shop.id',$cat->cat_id)}}">{{ $cat->cat_name }}</a></h2>
+            </div>
+          </div></a>
+
       </div>
       @endforeach
 
