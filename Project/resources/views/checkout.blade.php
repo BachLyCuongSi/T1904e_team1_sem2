@@ -65,7 +65,7 @@
 		            <div class="col-md-12">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Name</label>
-                    <textarea name="note" class="form-control" style="height:50px !important;"></textarea>
+                    <textarea name="note" class="form-control" style="height:50px !important;"> </textarea>
 	                </div>
 		            </div>
                 <div class="w-100"></div>
@@ -85,7 +85,7 @@
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <textarea name="note" class="form-control" style="height:50px !important;"></textarea>
+	                  <textarea name="note" class="form-control" style="height:50px !important;"> </textarea>
 	                </div>
                 </div>
                 <div class="w-100"></div>

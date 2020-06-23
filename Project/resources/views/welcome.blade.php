@@ -116,6 +116,7 @@
     </div>
   </div>
 </section>
+<hr>
 
 <section class="ftco-section">
   <div class="container">
@@ -166,7 +167,7 @@
   </div>
 </section>
 
-<section class="ftco-section img" style="background-image: url(images/bg_3.jpg);">
+{{-- <section class="ftco-section img" style="background-image: url(images/bg_3.jpg);">
   <div class="container">
     <div class="row justify-content-end">
       <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
@@ -184,7 +185,8 @@
       </div>
     </div>
   </div>
-</section>
+</section> --}}
+<hr>
 {{-- mạnh làm --}}
 {{-- không có coment , đây là những lời chia sẻ của người sáng lập --}}
 <section class="ftco-section testimony-section">

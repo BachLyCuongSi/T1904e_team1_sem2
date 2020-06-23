@@ -47,7 +47,7 @@ class LoginOutController extends Controller
                 // $request->session()->put('flags', 'success');
                 // $request->session()->put('message', 'Đăng nhập thành công');
                 $request->session()->put('name',$data['cus_name']);
-                // $request->session()->put('cus_email',$data['cus_email']);
+                $request->session()->put('cus_email',$data['cus_email']);
                 $request->session()->put('cus_id',$data['cus_id']);
                 $a = 1;
                 // ->with(['flags'=>'success','message'=>'Đăng nhập thành công'])
@@ -61,7 +61,7 @@ class LoginOutController extends Controller
             $request->session()->flash('flags', 'danger');
 
             $request->session()->flash('message', 'Đăng nhập không thành công');
-            return redirect()->route('index.login');
+            return redirect()->route('index.dangnhap');
         }
 
             // $request->session()->put('flags', 'danger');

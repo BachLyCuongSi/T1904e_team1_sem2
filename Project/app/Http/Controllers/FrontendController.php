@@ -164,7 +164,7 @@ class FrontendController extends Controller
          if( $request->session()->has('name') ){
             return view ('checkout');
          }else {
-            return redirect()->route('index.login');
+            return redirect()->route('index.dangnhap');
          }
      }
 
