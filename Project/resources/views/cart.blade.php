@@ -92,6 +92,7 @@
     @endif
   </div>
 </section>
+
 <script type="text/javascript">
   function updateCart(qty,rowId){
     $.get(

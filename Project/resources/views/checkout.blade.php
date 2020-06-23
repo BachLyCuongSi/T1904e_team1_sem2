@@ -145,13 +145,5 @@
       </div>
         </div>
     </section>
-<!-- <script type="text/javascript">
-  function saveOrder(){
-    var lsOrder = [];
-    $.each($('#tblorder > tr'),function(){
-      lsOrder.push({id:$(this).find('.product-id').attr('id'), quantity:$(this).find('.quantity').attr('id')});
-    });
-    console.log(lsOrder);
-  }
-</script> -->
+
 @endsection
