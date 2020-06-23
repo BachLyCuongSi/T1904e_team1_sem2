@@ -11,7 +11,7 @@ use App\User;
 use validate;
 use Hash;
 use Illuminate\Support\Facades\View;
-use app\user;
+
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
