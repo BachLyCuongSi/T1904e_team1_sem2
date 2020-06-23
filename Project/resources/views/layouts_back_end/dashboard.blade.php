@@ -22,7 +22,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">
-                                    {{-- {{ $count_comm }} --}}
+                                    {{ $count_cate }}
                                 </div>
                                 <div>Category</div>
                             </div>
@@ -39,7 +39,7 @@
                                 <i class="fa fa-tasks fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">12</div>
+                                <div class="huge">{{ $count_pr }}</div>
                                 <div>Product</div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                 <i class="fa fa-shopping-cart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">124</div>
+                                <div class="huge">{{ $count_cus }}</div>
                                 <div>Custommer</div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                 <i class="fa fa-support fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">13</div>
+                                <div class="huge">{{ $count_od }}</div>
                                 <div>Order</div>
                             </div>
                         </div>
@@ -103,13 +103,13 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {{-- @foreach ($lsOrder as $lsOrd)
+                                                    {{-- @foreach ($datas as $newod)
                                                         <tr>
-                                                        <td>{{ $lsOrd ->od_id }}</td>
-                                                        <td>{{ $lsOrd ->od_ }}</td>
-                                                        <td>{{ $lsOrd ->od_id }} PM</td>
-                                                        <td>{{ $lsOrd ->od_id }} VND</td>
-                                                    </tr>
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{date('d-m-Y',strtotime($newod->created_at))}}</td>
+                                                            <td>{{ $newod->cus_total_price_PayMent}} PM</td>
+                                                            <td>{{ $newod->status }}</td> VND</td>
+                                                        </tr>
 
                                                     @endforeach --}}
                                                 </tbody>
