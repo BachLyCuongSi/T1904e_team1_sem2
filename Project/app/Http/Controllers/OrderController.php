@@ -173,7 +173,7 @@ class OrderController extends Controller
                 $stt++;
             };
             $date_now = Carbon::now();
-            Excel::create("BillDetail" . " " . $date_now, function ($excel) use ($data, $dataExcel) {
+            Excel::download("BillDetail" . " " . $date_now, function ($excel) use ($data, $dataExcel) {
                 $excel->sheet('Sheetname', function ($sheet) use ($data, $dataExcel) {
 
                     $sheet->setColumnArray(array(
@@ -267,9 +267,9 @@ class OrderController extends Controller
                             $cells->setAlignment('right');
                         }
                     );
-                });
-            })->download('Bill.xlsx');
-            // return 1;
+                })->download('xlsx');
+            });
+            return 1;
         } catch (\Exception $e) {
             $e->getmessage();
         }

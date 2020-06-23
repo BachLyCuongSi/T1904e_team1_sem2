@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Validator;
 use App\customer;
 use App\category;
+use App\User;
 use validate;
 use Hash;
 use Illuminate\Support\Facades\View;
@@ -22,6 +23,7 @@ class LoginController extends Controller
     }
     public function postLogin(Request $request)
     {
+
         $email = $request->email;
         $password = $request->password;
 
@@ -44,6 +46,7 @@ class LoginController extends Controller
             $eror = '<div class=" alert alert-danger">Đăng nhập thất bại </div>';
             return view('auth.login',compact('eror'));
         // }
+
     }
     public function logout()
     {

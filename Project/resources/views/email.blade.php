@@ -4,19 +4,19 @@
     <h3><font color="#FF9600">Thông tin khách hàng</font></h3>
     <p>
       <strong class="info">Khách hàng: </strong>
-      <p>Long</p>
+      {{$infor->cus_name}}
     </p>
     <p>
       <strong class="info">Email: </strong>
-      <p>hoanglong2703@gmail.com</p>
+      {{$infor->cus_email}}
     </p>
     <p>
       <strong class="info">Điện thoại: </strong>
-      <p>0987733697</p>
+      {{$infor->cus_phone}}
     </p>
     <p>
       <strong class="info">Địa chỉ: </strong>
-      <p>Đống Đa, Hà Nội</p>
+      {{$infor->cus_addres}}
     </p>
   </div>
   <div class="">

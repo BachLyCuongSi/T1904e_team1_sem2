@@ -131,8 +131,10 @@ Route::middleware(['auth', 'team'])->group(function () {
 });
 
 // login/logout
+
 Route::get('/dangnhap', 'LoginOutController@login')->name('index.dangnhap');
 Route::post('/dangnhap', 'LoginOutController@postLogin')->name('index.postdangnhap');
+
 
 Route::get('/logout', 'LoginOutController@logout')->name('index.logout');
 Route::post('/logout', 'LoginOutController@postlogout')->name('index.postlogout');
