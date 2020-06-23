@@ -12,6 +12,7 @@ use Cart;
 use App\Order;
 use App\Orderdetail;
 use Carbon\Carbon;
+use App\Customer;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -162,6 +163,7 @@ class FrontendController extends Controller
 
     public function getUpdateCart(Request $request){
         Cart::update($request->rowId, $request->qty);
+        $product = Product::find($item->id);
     }
 
     // Thanh toan
@@ -171,20 +173,16 @@ class FrontendController extends Controller
          }else {
             return redirect()->route('index.login');
          }
-
      }
 
      public function postCheckOut(Request $request){
-       $data['info'] = $request->all();
-       $email = $request->email;
-
-
        $cartInfor = Cart::content();
        $subtotal = Cart::subtotal();
 
+       $a = $request->session()->get('cus_id');
 
        $od = new Order();
-       $od -> cus_id = 1;
+       $od -> cus_id = $a;
        $od -> cus_status = $request -> note;
        $od -> cus_total_price =(int)str_replace(',', '', $subtotal) ;
        $od -> cus_total_price_PayMent =(int)str_replace(',', '', $subtotal);
@@ -208,11 +206,13 @@ class FrontendController extends Controller
 
      $data['cart'] = Cart::content();
      $data['subtotal'] = Cart::subtotal();
+     $data['infor'] = Customer::find($a);
+     $email = $request->session()->get('cus_email');
 
      Mail::send('email', $data, function ($message) use($email){
        $message->from('t1904efpt@gmail.com', 'Team 1 Shop');
 
-       $message->to('hoanglong2703@gmail.com', 'Long');
+       $message->to($email, $email);
 
        $message->cc('t1904efpt@gmail.com', 'Team 1 Shop');
 

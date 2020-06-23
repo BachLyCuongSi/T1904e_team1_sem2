@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/logins', 'LoginController@login')->name('login');
+Route::get('/logins', 'Auth\LoginController@login')->name('login');
 Route::get('/', 'FrontendController@welcome')->name('home');
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/vegetables.html', 'FrontendController@vegetables');
@@ -124,7 +124,6 @@ Route::middleware(['auth', 'team'])->group(function () {
 // login/logout
 Route::get('/dangnhap', 'LoginOutController@login')->name('index.login');
 Route::post('/postdangnhap', 'LoginController@postLogin')->name('index.postLogin');
-
 Route::get('/logout', 'LoginOutController@logout')->name('index.logout');
 Route::post('/logout', 'LoginOutController@postlogout')->name('index.postlogout');
 

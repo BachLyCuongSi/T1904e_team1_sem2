@@ -47,8 +47,8 @@ class LoginOutController extends Controller
                 // $request->session()->put('flags', 'success');
                 // $request->session()->put('message', 'Đăng nhập thành công');
                 $request->session()->put('name',$data['cus_name']);
-
-                $request->session()->put('cusid',$data['cus_id']);
+                $request->session()->put('cus_email',$data['cus_email']);
+                $request->session()->put('cus_id',$data['cus_id']);
                 $a = 1;
                 // ->with(['flags'=>'success','message'=>'Đăng nhập thành công'])
             }
@@ -113,6 +113,7 @@ class LoginOutController extends Controller
         $abc = DB::table('customers')->where([['cus_email',$request->email],['deleted_at',null]])->first();
         $request->session()->put('name',$request->name);
         $request->session()->put('cus_id',$abc->cus_id);
+        $request->session()->put('cus_email',$abc->cus_email);
 
         return redirect()->route('home');
 
