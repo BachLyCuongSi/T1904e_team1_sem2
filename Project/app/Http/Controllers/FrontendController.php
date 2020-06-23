@@ -134,8 +134,6 @@ class FrontendController extends Controller
 
     public function getAddCart($id)
     {
-      $cusID = $request->session()->get('cus_id');
-      $customer = Customer::find($cusID);
         $lsproduct = Product::find($id);
         $b=$lsproduct->pr_price;
         $a=($lsproduct->pr_price)*((100-($lsproduct->discount))/100);
