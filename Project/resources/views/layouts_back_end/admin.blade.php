@@ -82,9 +82,6 @@
                                 <use xlink:href="#stroked-bag"></use>
                             </svg>Quản lý sản phẩm</a></li>
 
-                    <li class="li"><a href="{{route('comment_manage.index')}}"><svg class="glyph stroked two messages">
-                                <use xlink:href="#stroked-two-messages" /></svg> Quản lý bình luận</a></li>
-
                     <li class="li"><a href="{{route('customer_manage.index')}}"><svg class="glyph stroked chain">
                                 <use xlink:href="#stroked-chain" /></svg> Quản lý khách hàng</a></li>
                     <li class="li"><a href="{{route('order_manage.index')}}"><svg class="glyph stroked chain">
