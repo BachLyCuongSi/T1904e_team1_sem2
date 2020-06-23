@@ -64,21 +64,28 @@
                 <div class="w-100"></div>
 		            <div class="col-md-12">
 		            	<div class="form-group">
+	                	<label for="streetaddress">Name</label>
+                    <textarea name="note" class="form-control" style="height:50px !important;"></textarea>
+	                </div>
+		            </div>
+                <div class="w-100"></div>
+		            <div class="col-md-12">
+		            	<div class="form-group">
 	                	<label for="streetaddress">Street Address</label>
-	                  <input type="text" class="form-control" placeholder="House number and street name">
+                    <textarea name="note" class="form-control" style="height:50px !important;"></textarea>
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <textarea name="note" class="form-control" style="height:50px !important;"></textarea>
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  <textarea name="note" class="form-control" style="height:50px !important;"></textarea>
 	                </div>
                 </div>
                 <div class="w-100"></div>
@@ -88,12 +95,6 @@
 	                </div>
                 <div class="w-100"></div>
                 <div class="col-md-12">
-                	<div class="form-group mt-4">
-										<div class="radio">
-										  <label class="mr-3"><input type="radio" name="optradio"> Create an Account? </label>
-										  <label><input type="radio" name="optradio"> Ship to different address</label>
-										</div>
-									</div>
                 </div>
 	            </div>
 	          </form><!-- END -->
@@ -112,7 +113,7 @@
 	          	</div>
 	          	<div class="col-md-12">
 	          		<div class="cart-detail p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Payment Method</h3>
+	          			<!-- <h3 class="billing-heading mb-4">Payment Method</h3>
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
@@ -133,14 +134,7 @@
 											   <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
 											</div>
 										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-md-12">
-											<div class="checkbox">
-											   <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
-											</div>
-										</div>
-									</div>
+									</div> -->
                   <button type="submit" class="btn btn-primary py-3 px-4" href="">Place an order</button>
 								</div>
 	          	</div>
