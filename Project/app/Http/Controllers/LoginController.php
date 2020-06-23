@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Validator;
 use App\customer;
 use App\category;
+use App\User;
 use validate;
 use Hash;
 use Illuminate\Support\Facades\View;
@@ -19,29 +20,18 @@ class LoginController extends Controller
     }
     public function postLogin(Request $request)
     {
-
+        return route('product_manage');
 
         $arr = $request->all();
         $mail = $arr['email'];
-        $password = $arr['password'];
-        // $remember = $request->remember;
-        // $data = DB::table('customers')->where('deleted_at', null)->get();
-        $data = customer::where('deleted_at', null)->get();
-        // dd($mail);
+        $password = Hash::make($arr['password']);
+        $data = User::where([['deleted_at', null], ['roles', 0]])->get();
 
         foreach ($data as $data) {
-            if (($data['deleted_at']) == null && ($data['cus_email']) == $mail && ($data['password']) == $password) {
-
-                $name = $data['cus_name'];
-                view::share('name', $name);
-
-                // return  with('layouts.frontend' , compact('name')) ;
-                return redirect()->route('home');
-            } else {
-
-                return view('register');
+            if ($data->email == $mail && $data->password == $password) {
             }
         }
+        return view('auth.login');
     }
     public function logout()
     {
