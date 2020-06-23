@@ -162,7 +162,10 @@ class FrontendController extends Controller
     // Thanh toan
      public function getCheckOut(request $request){
          if( $request->session()->has('name') ){
-            return view ('checkout');
+            $a = $request->session()->get('cus_id');    
+            $datacus = DB::table('customers')->where('deleted_at',null)->where('cus_id',$a)->first();
+
+            return view ('checkout', compact('datacus'));
          }else {
             return redirect()->route('index.dangnhap');
          }
@@ -173,6 +176,8 @@ class FrontendController extends Controller
        $subtotal = Cart::subtotal();
 
        $a = $request->session()->get('cus_id');
+
+
 
        $od = new Order();
        $od -> cus_id = $a;
@@ -197,24 +202,24 @@ class FrontendController extends Controller
        }
 
 
-     $data['cart'] = Cart::content();
-     $data['subtotal'] = Cart::subtotal();
-     $data['infor'] = Customer::find($a);
-     $email = $request->session()->get('cus_email');
+        $data['cart'] = Cart::content();
+        $data['subtotal'] = Cart::subtotal();
+        $data['infor'] = Customer::find($a);
+        $email = $request->session()->get('cus_email');
 
-     Mail::send('email', $data, function ($message) use($email){
-       $message->from('t1904efpt@gmail.com', 'Team 1 Shop');
+        Mail::send('email', $data, function ($message) use($email){
+        $message->from('t1904efpt@gmail.com', 'Team 1 Shop');
 
-       $message->to($email, $email);
+        $message->to($email, $email);
 
-       $message->cc('t1904efpt@gmail.com', 'Team 1 Shop');
+        $message->cc('t1904efpt@gmail.com', 'Team 1 Shop');
 
-       $message->subject('Xac nhan hoa don mua hang Team 1 Shop');
-     });
+        $message->subject('Xac nhan hoa don mua hang Team 1 Shop');
+        });
 
        Cart::destroy();
 
-       return view ('complete');
+       return view ('complete' );
      }
 
      public function complete(){

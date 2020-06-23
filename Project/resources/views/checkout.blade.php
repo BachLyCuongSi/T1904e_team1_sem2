@@ -65,33 +65,33 @@
 		            <div class="col-md-12">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Name</label>
-                    <textarea name="note" class="form-control" style="height:50px !important;"> </textarea>
+                    <textarea name="note" class="form-control" style="height:55px !important;"> {{ $datacus->cus_name }}  </textarea>
 	                </div>
 		            </div>
                 <div class="w-100"></div>
 		            <div class="col-md-12">
 		            	<div class="form-group">
 	                	<label for="streetaddress">Street Address</label>
-                    <textarea name="note" class="form-control" style="height:50px !important;"></textarea>
+                    <textarea name="note" class="form-control" style="height:50px !important;">{{ $datacus->cus_addres }}</textarea>
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <textarea name="note" class="form-control" style="height:50px !important;"></textarea>
+	                  <textarea required  name="note" class="form-control" style="height:50px !important;">{{ $datacus->cus_phone }}</textarea>
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <textarea name="note" class="form-control" style="height:50px !important;"> </textarea>
+	                  <textarea name="note" class="form-control" style="height:50px !important;">{{ $datacus->cus_email }} </textarea>
 	                </div>
                 </div>
                 <div class="w-100"></div>
 	                <div class="form-group col-sm-12 col-md-12 col-lg-12">
 	                	<label for="note">Note</label>
-	                  <textarea name="note" class="form-control" style="height:115px !important;"></textarea>
+	                  <textarea required name="note" class="form-control" style="height:115px !important;"></textarea>
 	                </div>
                 <div class="w-100"></div>
                 <div class="col-md-12">

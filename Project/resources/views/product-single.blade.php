@@ -2,16 +2,17 @@
 
 @section ('content')
 
-<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+<div class="hero-wrap hero-bread" style="background-image: url(images/bg_1.jpg);">
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Home</a></span> <span class="mr-2"><a href="{{ route('shop') }}">Product</a></span> <span>Product Single</span></p>
         <h1 class="mb-0 bread">Product Single</h1>
       </div>
     </div>
   </div>
 </div>
+
 {{-- chi tiet san pham neu co --}}
 @if (isset($product))
 
@@ -36,25 +37,26 @@
                         @else
                             <span class="price">{{ $product->pr_price }}</span>
                         @endif</span></p>
-                    <p id="title"></p>
 
+
+                    <p class = "price"> <span>Còn hàng : {{ $product->pr_quantity }} kg</span></p>
                     <div class="row mt-4">
                     <div class="col-md-8">
                         <div class="text-editor">{{ $product->pr_description }} </div>
                     </div>
                     <div class="w-100"></div>
                     <div class="input-group col-md-6 d-flex mb-3">
-                        <span class="input-group-btn mr-2">
+                        {{-- <span class="input-group-btn mr-2">
                             <button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
                             <i class="ion-ios-remove"></i>
                             </button>
-                        </span>
-                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-                        <span class="input-group-btn ml-2">
+                        </span> --}}
+                        {{-- <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="{{ $product->pr_quantity }}"> --}}
+                        {{-- <span class="input-group-btn ml-2">
                             <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
                             <i class="ion-ios-add"></i>
                         </button>
-                        </span>
+                        </span> --}}
                     </div>
                     <div class="w-100"></div>
                     <div class="col-md-12">
@@ -64,21 +66,23 @@
                     <p><a href="add/{{$product->pr_id}}" class="btn btn-black py-3 px-5">Add to Cart</a></p>
                 </div>
             </div>
+            <hr>
         </div>
     </section>
 
 @else
     <div class="container ftco-section ftco-category ftco-no-pt">
-        <div class="row ">
-            <div class="col-md-12">
-                <h1 class="text-center">Bạn chưa chọn sản phẩm nào  </h1>
+        <div class="row " style="margin-top:10px;">
+            <div class="col-md-12 ">
+                <h2 class="text-center  ">Bạn chưa chọn sản phẩm nào  </h2>
             </div>
 
         </div>
+         <hr>
         <div class="row">
           <div class="col-md-12">
               <div class="col-md-12 order-md-last align-items-stretch d-flex">
-                  <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(images/category.jpg);">
+                  <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(images/image_5.jpg);">
                       <div class="text text-center">
                           <h2>Vegetables</h2>
                           <p>Protect the health of every home</p>
@@ -88,8 +92,9 @@
               </div>
           </div>
       </div>
-
+       <hr>
     </div>
+
 @endif
 {{-- end  --}}
 
@@ -117,32 +122,33 @@
                 </a>
 
             <div class="text py-3 pb-4 px-3 text-center">
-                <h3><a href="#">{{$pr->pr_name}}</a></h3>
+                <h3>{{$pr->pr_name}}></h3>
                 <div class="d-flex">
-                <div class="pricing">
-                    <p class="price">
-                        @if ($pr->discount >0)
-                            <span class="mr-2 price-dc">${{$pr->pr_price}}</span>
-                            <span class="price-sale">${{ ($pr->pr_price)-($pr->pr_price)*($pr->discount)/100 }}</span>
-                        @else
-                            <span class="mr-2 ">${{$pr->pr_price}}</span>
-                        @endif
+                    <div class="pricing">
+                        <p class="price">
+                            @if ($pr->discount >0)
+                                <span class="mr-2 price-dc">${{$pr->pr_price}}</span>
+                                <span class="price-sale">${{ ($pr->pr_price)-($pr->pr_price)*($pr->discount)/100 }}</span>
+                            @else
+                                <span class="mr-2 ">${{$pr->pr_price}}</span>
+                            @endif
+                        </p>
 
-                    </p>
+                    </div>
                 </div>
-                </div>
+
                 <div class="bottom-area d-flex px-3">
-                <div class="m-auto d-flex">
-                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                    <span><i class="ion-ios-menu"></i></span>
-                    </a>
-                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                    <span><i class="ion-ios-cart"></i></span>
-                    </a>
-                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                    <span><i class="ion-ios-heart"></i></span>
-                    </a>
-                </div>
+                    <div class="m-auto d-flex">
+                        <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                        <span><i class="ion-ios-menu"></i></span>
+                        </a>
+                        <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                        <span><i class="ion-ios-cart"></i></span>
+                        </a>
+                        <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                        <span><i class="ion-ios-heart"></i></span>
+                        </a>
+                    </div>
                 </div>
             </div>
             </div>

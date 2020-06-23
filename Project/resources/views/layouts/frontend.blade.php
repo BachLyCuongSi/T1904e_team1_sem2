@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+  <title>Fresh  Vegefoods  </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -12,6 +12,7 @@
 
   <link rel="stylesheet" href="{{asset('css/open-iconic-bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/animate.css')}}">
+
 
   <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
@@ -54,7 +55,7 @@
   </div>
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Vegefoods</a>
+      <a class="navbar-brand" href="{{ route('home') }}">Vegefoods</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
@@ -79,7 +80,7 @@
             @if (Session::has('name'))
                 {{-- <div  class=" nav-link""> <span>{{ session::get('name') }}</span> </div> --}}
                 <li class="nav-item"><a class="nav-link"  href="#">{{ session::get('name') }}</a></li>
-                <li class="nav-item"><a class="nav-link"  href="{{ route('index.postdangnhap') }}">Logout</a></li>
+                <li class="nav-item"><a class="nav-link"  href="{{ route('index.logout') }}">Logout</a></li>
 
             @else
             <li class="nav-item "> <a href="{{route('index.dangnhap')}}" class="nav-link"> <span> Login/Register</span> </a> </li>

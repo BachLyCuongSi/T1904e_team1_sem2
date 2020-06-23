@@ -90,7 +90,7 @@
     <div class="row">
           <div class="col-md-12">
               <div class="col-md-12 order-md-last align-items-stretch d-flex">
-                  <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(images/category.jpg);">
+                  <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(images/image_5.jpg);">
                       <div class="text text-center">
                           <h2>Vegetables</h2>
                           <p>Protect the health of every home</p>
