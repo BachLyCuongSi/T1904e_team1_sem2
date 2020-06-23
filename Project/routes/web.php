@@ -14,10 +14,16 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-Route::get('/logins', 'Auth\LoginController@login')->name('login');
+// Route::get('/admin/login', 'HomeController@index')->name('admin.login');
+// Route::post('/admin/login', 'HomeController@index')->name('admin.login');
+route::get('/admin/login','LoginController@login')->name('admin.login');
+route::post('/admin/login', 'LoginController@postLogin')->name('admin.postLogin');
+
+// Route::get('/logins', 'Auth\LoginController@login')->name('login');
 Route::get('/', 'FrontendController@welcome')->name('home');
-// Route::get('/home', 'HomeController@index')->name('home');
+
 // Route::get('/vegetables.html', 'FrontendController@vegetables');
 
 Route::get('/shop.html/{id?}', 'FrontendController@shop')->name('index.shop');
@@ -87,7 +93,11 @@ Route::resource('/cate_manage', 'CategoryController@index');
 // chuc nang cua nhan vien
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
+        // route::get('/login','LoginController@login')->name('Login');
+        // route::post('/login','LoginController@postLogin')->name('postLogin');
+
         Route::resource('cate_manage', 'CategoryController');
+        route::get('/dashboard','Dashboard1Controller@index')->name('admin.Dashboard');
 
         //Sản phẩm
         Route::resource('product_manage', 'ProductController');
@@ -108,8 +118,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('detail', 'OrderController@LoadDetai')->name('orderDetail');
         Route::post('saveEdit', 'OrderController@saveEditBill')->name('saveEdit');
         Route::get('exportExcel', 'OrderController@ExportExcel')->name('exportExcelBill');
-        Route::group(['prefix' => 'admin'], function () {
-        });
+
     });
 });
 
@@ -122,8 +131,8 @@ Route::middleware(['auth', 'team'])->group(function () {
 });
 
 // login/logout
-Route::get('/dangnhap', 'LoginOutController@login')->name('index.login');
-Route::post('/dangnhap', 'LoginOutController@postLogin')->name('index.postLogin');
+Route::get('/dangnhap', 'LoginOutController@login')->name('index.dangnhap');
+Route::post('/dangnhap', 'LoginOutController@postLogin')->name('index.postdangnhap');
 
 Route::get('/logout', 'LoginOutController@logout')->name('index.logout');
 Route::post('/logout', 'LoginOutController@postlogout')->name('index.postlogout');

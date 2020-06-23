@@ -48,7 +48,7 @@ class LoginOutController extends Controller
                 // $request->session()->put('message', 'Đăng nhập thành công');
                 $request->session()->put('name',$data['cus_name']);
 
-                $request->session()->put('cusid',$data['cus_id']);
+                $request->session()->put('cus_id',$data['cus_id']);
                 $a = 1;
                 // ->with(['flags'=>'success','message'=>'Đăng nhập thành công'])
             }

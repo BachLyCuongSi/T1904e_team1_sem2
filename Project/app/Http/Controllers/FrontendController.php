@@ -85,13 +85,6 @@ class FrontendController extends Controller
     }
 
 
-// manh
-//   public function single()
-//   {
-//     $lsProduct = product::where('deleted_at', null)->paginate(4);
-//     $allProduct = product::where('deleted_at', null)->get();
-//     return view('product-single')->with(['lsProduct' => $lsProduct, 'allProduct' => $allProduct]);
-//   }
 
     public function about()
     {
@@ -230,7 +223,6 @@ class FrontendController extends Controller
 
 
     // Mail subscriber
-
     public function subscribe(Request $request) {
       $s = new Subscriber();
       $s->email = $request->email;
@@ -241,6 +233,7 @@ class FrontendController extends Controller
       return redirect()->back();
       }
 
+    //   lọc tất cả các sản phẩm đã hết hàng ra trang wishlist
     public function wishlist(){
         $data = DB::table('products')->where('deleted_at', null)->where('pr_quantity',0)->get();
         return view('wishlist', compact('data'));

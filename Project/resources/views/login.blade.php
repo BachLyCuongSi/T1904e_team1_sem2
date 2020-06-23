@@ -20,7 +20,7 @@
                             <div class="alert alert-{{ Session::get('flags') }}"> {{ Session::get('message') }}</div>
                         @endif --}}
 
-                        <form action="{{ route('index.login') }}" method="POST" class="register-form" id="login-form">
+                        <form action="{{ route('index.dangnhap') }}" method="POST" class="register-form" id="login-form">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             @csrf
                             <div class="form-group">

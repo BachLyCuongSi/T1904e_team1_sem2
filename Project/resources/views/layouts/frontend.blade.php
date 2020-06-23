@@ -79,10 +79,10 @@
             @if (Session::has('name'))
                 {{-- <div  class=" nav-link""> <span>{{ session::get('name') }}</span> </div> --}}
                 <li class="nav-item"><a class="nav-link"  href="#">{{ session::get('name') }}</a></li>
-                <li class="nav-item"><a class="nav-link"  href="{{ route('index.postlogout') }}">Logout</a></li>
+                <li class="nav-item"><a class="nav-link"  href="{{ route('index.postdangnhap') }}">Logout</a></li>
 
             @else
-            <li class="nav-item "> <a href="{{route('index.login')}}" class="nav-link"> <span> Login/Register</span> </a> </li>
+            <li class="nav-item "> <a href="{{route('index.dangnhap')}}" class="nav-link"> <span> Login/Register</span> </a> </li>
             @endif
 
         </ul>

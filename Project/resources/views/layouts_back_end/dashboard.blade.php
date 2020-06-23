@@ -22,7 +22,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge">
-                                    {{ $count_comm }}
+                                    {{-- {{ $count_comm }} --}}
                                 </div>
                                 <div>Category</div>
                             </div>

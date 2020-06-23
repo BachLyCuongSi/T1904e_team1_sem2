@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 class Dashboard1Controller extends Controller
 {
-    public function countComment()
-    {
-        $count_comm = comment::table('comment')->count();
-        return $count_comm;
+    public function index(){
+        
+        return view('layouts_back_end.dashboard');
     }
 }
