@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use  Barryvdh\Debugbar\Facade;
 use Carbon\Carbon;
+use Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -52,6 +55,29 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        return view('layouts_back_end.category.add');
+    }
+
+    public function savecreate(Request $request)
+    {
+        try {
+            $cover = $request->file('cat_image');
+            $role = $request->role;
+            $oriFileName = $request->cat_image->getClientOriginalExtension();
+            $filename = str_replace(' ', '-', $oriFileName);
+
+            $filename = uniqid() . '.' . $filename;
+            $path = $request->file('cat_image')->storeAs('category', $filename);
+            $url = Storage::disk('public')->put($path,  File::get($cover));
+            $model = new Category();
+            $model->cat_image = 'images/' . $path;
+
+            $model->fill($request->all());
+            $model->save();
+            return response()->json(['status' => 1, 'message' => "Sửa sản phẩm thành công"]);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
+        }
     }
 
     /**
@@ -62,7 +88,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->cate_name);
         $ca = new Category();
         $ca->cat_name = $request->name;
         $ca->created_at = Carbon::now();
@@ -87,9 +112,26 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function saveedit(Request $request)
     {
-        //
+        try {
+            $model = Category::find($request->id);
+            $cover = $request->file('cat_image');
+            $role = $request->role;
+            $oriFileName = $request->cat_image->getClientOriginalExtension();
+            $filename = str_replace(' ', '-', $oriFileName);
+
+            $filename = uniqid() . '.' . $filename;
+            $path = $request->file('cat_image')->storeAs('category', $filename);
+            $url = Storage::disk('public')->put($path,  File::get($cover));
+            $model->cat_image = 'images/' . $path;
+
+            $model->fill($request->all());
+            $model->save();
+            return response()->json(['status' => 1, 'message' => "Sửa thành công"]);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
+        }
     }
 
     /**
@@ -110,7 +152,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($cat_id, Request $request)
+    public function destroy(Request $request)
     {
         try {
             $category = Category::find($request->id);

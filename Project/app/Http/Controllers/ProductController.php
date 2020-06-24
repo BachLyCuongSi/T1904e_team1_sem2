@@ -28,9 +28,26 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        try {
+            $it = new product();
+
+            $cover = $request->file('pro_image');
+            $oriFileName = $request->pro_image->getClientOriginalExtension();
+            $filename = str_replace(' ', '-', $oriFileName);
+
+            $filename = uniqid() . '.' . $filename;
+            $path = $request->file('pro_image')->storeAs('products', $filename);
+            $url = Storage::disk('public')->put($path,  File::get($cover));
+            $it->pr_image = 'images/' . $path;
+
+            $it->fill($request->all());
+            $it->save();
+            return response()->json(['status' => 1, 'message' => "Thêm sản phẩm mới thành công"]);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
+        }
     }
 
     /**
@@ -39,51 +56,26 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
 
-        try {
-            $it = new product();
-            $it->cat_id = $request->category;
-            $it->pr_name = $request->name;
-            $it->pr_price = $request->price;
-            $it->pr_description = $request->description;
-            $it->pr_quantity = $request->amount;
-            $it->pr_title = $request->title;
 
-            // $cover = $request->image;
-
-            // $filename = str_replace(' ', '-', $cover);
-
-            // $filename = uniqid() . '.' . $filename;
-
-            // $path = $filename->store('images', $filename);
-
-            // $url = Storage::disk('public')->put($path,  File::get($cover));
-            // $it->pr_image = 'uploads/'.$path;
-
-            $it->fill($request->all());
-            $it->save();
-            return response()->json(['status' => 1, 'message' => "Thêm sản phẩm mới thành công"]);
-        } catch (\Exception $e) {
-            dd($e);
-            return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
-        }
-    }
     public function saveedit(Request $request)
     {
         try {
-            $pr = DB::table('products')->where('pr_id', $request->id)
-                ->update([
-                    'pr_name' => $request->name, 'pr_price' => $request->price,
-                    'pr_description' => $request->description,
-                    'pr_quantity' => $request->amount,
-                    'pr_title' => $request->title,
-                    'cat_id' => $request->category
-                ]);
+            $model = product::find($request->id);
+
+            $cover = $request->file('pro_image');
+            $oriFileName = $request->pro_image->getClientOriginalExtension();
+            $filename = str_replace(' ', '-', $oriFileName);
+
+            $filename = uniqid() . '.' . $filename;
+            $path = $request->file('pro_image')->storeAs('products', $filename);
+            $url = Storage::disk('public')->put($path,  File::get($cover));
+            $model->pr_image = 'images/' . $path;
+
+            $model->fill($request->all());
+            $model->save();
             return response()->json(['status' => 1, 'message' => "Sửa sản phẩm thành công"]);
         } catch (\Exception $e) {
-            dd($e);
             return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
         }
     }
@@ -154,7 +146,6 @@ class ProductController extends Controller
 
             return response()->json(['status' => 1, 'message' => "Xóa sản phẩm thành công"]);
         } catch (\Exception $e) {
-            dd($e);
             return response()->json(['status' => 0, 'message' => 'Có lỗi!']);
         }
     }

@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
 // Route::get('/admin/login', 'HomeController@index')->name('admin.login');
 // Route::post('/admin/login', 'HomeController@index')->name('admin.login');
-route::get('/admin/login','LoginController@login')->name('admin.login');
+route::get('/admin/login', 'LoginController@login')->name('admin.login');
 route::post('/admin/login', 'LoginController@postLogin')->name('admin.postLogin');
 
 // Route::get('/logins', 'Auth\LoginController@login')->name('login');
@@ -97,14 +98,17 @@ Route::middleware(['auth'])->group(function () {
         // route::post('/login','LoginController@postLogin')->name('postLogin');
 
         Route::resource('cate_manage', 'CategoryController');
-        route::get('/dashboard','Dashboard1Controller@index')->name('admin.Dashboard');
+        route::get('/dashboard', 'Dashboard1Controller@index')->name('admin.Dashboard');
 
         //Sản phẩm
         Route::resource('product_manage', 'ProductController');
         Route::post('edit', 'ProductController@saveedit')->name('admin.pro.edit');
         Route::post('delete', 'ProductController@destroy')->name('admin.pro.destroy');
         Route::post('savepr', 'ProductController@store')->name('admin.pro.store');
+        Route::post('deletepro', 'ProductController@destroy')->name('admin.pro.destroy');
         Route::get('searhch', 'ProductController@search')->name('product.search');
+        Route::post('savepro', 'ProductController@create')->name('admin.savepro');
+        Route::post('saveproedit', 'ProductController@saveedit')->name('admin.proedit');
 
         //Kết thúc route sp
 
@@ -119,6 +123,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('saveEdit', 'OrderController@saveEditBill')->name('saveEdit');
         Route::get('exportExcel', 'OrderController@ExportExcel')->name('exportExcelBill');
 
+        //Quản lý danh mục
+        Route::post('savecate', 'CategoryController@savecreate')->name('admin.savecate');
+        Route::post('edit', 'CategoryController@saveedit')->name('admin.saveedit');
+        Route::post('delete', 'CategoryController@destroy')->name('admin.cat.destroy');
     });
 });
 
