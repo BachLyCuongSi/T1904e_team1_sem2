@@ -141,7 +141,8 @@ class FrontendController extends Controller
             'img' => $lsproduct->pr_image,
             'discount' => $lsproduct->discount]
         ]);
-        return back();
+
+        return redirect()->back()->with('success', 'IT WORKS!');
     }
 
     public function getDeleteCart($id)
@@ -156,13 +157,12 @@ class FrontendController extends Controller
 
     public function getUpdateCart(Request $request){
         Cart::update($request->rowId, $request->qty);
-        $product = Product::find($item->id);
     }
 
     // Thanh toan
      public function getCheckOut(request $request){
          if( $request->session()->has('name') ){
-            $a = $request->session()->get('cus_id');    
+            $a = $request->session()->get('cus_id');
             $datacus = DB::table('customers')->where('deleted_at',null)->where('cus_id',$a)->first();
 
             return view ('checkout', compact('datacus'));

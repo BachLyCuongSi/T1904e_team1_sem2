@@ -57,7 +57,7 @@
                                 <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                 <span><i class="ion-ios-menu"></i></span>
                                 </a>
-                                <a href="add/{{$product->pr_id}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                <a id="abc" href="add/{{$product->pr_id}}" onclick="message()" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                 <span><i class="ion-ios-cart"></i></span>
                                 </a>
                                 <a href="#" class="heart d-flex justify-content-center align-items-center ">
@@ -84,24 +84,22 @@
     </div>
   </div>
 </section>
-
-<script >
-//load list product of category
-  function loadlistProduct(id){
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          url:"{{ route('lstProductOfCate')}}",
-          data:{id},
-          type:"GET",
-          success:function(res) {
-            $('#lst-Product').html(res);
-             console.log(res);
-          }
-    })
-  }
+<script type="text/javascript"src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js">
 
 </script>
+<script type="text/javascript" >
+function message(){
+    swal({
+      title:"Ban da dat hang thanh cong",
+      text:"",
+      icon:"success"
+    }).then((success)=>{
+      if(success){
+        location.reload();
+      }
+    })
+  };
+</script>
+
 
 @endsection
