@@ -49,6 +49,7 @@
                 <tr>
                     <th style="text-align:center">STT</th>
                     <th style="text-align:center">Tên sản phẩm</th>
+                    <th style="text-align:center">Ảnh sản phẩm</th>
                     <th style="text-align:center">Giá sản phẩm</th>
                     <th style="text-align:center">Danh mục </th>
                     <th style="text-align:center">Số lượng</th>
@@ -62,6 +63,7 @@
                     <td>{{$pro->pr_id}}</td>
 
                     <td class="pr_name">{{$pro->pr_name}}</td>
+                    <td class="pro_image"><img src="{{asset($pro->pr_image)}}" width="200px;"></td>
                     <td class="pr_price">{{$pro->pr_price}}</td>
                     <td class="cat_name">{{$pro->cat_name}}</td>
                     <td class="pr_quantity">{{$pro->pr_quantity}}</td>
@@ -84,6 +86,7 @@
     </div>
 </div>
 
+
 @section('modal')
 <!-- Modal -->
 <div class="modal fade" id="createIten" role="dialog">
@@ -93,67 +96,77 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Thêm sản phẩm</h4>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="row">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tiêu đề sản phẩm:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txt-title" placeholder="Nhập tiêu đề sản phẩm" /></div>
-                        </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tên sản phẩm:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txt-name" placeholder="Nhập tên sản phẩm" /></div>
-                        </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Danh mục:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7">
-                                <select class="form-control" id="valcate-id">
-                                    <option value="0" selected disabled hidden>--Danh mục--</option>
-                                    @if (count($lstCategory) > 0 && $lstCategory != null)
-                                    @foreach($lstCategory as $ct)
-                                    <option value="{{ $ct->cat_id }}">{{ $ct->cat_name }}</option>
-                                    @endforeach
-                                    @else
-                                    @endif
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Mô tả:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7">
-                                <textarea class="form-control" id="txt-description" placeholder="Nội dung mô tả"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="row" style="text-align:center">
-                            <label class="mt-3">Ảnh sản phẩm:</label>
-                            <input type="file" id="pr_image" name="pr_image" value="" class="form-control">
-                        </div>
-                        <!-- Show image -->
-                        <div class=form-row>
+            <form id="contactFormcreate" action="{{route('admin.savepro')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="row">
-                                <div class="col-sm-7">
-                                    <img src="" id="category-img-tag" width="200px" />
-                                    <!--for preview purpose -->
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tiêu đề sản phẩm:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txt-title" name="pr_title" placeholder="Nhập tiêu đề sản phẩm" /></div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tên sản phẩm:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txt-name" name="pr_name" placeholder="Nhập tên sản phẩm" /></div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Danh mục:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7">
+                                    <select class="form-control" id="valcate-id" name="cat_id">
+                                        <option value="0" selected disabled hidden>--Danh mục--</option>
+                                        @if (count($lstCategory) > 0 && $lstCategory != null)
+                                        @foreach($lstCategory as $ct)
+                                        <option value="{{ $ct->cat_id }}">{{ $ct->cat_name }}</option>
+                                        @endforeach
+                                        @else
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Mô tả:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7">
+                                    <textarea class="form-control" id="txt-description" name="pr_description" placeholder="Nội dung mô tả"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <!-- End show -->
-                        <div class="row" style="margin-top:50px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Số lượng:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="amount" placeholder="Nhập số lượng" type="number" onkeydown="javascript:return event.keyCode == 69 || event.keyCode == 198 || event.keyCode == 190 ? false:true" /></div>
-                        </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Giá sản phẩm:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7"><input type="text" class="form-control number" id="price" placeholder="Nhập giá sản phẩm" /></div>
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-md-5">
+                                    <label class="text-dark">Ảnh danh mục:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="file" id="pr_image" name="pro_image" value="" class="form-control">
+                                </div>
+                                <!-- Show image -->
+                                <div class=form-row>
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                        </div>
+                                        <div class="col-sm-7" style="padding: 10px;">
+                                            <img src="" id="category-img-tag" width="200px" />
+                                            <!--for preview purpose -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End show -->
+                            </div>
+                            <!-- End show -->
+                            <div class="row" style="margin-top:50px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Số lượng:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="amount" name="pr_quantity" placeholder="Nhập số lượng" type="number" onkeydown="javascript:return event.keyCode == 69 || event.keyCode == 198 || event.keyCode == 190 ? false:true" /></div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Giá sản phẩm:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7"><input type="text" class="form-control number" id="price" name="pr_price" placeholder="Nhập giá sản phẩm" /></div>
+                            </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save" style="margin-right: 5px"></i>Lưu</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="createItem()"><i class="fa fa-save" style="margin-right: 5px"></i>Lưu</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -162,72 +175,75 @@
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Sửa sản phẩm</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="row">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tiêu đề sản phẩm:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txtTitleupdate" name="txtTitleupdate" placeholder="Nhập tiêu đề sản phẩm" /></div>
-                        </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tên sản phẩm:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txtNameupdate" name="txtNameupdate" placeholder="Nhập tên sản phẩm" /></div>
-                        </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Danh mục:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7">
-                                <select class="form-control" id="txtCateupdate" name="txtCateupdate">
-                                    <option value="0" selected disabled hidden>--Danh mục--</option>
-                                    @if (count($lstCategory) > 0 && $lstCategory != null)
-                                    @foreach($lstCategory as $ct)
-                                    <option value="{{ $ct->cat_id }}">{{ $ct->cat_name }}</option>
-                                    @endforeach
-                                    @else
-                                    @endif
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Mô tả:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7">
-                                <textarea class="form-control" id="txtDesupdate" name="txtDesupdate" placeholder="Nội dung mô tả"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" id="idEditUser" />
-                    <div class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="row" style="text-align:center">
-                            <label class="mt-3">Ảnh sản phẩm:</label>
-                            <input type="file" id="pr_image" name="pr_image" value="" class="form-control">
-                        </div>
-                        <!-- Show image -->
-                        <div class=form-row>
+            <form id="contactFormedit" action="{{route('admin.proedit')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sửa sản phẩm</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
                             <div class="row">
-                                <div class="col-sm-7">
-                                    <img src="" id="category-img-tag" width="200px" />
-                                    <!--for preview purpose -->
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tiêu đề sản phẩm:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txtTitleupdate" name="txtTitleupdate" placeholder="Nhập tiêu đề sản phẩm" /></div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Tên sản phẩm:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txtNameupdate" name="txtNameupdate" placeholder="Nhập tên sản phẩm" /></div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Danh mục:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7">
+                                    <select class="form-control" id="txtCateupdate" name="txtCateupdate">
+                                        <option value="0" selected disabled hidden>--Danh mục--</option>
+                                        @if (count($lstCategory) > 0 && $lstCategory != null)
+                                        @foreach($lstCategory as $ct)
+                                        <option value="{{ $ct->cat_id }}">{{ $ct->cat_name }}</option>
+                                        @endforeach
+                                        @else
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Mô tả:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7">
+                                    <textarea class="form-control" id="txtDesupdate" name="txtDesupdate" placeholder="Nội dung mô tả"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <!-- End show -->
-                        <div class="row" style="margin-top:50px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Số lượng:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txtQuanupdate" name="txtQuanupdate" placeholder="Nhập số lượng" type="number" onkeydown="javascript:return event.keyCode == 69 || event.keyCode == 198 || event.keyCode == 190 ? false:true" /></div>
-                        </div>
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Giá sản phẩm:</label></div>
-                            <div class="col-sm-7 col-md-7 col-lg-7"><input type="text" class="form-control number" name="txtPriceupdate" id="txtPriceupdate" placeholder="Nhập giá sản phẩm" /></div>
+                        <input type="hidden" id="idEditUser" name="id" />
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="row" style="text-align:center">
+                                <label class="mt-3">Ảnh sản phẩm:</label>
+                                <input type="file" id="pr_image" name="pro_image" value="" class="form-control">
+                            </div>
+                            <!-- Show image -->
+                            <div class=form-row>
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <img src="" id="category-img-tag" width="200px" />
+                                        <!--for preview purpose -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End show -->
+                            <div class="row" style="margin-top:50px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Số lượng:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7"><input class="form-control" id="txtQuanupdate" name="txtQuanupdate" placeholder="Nhập số lượng" type="number" onkeydown="javascript:return event.keyCode == 69 || event.keyCode == 198 || event.keyCode == 190 ? false:true" /></div>
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Giá sản phẩm:</label></div>
+                                <div class="col-sm-7 col-md-7 col-lg-7"><input type="text" class="form-control number" name="txtPriceupdate" id="txtPriceupdate" placeholder="Nhập giá sản phẩm" /></div>
+                            </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save" style="margin-right: 5px"></i>Lưu</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="updatePro()"><i class="fa fa-save" style="margin-right: 5px"></i>Lưu</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -268,6 +284,7 @@
         var title = thiss.children('.pr_title').text();
         var cate = thiss.children('.cat_name').text();
 
+
         $('#txtNameupdate').val(name);
         $('#txtPriceupdate').val(price);
         $('#txtDesupdate').val(des);
@@ -278,36 +295,28 @@
 
     }
 
-    function updatePro() {
-        var id = $.trim($("#idEditUser").val());
-        var name = $.trim($("#txtNameupdate").val());
-        var price = $.trim($("#txtPriceupdate").val());
-        var description = $.trim($("#txtDesupdate").val());
-        var amount = $.trim($("#txtQuanupdate").val());
-        var title = $.trim($("#txtTitleupdate").val());
-        var category = $.trim($("#txtCateupdate").val());
-        var data = {
-            id,
-            name,
-            title,
-            description,
-            category,
-            amount,
-            price
-        }
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{route('admin.pro.edit')}}",
-            type: 'POST',
-            data: data,
-            success: function(res) {
-                if (res.status == 1) {
+    $(document).ready(function() {
+        var frm = $('#contactFormcreate');
+
+        frm.submit(function(e) {
+
+            e.preventDefault();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: frm.attr('method'),
+                url: frm.attr('action'),
+                enctype: 'multipart/form-data',
+                data: frm.serialize(),
+            }).done(function(data) {
+                if (data.status == 1) {
                     swal({
-                        title: res.message,
+                        title: data.message,
                         text: "",
                         icon: "success"
                     }).then((success) => {
@@ -319,17 +328,58 @@
                     })
                 } else {
                     swal({
-                        title: res.message,
+                        title: data.message,
                         text: "",
                         icon: "error"
                     })
                 }
+            });;
+        });
+    });
+
+
+
+    var frmedit = $('#contactFormedit');
+
+    frmedit.submit(function(e) {
+
+        e.preventDefault();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        })
-    }
+        });
 
+        $.ajax({
+                type: frm.attr('method'),
+                url: frm.attr('action'),
+                enctype: 'multipart/form-data',
+                data: frm.serialize(),
+            })
+            .done(function(data) {
+                if (data.status == 1) {
+                    swal({
+                        title: data.message,
+                        text: "",
+                        icon: "success"
+                    }).then((success) => {
+                        if (success) {
+                            $('#createIten').modal('hide');
+                            location.reload();
+                        }
 
-    //end show
+                    })
+                } else {
+                    swal({
+                        title: data.message,
+                        text: "",
+                        icon: "error"
+                    })
+                }
+            });
+    });
+
 
     //Hiển thị ảnh sản phẩm
     $('#category-img-tag').hide();
@@ -356,104 +406,6 @@
         readURL(this);
     });
     //Tạo mới một sản phẩm
-
-    function createItem() {
-        var name = $.trim($('#txt-name').val());
-        var title = $.trim($('#txt-title').val());
-        var description = $.trim($('#txt-description').val());
-        var category = $('#valcate-id').val();
-        var price = $.trim($('#price').val().replace(/,/g, ""));
-        var amount = $('#amount').val();
-        var pr_image = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
-
-        var data = {
-            name,
-            title,
-            description,
-            category,
-            amount,
-            price,
-            pr_image
-        }
-        if (title.length == 0 || name.length == 0) {
-            swal({
-                title: "Cảnh báo!",
-                text: "Vui lòng nhập đầy đủ thông tin",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        if (category == "" || category == null) {
-            swal({
-                title: "Cảnh báo!",
-                text: "Vui lòng chọn danh mục cho sản phẩm",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        if (typeof pr_image === "undefined") {
-            swal({
-                title: "Cảnh báo!",
-                text: "Vui lòng chọn ảnh cho sản phẩm",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        if (parseInt(price) == 0 || parseInt(price) == null) {
-            swal({
-                title: "Cảnh báo!",
-                text: "Giá phải lớn hơn 0",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        if (parseInt(amount) == 0 || parseInt(amount) == null) {
-            swal({
-                title: "Cảnh báo!",
-                text: "Số lượng phải lớn hơn 0",
-                icon: 'warning'
-            })
-            return;
-        }
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-
-            }
-        });
-
-        $.ajax({
-            url: "{{route('admin.pro.store')}}",
-            type: 'POST',
-            data: data,
-            success: function(res) {
-                if (res.status == 1) {
-                    swal({
-                        title: res.message,
-                        text: "",
-                        icon: "success"
-                    }).then((success) => {
-                        if (success) {
-                            $('#createIten').modal('hide');
-                            location.reload();
-                        }
-
-                    })
-                } else {
-                    swal({
-                        title: res.message,
-                        text: "",
-                        icon: "error"
-                    })
-                }
-            }
-        })
-    }
 
     function delPro(pro) {
         var thiss = pro.closest('tr');
