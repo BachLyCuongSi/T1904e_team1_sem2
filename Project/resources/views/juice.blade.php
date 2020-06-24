@@ -28,7 +28,7 @@
         </ul>
       </div>
     </div>
-    
+
     <div class="row">
     @foreach($lsProduct as $Product)
       <div class="col-md-6 col-lg-3 ftco-animate">
@@ -44,17 +44,11 @@
               </div>
             </div>
             <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex">
-                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                  <span><i class="ion-ios-menu"></i></span>
+            <div class="m-auto d-flex">
+                <a href="add/{{$product->pr_id}}" onclick="message()" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                <span><i class="ion-ios-cart"></i></span>
                 </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                  <span><i class="ion-ios-cart"></i></span>
-                </a>
-                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                  <span><i class="ion-ios-heart"></i></span>
-                </a>
-              </div>
+            </div>
             </div>
           </div>
         </div>
@@ -62,8 +56,23 @@
        @endforeach
        {{$lsProduct->links()}}
 
-    
-</section>
 
+</section>
+<script type="text/javascript"src ="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js">
+
+</script>
+<script type="text/javascript" >
+function message(){
+    swal({
+      title:"Sản phẩm đã thêm vào giỏ hàng",
+      text:"",
+      icon:"success"
+    }).then((success)=>{
+      if(success){
+        location.reload();
+      }
+    })
+  };
+</script>
 
 @endsection

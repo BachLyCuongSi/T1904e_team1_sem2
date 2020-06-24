@@ -97,6 +97,20 @@ class FrontendController extends Controller
         return view('contact');
     }
 
+    public function postContact(request $request)
+    {
+        $data['info'] = $request -> all();
+
+        Mail::send('contactmail', $data, function ($message) {
+          $message->from('t1904efpt@gmail.com', 'Team 1 Shop');
+
+          $message->to('t1904efpt@gmail.com', 'Team 1 Shop');
+
+          $message->subject('Feedback khách hàng');
+        });
+        return view('contact');
+    }
+
     //Manh load chi tiet san pham
 
     public function loadDeatilProduct(Request $request)

@@ -54,14 +54,8 @@
                             </div>
                             <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                <span><i class="ion-ios-menu"></i></span>
-                                </a>
-                                <a id="abc" href="add/{{$product->pr_id}}" onclick="message()" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                <a href="add/{{$product->pr_id}}" onclick="message()" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                 <span><i class="ion-ios-cart"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                <span><i class="ion-ios-heart"></i></span>
                                 </a>
                             </div>
                             </div>
@@ -90,7 +84,7 @@
 <script type="text/javascript" >
 function message(){
     swal({
-      title:"Ban da dat hang thanh cong",
+      title:"Sản phẩm đã thêm vào giỏ hàng",
       text:"",
       icon:"success"
     }).then((success)=>{
