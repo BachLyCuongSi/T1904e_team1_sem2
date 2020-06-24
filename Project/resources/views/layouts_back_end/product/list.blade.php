@@ -43,7 +43,7 @@
     </div>
 </div>
 <div class="row" style="margin-top: 50px;">
-    <div class="col-md-12" id="TableCategory">
+    <div class="col-md-12" id="TableProduct">
         <table style="text-align:center" class="table table-bordered table-hover mt-2 w-100">
             <thead>
                 <tr>
@@ -256,7 +256,7 @@
 <!-- Kết thúc modal delete product -->
 @endsection
 <script type="text/javascript">
-    //Show modal Sửa sản phẩm 
+    //Show modal Sửa sản phẩm
     function loadProDetail(data) {
         var thiss = data.closest('tr');
 
@@ -526,7 +526,7 @@
             type: "GET",
             success: function(res) {
                 $('#modalLoad').modal('hide');
-                $('#TableCategory').html(res);
+                $('#TableProduct').html(res);
 
             }
         })

@@ -39,7 +39,7 @@
                         @endif</span></p>
 
 
-                    <p class = "price"> <span>Còn hàng : {{ $product->pr_quantity }} kg</span></p>
+                    <p class = "price"> <span>Còn hàng : {{ $product->pr_quantity }} </span></p>
                     <div class="row mt-4">
                     <div class="col-md-8">
                         <div class="text-editor">{{ $product->pr_description }} </div>
