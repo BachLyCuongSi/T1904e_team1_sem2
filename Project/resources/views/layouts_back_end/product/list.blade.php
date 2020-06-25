@@ -60,12 +60,12 @@
             <tbody>
                 @foreach($lstProduct as $pro)
                 <tr>
-                    <td>{{$pro->pr_id}}</td>
+                    <td class="val-id-pr" id="{{$pro->pr_id}}">{{ $loop->iteration }}</td>
 
                     <td class="pr_name">{{$pro->pr_name}}</td>
                     <td class="pro_image"><img src="{{asset($pro->pr_image)}}" width="200px;"></td>
                     <td class="pr_price">{{$pro->pr_price}}</td>
-                    <td class="cat_name">{{$pro->cat_name}}</td>
+                    <td class="cat_name" id="{{$pro->cat_id}}" >{{$pro->cat_name}}</td>
                     <td class="pr_quantity">{{$pro->pr_quantity}}</td>
                     <td style="display: none;" class="pr_title">{{$pro->pr_title}}</td>
                     <td style="display: none;" class="pr_des">{{$pro->pr_description}}</td>
@@ -82,7 +82,10 @@
                 </tr>
                 @endforeach
             </tbody>
+
         </table>
+        <hr>
+            <div class="row">{{ $lstProduct->links() }}</div>
     </div>
 </div>
 
@@ -175,7 +178,7 @@
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form id="contactFormedit" action="{{route('admin.proedit')}}" method="post" enctype="multipart/form-data">
+            <form id="contactFormedit">
                 @csrf
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -240,7 +243,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save" style="margin-right: 5px"></i>Lưu</button>
+                        <button type="submit" class="btn btn-success" onclick="SavePro($('#val-id-pr').val())"><i class="fa fa-save" style="margin-right: 5px"></i>Lưu</button>
                     </div>
                 </div>
             </form>
@@ -283,6 +286,7 @@
         var quan = thiss.children('.pr_quantity').text();
         var title = thiss.children('.pr_title').text();
         var cate = thiss.children('.cat_name').text();
+        var cateID = thiss.children('.cat_name').attr('id');
 
 
         $('#txtNameupdate').val(name);
@@ -292,13 +296,15 @@
         $('#txtQuanupdate').val(quan);
         $('#idEditUser').val(id);
         $('#txtCateupdate').val(cate);
+        $('#txtCateupdate').val(cateID);
 
     }
 
-    $(document).ready(function() {
-        var frm = $('#contactFormcreate');
 
-        frm.submit(function(e) {
+    $(document).ready(function() {
+
+
+        $('#contactFormcreate').submit(function(e) {
 
             e.preventDefault();
 
@@ -309,10 +315,10 @@
             });
 
             $.ajax({
-                type: frm.attr('method'),
-                url: frm.attr('action'),
+                type: $('#contactFormcreate').attr('method'),
+                url: $('#contactFormcreate').attr('action'),
                 enctype: 'multipart/form-data',
-                data: frm.serialize(),
+                data: $('#contactFormcreate').serialize(),
             }).done(function(data) {
                 if (data.status == 1) {
                     swal({
@@ -333,66 +339,23 @@
                         icon: "error"
                     })
                 }
-            });;
-        });
-    });
-
-
-
-    var frmedit = $('#contactFormedit');
-
-    frmedit.submit(function(e) {
-
-        e.preventDefault();
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $.ajax({
-                type: frm.attr('method'),
-                url: frm.attr('action'),
-                enctype: 'multipart/form-data',
-                data: frm.serialize(),
-            })
-            .done(function(data) {
-                if (data.status == 1) {
-                    swal({
-                        title: data.message,
-                        text: "",
-                        icon: "success"
-                    }).then((success) => {
-                        if (success) {
-                            $('#createIten').modal('hide');
-                            location.reload();
-                        }
-
-                    })
-                } else {
-                    swal({
-                        title: data.message,
-                        text: "",
-                        icon: "error"
-                    })
-                }
             });
-    });
+        });
 
-
+});
     //Hiển thị ảnh sản phẩm
     $('#category-img-tag').hide();
 
     function readURL(input) {
         if (input.files && input.files[0]) {
 
-
             var reader = new FileReader();
 
             reader.onload = function(e) {
+
                 $('#category-img-tag').show();
                 $('#category-img-tag').attr('src', e.target.result);
+                $('#category-img-tag').show();
 
             }
 
@@ -402,7 +365,6 @@
     }
 
     $("#pr_image").change(function() {
-
         readURL(this);
     });
     //Tạo mới một sản phẩm
@@ -481,6 +443,29 @@
                 $('#TableProduct').html(res);
 
             }
+        })
+
+    }
+    function SavePro(id){
+$.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+                url: "{{route('admin.proedit')}}",
+                enctype: 'multipart/form-data',
+                data: $('#contactFormedit').serialize(),
+                type:"POST",
+                dataType: 'json',
+                beforeSend: function(){
+                  $('#modalLoad').modal('show');
+                },
+                success: function(res) {
+                alert(res.status);
+                $('#modalLoad').modal('hide');
+                }
         })
 
     }

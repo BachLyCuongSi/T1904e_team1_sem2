@@ -25,7 +25,7 @@
     </div>
     <div class="col-sm-3 col-md-3 col-lg-3">
         <select class="form-control" id="valStaus">
-            <option value="" disabled hidden>Trạng thái</option>
+            <option value="" selected disabled hidden>Trạng thái</option>
             <option value="0">Chờ xác nhận</option>
             <option value="1">Đã xác nhận</option>
             <option value="2">Đã thanh toán</option>
@@ -90,8 +90,9 @@
                 @endif
             </tbody>
         </table>
-
+            <div class="row">{{ $lstOrder->links() }}</div>
     </div>
+
 </div>
 @endsection
 
@@ -127,7 +128,28 @@
         var name = $.trim($('#Odname').val());
         var fromDate = $.trim($('#fromDate').val());
         var toDate = $.trim($('#toDate').val());
-        var status = $('#valStaus').val()
+        var status = $('#valStaus').val();
+         $('#modalLoad').modal('show');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "{{route('Order.search')}}",
+            data: {
+                name,
+                fromDate,
+                toDate,
+                status
+            },
+            type: "GET",
+            success: function(res) {
+                $('#modalLoad').modal('hide');
+                $('#TableOrder').html(res);
+
+            }
+        })
     }
 </script>
 @endsection

@@ -78,7 +78,7 @@ date_default_timezone_set(DateTimeZone::listIdentifiers(DateTimeZone::ASIA)[27])
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/cate_manage', 'CategoryController@index');
+// Route::resource('/cate_manage', 'CategoryController@index'); 
 
 
 // Route::resource('/cate_manage', function () {
