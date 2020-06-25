@@ -113,7 +113,7 @@
                                 <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Danh mục:</label></div>
                                 <div class="col-sm-7 col-md-7 col-lg-7">
                                     <select class="form-control" id="valcate-id" name="cat_id">
-                                        <option value="0" selected disabled hidden>--Danh mục--</option>
+                                        <option value="" selected disabled hidden>--Danh mục--</option>
                                         @if (count($lstCategory) > 0 && $lstCategory != null)
                                         @foreach($lstCategory as $ct)
                                         <option value="{{ $ct->cat_id }}">{{ $ct->cat_name }}</option>

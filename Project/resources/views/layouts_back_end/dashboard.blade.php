@@ -2,6 +2,8 @@
 
 @section('content')
 {{-- \container-fluid --}}
+
+
 <div class="">
      <div class="   ">
          <div class="row">

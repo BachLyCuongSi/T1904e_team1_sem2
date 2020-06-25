@@ -122,6 +122,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('detail', 'OrderController@LoadDetai')->name('orderDetail');
         Route::post('saveEdit', 'OrderController@saveEditBill')->name('saveEdit');
         Route::get('exportExcel', 'OrderController@ExportExcel')->name('exportExcelBill');
+        Route::get('searchOd', 'OrderController@seachOrd')->name('Order.search');
 
         //Quản lý danh mục
         Route::post('savecate', 'CategoryController@savecreate')->name('admin.savecate');
