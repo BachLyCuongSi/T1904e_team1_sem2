@@ -69,11 +69,11 @@ class ExportController extends Controller implements FromCollection, WithHeading
     {
         return [
             'STT',
-            'Tên san pham',
-            'Gia',
-            'SO luong',
-            'sumprice',
-            'sumpriceDiscount'
+            'Tên sản phẩm',
+            'Giá',
+            'Số lượng',
+            'Tổng tiền',
+            'Tổng tiền sau khi giảm'
         ];
     }
 }
