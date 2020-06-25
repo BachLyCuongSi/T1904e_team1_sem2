@@ -161,7 +161,9 @@
                 </div>
             </div>
         @endforeach
-
+    </div>
+    <div class="row">
+        <div class="text-center">{{ $lsProduct->links() }}</div>
     </div>
   </div>
 </section>

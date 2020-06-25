@@ -6,8 +6,8 @@
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
-        <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Home</a></span> <span class="mr-2"><a href="{{ route('shop') }}">Product</a></span> <span>Product Single</span></p>
-        <h1 class="mb-0 bread">Product Single</h1>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Home</a></span> <span class="mr-2"><a href="{{ route('shop') }}">Product</a></span></p>
+        <h1 class="mb-0 bread">Product Details</h1>
       </div>
     </div>
   </div>
@@ -33,16 +33,16 @@
                     </div>
                     <p class="price"><span id="price">
                         @if ($product->discount > 0)
-                            <span class="price-sale">${{ ($product->pr_price)-($product->pr_price)*($product->discount)/100 }}</span>
+                            <span class="price-sale">${{ ($product->pr_price)-($product->pr_price)*($product->discount)/100 }} / SP</span>
                         @else
-                            <span class="price">{{ $product->pr_price }}</span>
+                            <span class="price">{{ $product->pr_price }} / SP</span>
                         @endif</span></p>
 
 
                     <p class = "price"> <span>Còn hàng : {{ $product->pr_quantity }} </span></p>
                     <div class="row mt-4">
                     <div class="col-md-8">
-                        <div class="text-editor">{{ $product->pr_description }} </div>
+                        <div class="text-editor"  >{{ $product->pr_description }} </div>
                     </div>
                     <div class="w-100"></div>
                     <div class="input-group col-md-6 d-flex mb-3">
@@ -139,6 +139,9 @@
 
                 <<div class="bottom-area d-flex px-3">
                 <div class="m-auto d-flex">
+                    <a href="{{ route('prdsingle.id',$product->pr_id) }}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                        <span><i class="ion-ios-menu"></i></span>
+                    </a>
                     <a href="add/{{$product->pr_id}}" onclick="message()" class="buy-now d-flex justify-content-center align-items-center mx-1">
                     <span><i class="ion-ios-cart"></i></span>
                     </a>
@@ -168,6 +171,8 @@ function message(){
       }
     })
   };
+
+
 </script>
 {{-- end --}}
 @endsection

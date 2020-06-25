@@ -24,24 +24,21 @@
 
                 <th>Product List</th>
                 <th>Name</th>
-                <th>Title</th>
+
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
               </tr>
             </thead>
             <tbody>
+                @foreach ($data as $pr)
               <tr class="text-center">
-                  @foreach ($data as $pr)
 
 
                         <td class="image-prod"><div class="img" style="background-image:url(images/{{$pr->pr_image}});"></div></td>
 
-                        <td class="product-name">
-                        <h3>{{ $pr->pr_name}}</h3>
+                        <td class="product-name">{{ $pr->pr_name}}</td>
 
-                        </td>
-                        <td>{{ $pr->pr_title }}</td>
                         <td class="price">${{ $pr->pr_price }} </td>
 
                         <td class="quantity">
@@ -49,14 +46,14 @@
                         </td>
 
                         <td class="total">{{ $pr->pr_price }}</td>
-                 @endforeach
+
               </tr><!-- END TR-->
-
-
-
-
+               @endforeach
             </tbody>
           </table>
+          <div class="row">
+              <div class="col-md-12">{{ $data->links() }} </div>
+          </div>
         </div>
       </div>
     </div>

@@ -36,7 +36,7 @@ class FrontendController extends Controller
         // $lsComment = $com->commindex();
         $lsCategory = category::all();
         //$lsProduct = product::select('select * from products where pr_discount != 0 ORDER BY pr_id DESC LIMIT 8');
-        $lsProduct = DB::table('products')->where('deleted_at', null)->where('discount', '!=', 0)->orderBy('pr_id', 'desc')->limit('8')->get();
+        $lsProduct = DB::table('products')->where('deleted_at', null)->where('discount', '!=', 0)->orderBy('pr_id', 'desc')->paginate(8);
         // $lsComment = DB::table('comments')->join('customers', 'comments.cus_id', '=', 'customers.cus_id')->orderBy('comm_id', 'DESC')->limit('3')->get();
 
         return view('welcome')->with('lsCategory', $lsCategory)->with('lsProduct', $lsProduct);
@@ -254,7 +254,7 @@ class FrontendController extends Controller
 
     //   lọc tất cả các sản phẩm đã hết hàng ra trang wishlist
     public function wishlist(){
-        $data = DB::table('products')->where('deleted_at', null)->where('pr_quantity',0)->get();
+        $data = DB::table('products')->where('deleted_at', null)->where('pr_quantity',0)->paginate(4);
         return view('wishlist', compact('data'));
     }
 

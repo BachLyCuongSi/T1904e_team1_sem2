@@ -80,9 +80,9 @@
             @if (Session::has('name'))
                 {{-- <div  class=" nav-link""> <span>{{ session::get('name') }}</span> </div> --}}
                 <li class="dropdown text-center  nav-item">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{ session::get('name') }}</a>
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"  > {{ session::get('name') }}</a>
                     <ul class="dropdown-menu" role="menu">
-                        <a href=""><li data-toggle="modal" data-target="#showCus">Profile</li></a>
+                        <a href="" ><li data-toggle="modal" data-target="#showCus">Profile</li></a>
                         <a href="{{ route('index.logout') }}"><li>Logout </li></a>
                     </ul>
                 </li>
