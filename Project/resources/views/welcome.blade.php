@@ -196,7 +196,8 @@
             <div class="col-md-7 heading-section ftco-animate text-center">
                 <span class="subheading">Testimony</span>
                 <h2 class="mb-4">Our satisfied customer says</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+                <p>We sell only fresh fruit and vegetables. We sell no saturated fats or anything like that.
+                  If you are interested in a healthier life, please chose us for free and we will served you all of our best!</p>
             </div>
         </div>
         <div class="row ftco-animate">
@@ -210,7 +211,7 @@
                                 </span>
                             </div>
                             <div class="text text-center">
-                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="mb-5 pl-4 line">We sell only fresh fruit and vegetables. I sell no saturated fats or anything like that.</p>
                                 <p class="name">Garreth Smith</p>
                                 <span class="position">Marketing Manager</span>
                             </div>
@@ -224,8 +225,10 @@
                                 </span>
                             </div>
                             <div class="text text-center">
-                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Garreth Smith</p>
+                                <p class="mb-5 pl-4 line">i love fresh fruit and vegetables. I'm not a strict dieter.
+                                  I don't think that anything in life should be so regimented that you're not having fun or can't enjoy like everybody else.
+                                  Just know that fresh food is always going to be better for you</p>
+                                <p class="name">James Hetfield</p>
                                 <span class="position">Interface Designer</span>
                             </div>
                         </div>
@@ -238,36 +241,42 @@
                                 </span>
                             </div>
                             <div class="text text-center">
-                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Garreth Smith</p>
+                                <p class="mb-5 pl-4 line">Adopting a healthier new lifestyle may involve changing your diet to include more fresh fruits and vegetables as well as increasing exercise levels.
+                                  But the results will be greater than you imagine</p>
+                                <p class="name">Fred Durst</p>
                                 <span class="position">UI Designer</span>
                             </div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                            <div class="user-img mb-5" style="background-image: url(images/person_4.png)">
                                 <span class="quote d-flex align-items-center justify-content-center">
                                     <i class="icon-quote-left"></i>
                                 </span>
                             </div>
                             <div class="text text-center">
-                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Garreth Smith</p>
+                                <p class="mb-5 pl-4 line">The fresh fruit and vegetables website is a very effective way to raise awareness and consumption of two vital food group
+                                  that are sometimes ignored, especially by children.
+                                  We hope that with our products, more children will become healthier, no more childrent be in overweight,
+                                  and we will have a future generation healthier.</p>
+                                <p class="name">Nicolai Reedtz</p>
                                 <span class="position">Web Developer</span>
                             </div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                            <div class="user-img mb-5" style="background-image: url(images/person_5.png)">
                                 <span class="quote d-flex align-items-center justify-content-center">
                                     <i class="icon-quote-left"></i>
                                 </span>
                             </div>
                             <div class="text text-center">
-                                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Garreth Smith</p>
+                                <p class="mb-5 pl-4 line">We hope that what we have done will contribute to promoting modern,
+                                  efficient and sustainable agricultural production in Vietnam; supply clean and quality products to the domestic market;
+                                  contribute to developing and elevating the position of Vietnamese agricultural product brand in the international market.</p>
+                                <p class="name">Clinton Loomis</p>
                                 <span class="position">System Analyst</span>
                             </div>
                         </div>
