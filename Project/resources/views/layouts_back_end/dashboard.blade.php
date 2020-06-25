@@ -2,6 +2,8 @@
 
 @section('content')
 {{-- \container-fluid --}}
+
+
 <div class="">
      <div class="   ">
          <div class="row">
@@ -13,7 +15,8 @@
          <!-- /.row -->
          <div class="row">
             <div   class="col-lg-3 col-md-6">
-                <div   class="panel panel-primary">
+                <a href="{{ route('cate_manage.store') }}">
+                    <div   class="panel panel-primary">
                     {{-- panel --}}
                     <div style="height: 15%" class="panel-heading">
                         <div class="row">
@@ -30,9 +33,12 @@
                     </div>
 
                 </div>
+                </a>
+
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
+                <a href="{{ route('product_manage.store') }}">
+                    <div class="panel panel-green">
                     <div style="height: 15%" class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -46,43 +52,52 @@
                     </div>
 
                 </div>
+                </a>
+
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow ">
+                <a href="{{ route('product_manage.store') }}">
+                    <div class="panel panel-yellow ">
+                    <div style="height: 15%" class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                {{-- thay đổi icon qua customer --}}
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">  {{ $count_cus }}</div>
+                                <div>Custommer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="{{ route('order_manage.store') }}">
+                    <div   class="panel panel-red">
                     <div style="height: 15%" class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
                                 <i class="fa fa-shopping-cart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">{{ $count_cus }}</div>
-                                <div>Custommer</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div   class="panel panel-red">
-                    <div style="height: 15%" class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-support fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">{{ $count_od }}</div>
+                                <div class="huge">{{ $count_od_ok }}/ {{ $count_od }}</div>
                                 <div>Order</div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </a>
+
             </div>
          </div>
         <hr>
 
          <!-- /.row -->
          <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-md-12">
                         <!-- /.panel -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -103,18 +118,29 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {{-- @foreach ($datas as $newod)
+                                                    @foreach ($datas as $newod)
                                                         <tr>
-                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{ $newod->od_id }}</td>
                                                             <td>{{date('d-m-Y',strtotime($newod->created_at))}}</td>
-                                                            <td>{{ $newod->cus_total_price_PayMent}} PM</td>
-                                                            <td>{{ $newod->status }}</td> VND</td>
+                                                            <td>{{ $newod->cus_total_price_PayMent}} </td>
+                                                            <td>
+                                                                @if ( $newod->status ==0 )
+                                                                    <span class="text-warning">Đang chờ xác nhận</span>
+                                                                @elseif ( $newod->status ==1)
+                                                                    <span class="text-primary">Đã xác nhận</span>
+                                                                @elseif ( $newod->status ==2)
+                                                                    <span class="text-success">Đã thanh toán</span>
+                                                                @elseif ( $newod->status ==3)
+                                                                    <span class="text-danger" >Đã huỷ</span>
+                                                                @endif
+                                                            </td>
                                                         </tr>
-
-                                                    @endforeach --}}
+                                                    @endforeach
                                                 </tbody>
                                             </table>
+
                                         </div>
+                                        <div class="text-center">{{ $datas->links() }}</div>
                                         <!-- /.table-responsive -->
                                     </div>
                                     <!-- /.col-lg-4 (nested) -->
@@ -128,7 +154,7 @@
 
                     </div>
                     <!-- /.col-lg-8 -->
-                    <div class="col-lg-4">
+                    {{-- <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <i class="fa fa-bell fa-fw"></i> Notifications Panel
@@ -169,7 +195,7 @@
                             <!-- /.panel-body -->
                         </div>
                         <!-- /.panel .chat-panel -->
-                    </div>
+                    </div> --}}
                     <!-- /.col-lg-4 -->
                     </>
                     <!-- /.row -->

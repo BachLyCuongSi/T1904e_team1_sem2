@@ -13,7 +13,7 @@
 
 <div class="row mb-2">
     <div class="col-sm-3 col-md-3 col-lg-3">
-        <input class="form-control" id="txt-name" placeholder="Nhập tên hoặc số điện thoại khách hàng" />
+        <input class="form-control" id="Odname" placeholder="Nhập tên hoặc số điện thoại khách hàng" />
     </div>
     <div class="col-sm-3 col-md-3 col-lg-3">
         <input type="text" id="fromDate" class="form-control relative-icon-calendar date" placeholder="Từ ngày" />
@@ -121,6 +121,13 @@
             }
         })
 
+    }
+
+    function searchOrder(){
+        var name = $.trim($('#Odname').val());
+        var fromDate = $.trim($('#fromDate').val());
+        var toDate = $.trim($('#toDate').val());
+        var status = $('#valStaus').val()
     }
 </script>
 @endsection

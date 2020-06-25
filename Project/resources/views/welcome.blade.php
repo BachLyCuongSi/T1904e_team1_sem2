@@ -103,15 +103,15 @@
     <hr>
     <div class="row">
       @foreach ($lsCategory as $cat)
-
-        <div class="col-md-6">
-          <a href="#"><div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/{{ $cat->imgUrl}});"></a>
-            <div class="text px-3 py-1">
-              <h2 class="mb-0"><a href="{{route('shop.id',$cat->cat_id)}}">{{ $cat->cat_name }}</a></h2>
+        <a href="{{ route('shop.id',$cat->cat_id) }} ">
+            <div class="col-md-6">
+                <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/{{ $cat->imgUrl}});">
+                    <div class="text px-3 py-1">
+                        <h2 class="mb-0"><a href="{{route('shop.id',$cat->cat_id)}}">{{ $cat->cat_name }}</a></h2>
+                    </div>
+                </div>
             </div>
-          </div></a>
-
-      </div>
+      </a>
       @endforeach
 
     </div>
@@ -148,14 +148,12 @@
                         </div>
                         <div class="bottom-area d-flex px-3">
                         <div class="m-auto d-flex">
-                            <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                            <a href="{{ route('prdsingle.id',$product->pr_id) }}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                             <span><i class="ion-ios-menu"></i></span>
                             </a>
                             <a href="add/{{$product->pr_id}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
                             <span><i class="ion-ios-cart"></i></span>
                             </a>
-                            <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                            <span><i class="ion-ios-heart"></i></span>
                             </a>
                         </div>
                         </div>

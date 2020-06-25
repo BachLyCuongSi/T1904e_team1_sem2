@@ -37,10 +37,10 @@ class ProductController extends Controller
             $oriFileName = $request->pro_image->getClientOriginalExtension();
             $filename = str_replace(' ', '-', $oriFileName);
 
-            $filename = uniqid() . '.' . $filename;
+            $filename = uniqid().'.'.$filename;
             $path = $request->file('pro_image')->storeAs('products', $filename);
             $url = Storage::disk('public')->put($path,  File::get($cover));
-            $it->pr_image = 'images/' . $path;
+            $it->pr_image = 'images/'.$path;
 
             $it->fill($request->all());
             $it->save();

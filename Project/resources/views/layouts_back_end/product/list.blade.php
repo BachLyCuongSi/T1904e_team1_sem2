@@ -43,7 +43,7 @@
     </div>
 </div>
 <div class="row" style="margin-top: 50px;">
-    <div class="col-md-12" id="TableCategory">
+    <div class="col-md-12" id="TableProduct">
         <table style="text-align:center" class="table table-bordered table-hover mt-2 w-100">
             <thead>
                 <tr>
@@ -113,7 +113,7 @@
                                 <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Danh mục:</label></div>
                                 <div class="col-sm-7 col-md-7 col-lg-7">
                                     <select class="form-control" id="valcate-id" name="cat_id">
-                                        <option value="0" selected disabled hidden>--Danh mục--</option>
+                                        <option value="" selected disabled hidden>--Danh mục--</option>
                                         @if (count($lstCategory) > 0 && $lstCategory != null)
                                         @foreach($lstCategory as $ct)
                                         <option value="{{ $ct->cat_id }}">{{ $ct->cat_name }}</option>
@@ -272,7 +272,7 @@
 <!-- Kết thúc modal delete product -->
 @endsection
 <script type="text/javascript">
-    //Show modal Sửa sản phẩm 
+    //Show modal Sửa sản phẩm
     function loadProDetail(data) {
         var thiss = data.closest('tr');
 
@@ -478,7 +478,7 @@
             type: "GET",
             success: function(res) {
                 $('#modalLoad').modal('hide');
-                $('#TableCategory').html(res);
+                $('#TableProduct').html(res);
 
             }
         })

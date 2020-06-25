@@ -49,7 +49,10 @@ Route::get('/productsingle', 'FrontendController@single')->name('prdsingle');
 Route::get('/about.html', 'FrontendController@about');
 Route::post('subscribe', 'FrontendController@subscribe');
 Route::get('/about.html', 'FrontendController@about')->name('about');
+
+//Phan contact
 Route::get('/contact.html', 'FrontendController@contact')->name('contactUs');
+Route::post('contact', 'FrontendController@postContact');
 
 
 Route::get('/loadDeatilProduct', 'FrontendController@loadDeatilProduct')->name('product.detail');
@@ -122,6 +125,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('detail', 'OrderController@LoadDetai')->name('orderDetail');
         Route::post('saveEdit', 'OrderController@saveEditBill')->name('saveEdit');
         Route::get('exportExcel', 'OrderController@ExportExcel')->name('exportExcelBill');
+        Route::get('searchOd', 'OrderController@seachOrd')->name('Order.search');
 
         //Quản lý danh mục
         Route::post('savecate', 'CategoryController@savecreate')->name('admin.savecate');

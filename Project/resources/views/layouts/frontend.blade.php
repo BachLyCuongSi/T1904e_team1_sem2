@@ -68,8 +68,8 @@
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="{{ route('shop') }}">Shop</a>
               <a class="dropdown-item" href="{{route('wishlist')}}">Wishlist</a>
-              <a class="dropdown-item" href="{{route('prdsingle')}}">Single Product</a>
-              <a class="dropdown-item" href="{{asset('/checkout.html')}}">Checkout</a>
+              {{-- <a class="dropdown-item" href="{{route('prdsingle')}}">Single Product</a> --}}
+              {{-- <a class="dropdown-item" href="{{asset('/checkout.html')}}">Checkout</a> --}}
             </div>
           </li>
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
@@ -79,19 +79,62 @@
 
             @if (Session::has('name'))
                 {{-- <div  class=" nav-link""> <span>{{ session::get('name') }}</span> </div> --}}
-                <li class="nav-item"><a class="nav-link"  href="#">{{ session::get('name') }}</a></li>
-                <li class="nav-item"><a class="nav-link"  href="{{ route('index.logout') }}">Logout</a></li>
-
+                <li class="dropdown text-center  nav-item">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{ session::get('name') }}</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <a href=""><li data-toggle="modal" data-target="#showCus">Profile</li></a>
+                        <a href="{{ route('index.logout') }}"><li>Logout </li></a>
+                    </ul>
+                </li>
             @else
             <li class="nav-item "> <a href="{{route('index.dangnhap')}}" class="nav-link"> <span> Login/Register</span> </a> </li>
             @endif
 
-        </ul>
+       </ul>
       </div>
     </div>
   </nav>
   <!-- END nav -->
+    @section('modal')
+        {{-- thông tin cá nhân  --}}
+    <div class="modal fade" id="showCus" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Profile</h4>
+                </div>
+                <form id="" action="" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Name</label></div>
+                                    <div class="col-sm-7 col-md-7 col-lg-7">Name</div>
+                                </div>
+                                <div class="row" style="margin-top:10px;">
+                                    <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Email :</label></div>
+                                    <div class="col-sm-7 col-md-7 col-lg-7">Email</div>
+                                </div>
+                                <div class="row" style="margin-top:10px;">
+                                    <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Phone :</label></div>
+                                    <div class="col-sm-7 col-md-7 col-lg-7">SĐT</div>
+                                </div>
+                                <div class="row" style="margin-top:10px;">
+                                    <div class="col-sm-5 col-md-5 col-lg-5"><label class="text-dark">Address :</label></div>
+                                    <div class="col-sm-7 col-md-7 col-lg-7">Địa chỉ</div>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @endsection
 
 
 
