@@ -16,7 +16,7 @@
                     </div>
 {{-- {{ $request->session()->get('message') }} --}}
                     <div class="signin-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title">Sign In</h2>
 
                         {{-- @if (Session::has('flags') && Session::has('message'))
                             <div class="alert alert-{{ Session::get('flags') }}"> {{ Session::get('message') }}</div>
