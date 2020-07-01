@@ -55,7 +55,7 @@
           <td class="cat_name">{{$category->cat_name}}</td>
 
           <td class="imgUrl">
-            <div class="col-md-3"><img src="{{ asset( $category->imgUrl)}}" style="height:200px;" /></div>
+            <div class="col-md-3"><img src="{{asset('images/$category->imgUrl')}}" style="height:200px;" /></div>
           </td>
           <td>{{date('d-m-Y',strtotime($category->created_at))}}</td>
           <td style="text-align:center">

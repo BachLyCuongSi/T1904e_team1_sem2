@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         $lstCategory = DB::table('categories')->where('deleted_at', null)->get();
-        $lstProduct = DB::table('products as p')->leftjoin('categories as c', 'p.cat_id', '=', 'c.cat_id')->where('p.deleted_at', null)->paginate(10);
+        $lstProduct = DB::table('products as p')->leftjoin('categories as c', 'p.cat_id', '=', 'c.cat_id')->where('p.deleted_at', null)->orderBy('pr_quantity')->paginate(10);
         return view('layouts_back_end.product.list', compact('lstCategory', 'lstProduct'));
     }
 
@@ -96,7 +96,7 @@ class ProductController extends Controller
             ->when(request('cateId', null), function ($query, $cateId) {
                 return $query->where('p.cat_id', $cateId);
             })
-            ->orderBy('p.pr_quantity', 'desc')->paginate(10);
+            ->orderBy('p.pr_quantity')->paginate(10);
         return view('layouts_back_end.product.tblProduct', compact('lstProduct'));
     }
     /**

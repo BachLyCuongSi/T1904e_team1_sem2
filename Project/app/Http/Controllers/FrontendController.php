@@ -44,7 +44,7 @@ class FrontendController extends Controller
 
 //  trang shop
     public function shop() {
-        $lsProduct = Product::where('deleted_at', null)->paginate(4);
+        $lsProduct = Product::where('deleted_at', null)->paginate(8);
         $allProduct = Product::where('deleted_at', null)->paginate(8);
         $lstCategory =category::where('deleted_at',null)->get();
 
@@ -139,24 +139,29 @@ class FrontendController extends Controller
         return view('cart');
     }
 
-    public function getAddCart($id)
+    public function getAddCart(request $request,$id)
     {
-        $lsproduct = Product::find($id);
-        $b=$lsproduct->pr_price;
-        $a=($lsproduct->pr_price)*((100-($lsproduct->discount))/100);
+         if( $request->session()->has('name') ){
+            $lsproduct = Product::find($id);
+                $b=$lsproduct->pr_price;
+                $a=($lsproduct->pr_price)*((100-($lsproduct->discount))/100);
 
-        // $b=$lsproduct->pr_price;
-        Cart::add([
-        'id' => $id,
-        'name' => $lsproduct->pr_name,
-        'qty' => 1,
-        'price' => $a,
-        'options' => [
-            'img' => $lsproduct->pr_image,
-            'discount' => $lsproduct->discount]
-        ]);
+                // $b=$lsproduct->pr_price;
+                Cart::add([
+                'id' => $id,
+                'name' => $lsproduct->pr_name,
+                'qty' => 1,
+                'price' => $a,
+                'options' => [
+                    'img' => $lsproduct->pr_image,
+                    'discount' => $lsproduct->discount]
+                ]);
 
         return redirect()->back()->with('success', 'IT WORKS!');
+        }else{
+            return redirect()->route('index.dangnhap');
+        }
+
     }
 
     public function getDeleteCart($id)
@@ -195,7 +200,11 @@ class FrontendController extends Controller
 
        $od = new Order();
        $od -> cus_id = $a;
-       $od -> cus_status = $request -> note;
+    if($request -> note == null){
+         $od -> cus_status = "";
+    }else{
+ $od -> cus_status = $request -> note;
+    }
        $od -> cus_total_price =(int)str_replace(',', '', $subtotal) ;
        $od -> cus_total_price_PayMent =(int)str_replace(',', '', $subtotal);
        $od -> status = 0;

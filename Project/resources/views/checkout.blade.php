@@ -91,11 +91,10 @@
                 <div class="w-100"></div>
 	                <div class="form-group col-sm-12 col-md-12 col-lg-12">
 	                	<label for="note">Note</label>
-	                  <textarea required name="note" class="form-control" style="height:115px !important;"></textarea>
+	                  <textarea name="note" class="form-control" style="height:115px !important;"></textarea>
 	                </div>
                 <div class="w-100"></div>
-                <div class="col-md-12">
-                </div>
+                <div class="col-md-12"> </div>
 	            </div>
 	          </form><!-- END -->
 					</div>

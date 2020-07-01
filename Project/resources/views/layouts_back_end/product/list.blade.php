@@ -274,6 +274,7 @@
 </div>
 <!-- Kết thúc modal delete product -->
 @endsection
+@section('script')
 <script type="text/javascript">
     //Show modal Sửa sản phẩm
     function loadProDetail(data) {
@@ -470,4 +471,5 @@ $.ajaxSetup({
 
     }
 </script>
+@endsection
 @endsection

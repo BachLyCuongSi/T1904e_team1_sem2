@@ -21,7 +21,7 @@
             <td class="cat_name">{{$category->cat_name}}</td>
 
             <td class="imgUrl">
-                <div class="col-md-3"><img src="{{$category->imgUrl}}" style="height:100px;" /></div>
+                <div class="col-md-3"><img src="{{asset('images/$category->imgUrl')}}" style="height:100px;" /></div>
             </td>
             <td>{{date('d-m-Y',strtotime($category->created_at))}}</td>
             <td style="text-align:center">
