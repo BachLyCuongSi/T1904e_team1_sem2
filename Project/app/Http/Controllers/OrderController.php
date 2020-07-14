@@ -290,12 +290,17 @@ class OrderController extends Controller
     }
 
 
-    public function seachOrd(request $request){
+    public function seachOrd(request $request)
+    {
         $lstOrder = order::leftJoin('customers', 'orders.cus_id', '=', 'customers.cus_id')
-            ->where('orders.deleted_at',null)
+            ->where('orders.deleted_at', null)
             // ->when(request('name', null), function($query, $name){ return $query->where('customers.name', 'like','%'.implode('%',explode(' ',$name)).'%');})
-            ->when(request('fromDate', null), function($query, $fromDate){ return $query->where('orders.created_at','>=',date('Y-m-d 0:0:0', strtotime(strtr($_REQUEST['fromDate'], '/', '-'))) );})
-            ->when(request('toDate', null), function($query, $endDate){ return $query->where('orders.created_at','<=', date('Y-m-d 23:59:59', strtotime(strtr($_REQUEST['toDate'], '/', '-'))) );})
+            ->when(request('fromDate', null), function ($query, $fromDate) {
+                return $query->where('orders.created_at', '>=', date('Y-m-d 0:0:0', strtotime(strtr($_REQUEST['fromDate'], '/', '-'))));
+            })
+            ->when(request('toDate', null), function ($query, $endDate) {
+                return $query->where('orders.created_at', '<=', date('Y-m-d 23:59:59', strtotime(strtr($_REQUEST['toDate'], '/', '-'))));
+            })
             // ->select('posts.*', 'users.name as creatorName')
             ->select(
                 'orders.od_id as id',
@@ -327,7 +332,7 @@ class OrderController extends Controller
         //         'c.cus_phone as phone',
         //         'o.status as status'
         //     )->orderBy('o.created_at', 'desc')->paginate(4);
-            dd($lstOrder);
+        dd($lstOrder);
         return view('layouts_back_end.order.tblOder', compact('lstOrder'));
 
         // $lstOrder = DB::table('orders as od')->leftjoin('customers as cus', 'od.cus_id','cus.cus_id' )

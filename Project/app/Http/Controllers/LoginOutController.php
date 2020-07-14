@@ -19,59 +19,54 @@ class LoginOutController extends Controller
     }
     public function postLogin(Request $request)
     {
-
-        $this->validate($request,
-        [
+        $this->validate(
+            $request,
+            [
             'email' => 'required|email',
             'password' => 'required|min:6|max:20'
 
 
         ],
-        [
+            [
             'email.required' =>'Vui lòng nhập mail',
             'email.email'=>'Email không đúng định dạng',
             'password.required'=>'Vui lòng nhập mật khẩu',
             'password.min'=>'Mật khẩu ít nhất 6 ký tự',
             'password.max'=>'Mật khẩu không quá 20 ký tự'
-        ]);
+        ]
+        );
 
         $data = customer::where('deleted_at', null)->get();
         $email = $request->email;
         $password =$request->password;
 
-            $a =0;
-        foreach ($data as $data){
-
-            if($data->cus_email == $email && Hash::check($password, $data->password) ){
+        $a =0;
+        foreach ($data as $data) {
+            if ($data->cus_email == $email && Hash::check($password, $data->password)) {
 
                 // $request->session()->put('flags', 'success');
                 // $request->session()->put('message', 'Đăng nhập thành công');
-                $request->session()->put('name',$data['cus_name']);
-                $request->session()->put('cus_email',$data['cus_email']);
-                $request->session()->put('cus_id',$data['cus_id']);
+                $request->session()->put('name', $data['cus_name']);
+                $request->session()->put('cus_email', $data['cus_email']);
+                $request->session()->put('cus_id', $data['cus_id']);
                 $a = 1;
                 // ->with(['flags'=>'success','message'=>'Đăng nhập thành công'])
             }
         }
 
-        if($a ==1){
+        if ($a ==1) {
             return redirect()->route('home');
-        }
-        else{
+        } else {
             $request->session()->flash('flags', 'danger');
 
             $request->session()->flash('message', 'Đăng nhập không thành công');
             return redirect()->route('index.dangnhap');
         }
 
-            // $request->session()->put('flags', 'danger');
+        // $request->session()->put('flags', 'danger');
             // $request->session()->put('message', 'Đăng nhập không thành công');
 
             // return redirect()->back();
-
-
-
-
     }
     public function logout(request $request)
     {
@@ -84,8 +79,8 @@ class LoginOutController extends Controller
         return view('register');
     }
 
-    public function postRegister(request $request) {
-
+    public function postRegister(request $request)
+    {
         $this->validate(
             $request,
             [
@@ -111,11 +106,10 @@ class LoginOutController extends Controller
         $cus->save();
 
         $abc = DB::table('customers')->where([['cus_email',$request->email],['deleted_at',null]])->first();
-        $request->session()->put('name',$request->name);
-        $request->session()->put('cus_id',$abc->cus_id);
-        $request->session()->put('cus_email',$abc->cus_email);
+        $request->session()->put('name', $request->name);
+        $request->session()->put('cus_id', $abc->cus_id);
+        $request->session()->put('cus_email', $abc->cus_email);
 
         return redirect()->route('home');
-
     }
 }

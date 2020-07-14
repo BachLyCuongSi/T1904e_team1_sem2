@@ -68,7 +68,7 @@ class CategoryController extends Controller
 
             $filename = uniqid() . '.' . $filename;
             $path = $request->file('cat_image')->storeAs('category', $filename);
-            $url = Storage::disk('public')->put($path,  File::get($cover));
+            $url = Storage::disk('public')->put($path, File::get($cover));
             $model = new Category();
             $model->cat_image = 'images/' . $path;
 
@@ -123,7 +123,7 @@ class CategoryController extends Controller
 
             $filename = uniqid() . '.' . $filename;
             $path = $request->file('cat_image')->storeAs('category', $filename);
-            $url = Storage::disk('public')->put($path,  File::get($cover));
+            $url = Storage::disk('public')->put($path, File::get($cover));
             $model->cat_image = 'images/' . $path;
 
             $model->fill($request->all());

@@ -42,7 +42,6 @@ class LoginController extends Controller
 
         // else{
         //     // khong ton tai
-        dd('aaaa');
             $eror = '<div class=" alert alert-danger">Đăng nhập thất bại </div>';
             return view('auth.login',compact('eror'));
         // }
